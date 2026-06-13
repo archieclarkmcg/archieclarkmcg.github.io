@@ -1,6 +1,24 @@
 [
   {
     "category": "game",
+    "title": "Gamble Inc.",
+    "gif": "assets/gifs/gambleinc.gif",
+    "role": "Game Visuals, VFX, UI, Game Feel, Steam Admin, Community Management and Social Media",
+    "team-size": 3,
+    "desc": "Tired of making money for your corporate overlords while you get paid peanuts? Hack into your work computer and syphon cash straight from the slots and into your bank. In this corporate dystopia jobs have been reduced to betting all you've got and letting the house (your boss) win. Now Hiring!",
+    "link": "https://store.steampowered.com/app/4632620/Gamble_Inc/"
+  },
+  {
+    "category": "game",
+    "title": "Animal Mystery Crew",
+    "gif": "assets/gifs/animalmysterycrew.gif",
+    "role": "Level Design, Environment Art, VFX, Writing, Makreting+",
+    "team-size": 5,
+    "desc": "Live your Capybara Detective dream in Animal Mystery Crew! Crack every quirky case through peculiar problems and absurdist intrigue. Use evidence and interrogation to solve the different mysteries in the park!",
+    "link": "https://store.steampowered.com/app/3883040/Animal_Mystery_Crew/"
+  },
+  {
+    "category": "game",
     "title": "Centurion Centenary Showdown (Game Jam)",
     "gif": "assets/gifs/centurionshowdown.gif",
     "role": "Character art, UI, Sound",
@@ -117,24 +135,6 @@
     "link": "https://www.youtube.com/watch?v=xo_t9yuU6Yk"
   },
   {
-    "category": "game",
-    "title": "Gamble Inc.",
-    "gif": "assets/gifs/gambleinc.gif",
-    "role": "Game Visuals, VFX, UI, Game Feel, Steam Admin, Community Management and Social Media",
-    "team-size": 3,
-    "desc": "Tired of making money for your corporate overlords while you get paid peanuts? Hack into your work computer and syphon cash straight from the slots and into your bank. In this corporate dystopia jobs have been reduced to betting all you've got and letting the house (your boss) win. Now Hiring!",
-    "link": "https://store.steampowered.com/app/4632620/Gamble_Inc/"
-  },
-  {
-    "category": "game",
-    "title": "Animal Mystery Crew",
-    "gif": "assets/gifs/animalmysterycrew.gif",
-    "role": "Level Design, Environment Art, VFX, Writing, Makreting+",
-    "team-size": 5,
-    "desc": "Live your Capybara Detective dream in Animal Mystery Crew! Crack every quirky case through peculiar problems and absurdist intrigue. Use evidence and interrogation to solve the different mysteries in the park!",
-    "link": "https://store.steampowered.com/app/3883040/Animal_Mystery_Crew/"
-  },
-  {
     "category": "article",
     "title": "Siggraph Asia 2024 – Houdini Hive",
     "link": "https://www.sidefx.com/houdini-hive/siggraph-asia-2024/#labs",
@@ -143,23 +143,16 @@
   },
   {
     "category": "article",
-    "title": "Overconsumption – The Guardian",
+    "title": "Environmental Impact of Overconsumption and Tech (The Guardian)",
     "link": "https://www.theguardian.com/environment/2025/oct/17/overconsumption-before-after-images-tech-harm-planet",
     "image": "assets/images/article_placeholder.png",
     "desc": "Investigating tech's environmental impact through a photoshop and 3d Unreal Engine scene of Venice used in an art gallery for an exhibition."
   },
   {
     "category": "article",
-    "title": "Transform Your Blender Scene into Wood – 80.lv",
+    "title": "Wood Works (80.lv)",
     "link": "https://80.lv/articles/transform-your-blender-scene-into-wood-environment-with-this-procedural-tool",
     "image": "assets/images/article_placeholder.png",
     "desc": "Procedural wood environment tool I lead development on for Blender featured on 80lvl. With mention of Cliff Cooker, another tool I lead development on."
-  },
-  {
-    "category": "tool",
-    "title": "Demo Video",
-    "link": "https://www.youtube.com/watch?v=xo_t9yuU6Yk",
-    "image": "assets/images/article_placeholder.png",
-    "desc": "Demo video for development tools."
   }
 ]
