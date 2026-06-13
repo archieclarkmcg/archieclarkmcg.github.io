@@ -209,6 +209,12 @@
                         <span class="cv-period">NOV 2023~</span>
                     </div>
                     <p class="cv-company">Freelance (Remote - UK)</p>
+                    <p class="expand-hint-cv">Click to see details</p>
+                    <ul class="cv-details">
+                        <li>7,000+ monthly visitor website SEO, content renovations, copywriting</li>
+                        <li>Assisting Instagram account with 200,000+ followers</li>
+                        <li>Promoting an Amazon, Sunday Times and Water Stones Best Seller</li>
+                    </ul>
                 </div>
 
                 <div class="cv-item" onclick="toggleCVExpand(this)">
@@ -311,8 +317,8 @@
                             <div>
                                 <h3 class="project-title">${p.title}</h3>
                                 <p class="project-subtitle">Team size: ${p['team-size']}</p>
-                                <p class="project-role"><strong>My role(s):</strong> ${(p.role||'').replace(/\\n/g,'<br>').replace(/\n/g,'<br>')}</p>
-                                <p class="project-description"><strong>Description:</strong> ${(p.desc||'').replace(/\\n/g,'<br>').replace(/\n/g,'<br>')}</p>
+                                <p class="project-role"><strong>My role(s):</strong> ${(p.role || '').replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>
+                                <p class="project-description"><strong>Description:</strong> ${(p.desc || '').replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>
                                 ${p.link ? `<a href="${p.link}" target="_blank" class="cta-button">View on Steam</a>` : ''}
                             </div>
                             <button class="return-btn">Return</button>
@@ -369,7 +375,7 @@
                         <span class="tool-expand-hint">Click to expand</span>
                     </div>
                     <div class="tool-details">
-                        <p>${(tool.desc||'').replace(/\\n/g,'<br>').replace(/\n/g,'<br>')}</p>
+                        <p>${(tool.desc || '').replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>
                         ${tool.link ? `<a href="${tool.link}" target="_blank" class="cta-button" style="margin-top:1rem;">View Tool</a>` : ''}
                     </div>
                 `;
@@ -414,7 +420,7 @@
                             card.innerHTML = `
                                 <div class="article-image"><img src="${imgSrc}" alt="${article.title}" style="width:100%;height:100%;object-fit:cover;"></div>
                                 <div class="article-header"><h3 class="article-title">${article.title}</h3></div>
-                                <div class="article-description"><p>${(article.desc||'').replace(/\\n/g,'<br>').replace(/\n/g,'<br>')}</p></div>
+                                <div class="article-description"><p>${(article.desc || '').replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p></div>
                                 ${article.link ? `<a href="${article.link}" target="_blank" class="cta-button">Read Article</a>` : ''}
                             `;
                             articlesGrid.appendChild(card);
