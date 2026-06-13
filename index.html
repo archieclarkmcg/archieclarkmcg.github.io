@@ -174,22 +174,55 @@
                 });
             }
 
-            // Fetch projects from JSON and initialize mosaic grid
-            fetch('assets/cms.json')
-                .then(response => response.json())
-                .then(data => {
-                    projects = data.filter(item => item.category === 'game' && item.gif);
-                    // Preload all GIFs
-                    projects.forEach(p => {
-                        if (p.gif) {
-                            const img = new Image();
-                            img.src = p.gif;
-                        }
-                    });
-                    renderMosaic();
-                });
-        </script>
-    </section>
+            // Fetch and render dynamic content after DOM is loaded
+            document.addEventListener('DOMContentLoaded', () => {
+                // Game Projects
+                fetch('assets/cms.json')
+                    .then(r => r.json())
+                    .then(data => {
+                        // Update the outer projects array
+                        projects = data.filter(item => item.category === 'game' && item.gif);
+                        // Preload GIFs
+                        projects.forEach(p => { if (p.gif) { const img = new Image(); img.src = p.gif; } });
+                        // Render mosaic using updated projects
+                        renderMosaic();
+                    })
+                    .catch(err => console.error('Failed to load game projects:', err));
+
+                // Development Tools
+                fetch('assets/cms.json')
+                    .then(r => r.json())
+                    .then(data => {
+                        const tools = data.filter(item => item.category === 'tool');
+                        renderTools(tools);
+                    })
+                    .catch(err => console.error('Failed to load tools:', err));
+
+                // Articles
+                fetch('assets/cms.json')
+                    .then(r => r.json())
+                    .then(data => {
+                        const articles = data.filter(item => item.category === 'article');
+                        const grid = document.getElementById('articlesGrid');
+                        articles.forEach(article => {
+                            const card = document.createElement('div');
+                            card.className = 'article-card';
+                            const imgSrc = article.image || article.gif || '';
+                            const cardHtml = `
+                    <div class="article-image"><img src="${imgSrc}" alt="${article.title}" style="width:100%;height:100%;object-fit:cover;"></div>
+                    <div class="article-header"><h3 class="article-title">${article.title}</h3></div>
+                    <div class="article-description"><p>${article.desc.replace(/\\n/g, '<br>')}</p></div>
+                    <a href="${article.link}" target="_blank" class="cta-button">Read Article</a>
+                `;
+                            card.innerHTML = cardHtml;
+                            grid.appendChild(card);
+                        });
+                    })
+                    .catch(err => console.error('Failed to load articles:', err));
+            });
+
+// Existing render functions (renderMosaic, renderTools) remain unchanged.
+    </section >
 
     <!-- Development Tools Section -->
     <section class="section" id="tools">
@@ -200,110 +233,28 @@
             <div class="tools-grid">
             </div>
         </div>
-        <script>
-            // Dynamically render tools from JSON with improved expansion logic
-            fetch('assets/cms.json')
-                .then(response => response.json())
-                .then(data => {
-                    const tools = data.filter(item => item.category === 'tool');
-                    const grid = document.querySelector('.tools-grid');
-                    let expandedIndex = null;
-                    function renderTools() {
-                        grid.innerHTML = '';
-                        tools.forEach((tool, i) => {
-                            const card = document.createElement('div');
-                            card.className = 'tool-card';
-                            if (expandedIndex === i) {
-                                card.classList.add('expanded');
-                            } else if (expandedIndex !== null) {
-                                card.classList.add('center-hidden');
-                            }
-
-                            const isYouTube = tool.link && (tool.link.includes('youtube.com') || tool.link.includes('youtu.be'));
-                            let videoEmbedHtml = '';
-                            if (isYouTube && expandedIndex === i) {
-                                let videoId = '';
-                                if (tool.link.includes('v=')) {
-                                    videoId = tool.link.split('v=')[1].split('&')[0];
-                                } else if (tool.link.includes('youtu.be/')) {
-                                    videoId = tool.link.split('youtu.be/')[1].split('?')[0];
-                                }
-                                if (videoId) {
-                                    videoEmbedHtml = `
-                                                    <div class="video-container" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin-top:1.5rem;margin-bottom:1rem;border-radius:8px;box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
-                                                        <iframe src="https://www.youtube.com/embed/${videoId}" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen></iframe>
-                                                    </div>
-                                                `;
-                                }
-                            }
-
-                            const buttonText = isYouTube ? 'Watch on YouTube' : 'View Tool';
-                            const returnButton = (expandedIndex === i) ? `<button class="return-btn" style="margin-top:1rem;margin-left:1rem;display:inline-block;">Return</button>` : '';
-
-                            card.innerHTML = `
-                                            <div class="tool-image"><img src="${tool.image}" alt="${tool.title}" style="width:100%;height:100%;object-fit:cover;"></div>
-                                            <div class="tool-header">
-                                                <div>
-                                                    <h3 class="tool-title">${tool.title}</h3>
-                                                </div>
-                                                <span class="expand-icon">▼</span>
-                                            </div>
-                                            <div class="tool-description">
-                                                ${tool.desc.replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}
-                                                ${videoEmbedHtml}
-                                                <br>
-                                                <div style="display:flex;align-items:center;">
-                                                    <a href="${tool.link}" target="_blank" class="cta-button" style="margin-top:1rem;display:inline-block;">${buttonText}</a>
-                                                    ${returnButton}
-                                                </div>
-                                            </div>
-                                        `;
-
-                            card.onclick = function (e) {
-                                if (e.target.closest('a') || e.target.closest('iframe')) {
-                                    return;
-                                }
-                                if (e.target.closest('.return-btn')) {
-                                    expandedIndex = null;
-                                    renderTools();
-                                    return;
-                                }
-                                if (expandedIndex === i) {
-                                    expandedIndex = null;
-                                    renderTools();
-                                } else {
-                                    expandedIndex = i;
-                                    renderTools();
-                                }
-                            };
-                            grid.appendChild(card);
-                        });
-                    }
-                    renderTools();
-                });
-        </script>
     </section>
 
-    <!-- Articles Section -->
-    <section class="section" id="articles">
-        <h2 class="section-title">Articles</h2>
-        <p class="section-subtitle">Articles and Exhibitions of my work and projects I was involved in</p>
-        <div class="articles-grid" id="articlesGrid"></div>
-        <script>
+    <!--Articles Section-- >
+                <section class="section" id="articles">
+                    <h2 class="section-title">Articles</h2>
+                    <p class="section-subtitle">Articles and Exhibitions of my work and projects I was involved in</p>
+                    <div class="articles-grid" id="articlesGrid"></div>
+                    <script>
             // Render articles
-            fetch('assets/cms.json')
+                        fetch('assets/cms.json')
                 .then(r => r.json())
                 .then(data => {
                     const articles = data.filter(item => item.category === 'article');
-                    const grid = document.getElementById('articlesGrid');
+                        const grid = document.getElementById('articlesGrid');
                     articles.forEach(article => {
                         const card = document.createElement('div');
                         card.className = 'article-card';
                         const cardHtml = `
-                                <div class="article-image"><img src="${article.image || article.gif || ''}" alt="${article.title}" style="width:100%;height:100%;object-fit:cover;"></div>
-                                <div class="article-header"><h3 class="article-title">${article.title}</h3></div>
-                                <div class="article-description"><p>${article.desc.replace(/\\n/g, '<br>')}</p></div>
-                                <a href="${article.link}" target="_blank" class="cta-button">Read Article</a>
+                        <div class="article-image"><img src="${article.image || article.gif || ''}" alt="${article.title}" style="width:100%;height:100%;object-fit:cover;"></div>
+                        <div class="article-header"><h3 class="article-title">${article.title}</h3></div>
+                        <div class="article-description"><p>${article.desc.replace(/\\n/g, '<br>')}</p></div>
+                        <a href="${article.link}" target="_blank" class="cta-button">Read Article</a>
                             `;
                         card.innerHTML = cardHtml;
                         grid.appendChild(card);
@@ -400,6 +351,11 @@
                         <span class="cv-period">JUNE 2023</span>
                     </div>
                     <p class="cv-company">Universidad de Las Americas (Quito)</p>
+                    <p class="expand-hint-cv">Click to see details</p>
+                    <ul class="cv-details">
+                        <li>Gameplay, sound design and localisation developing a mobile game</li>
+                        <li>C# Scripting in Unity Engine for Mobile</li>
+                    </ul>
                 </div>
 
                 <div class="cv-item" onclick="toggleCVExpand(this)">
@@ -485,40 +441,40 @@
     </footer>
 
     <script>
-        // Mobile detection and toggle
-        function toggleDesktopView() {
-            document.documentElement.classList.toggle('force-desktop');
-            const button = document.querySelector('.desktop-toggle button');
-            const isMobile = !document.documentElement.classList.contains('force-desktop');
-            button.textContent = isMobile ? 'View Desktop Version' : 'View Mobile Version';
+                // Mobile detection and toggle
+                function toggleDesktopView() {
+                    document.documentElement.classList.toggle('force-desktop');
+                const button = document.querySelector('.desktop-toggle button');
+                const isMobile = !document.documentElement.classList.contains('force-desktop');
+                button.textContent = isMobile ? 'View Desktop Version' : 'View Mobile Version';
 
-            // Store preference
-            localStorage.setItem('preferDesktop', !isMobile);
+                // Store preference
+                localStorage.setItem('preferDesktop', !isMobile);
         }
 
         // Check stored preference on load
         document.addEventListener('DOMContentLoaded', () => {
             const preferDesktop = localStorage.getItem('preferDesktop') === 'true';
-            if (preferDesktop) {
-                document.documentElement.classList.add('force-desktop');
+                if (preferDesktop) {
+                    document.documentElement.classList.add('force-desktop');
                 document.querySelector('.desktop-toggle button').textContent = 'View Mobile Version';
             }
         });
 
-        // Floating navigation
-        function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+                // Floating navigation
+                function scrollToSection(sectionId) {
+                    document.getElementById(sectionId).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
         }
 
         // Update active nav dot on scroll
         window.addEventListener('scroll', () => {
             const sections = ['hero', 'projects', 'tools', 'cv', 'contact'];
-            const navDots = document.querySelectorAll('.nav-dot');
+                const navDots = document.querySelectorAll('.nav-dot');
 
-            let current = '';
+                let current = '';
             sections.forEach(sectionId => {
                 const section = document.getElementById(sectionId);
                 const sectionTop = section.offsetTop - 100;
@@ -530,55 +486,55 @@
             });
 
             navDots.forEach((dot, index) => {
-                dot.classList.remove('active');
+                    dot.classList.remove('active');
                 if (sections[index] === current) {
                     dot.classList.add('active');
                 }
             });
         });
 
-        // Project carousel
-        function scrollCarousel(direction) {
+                // Project carousel
+                function scrollCarousel(direction) {
             const container = document.querySelector('.carousel-container');
-            const scrollAmount = 370; // card width + gap
+                const scrollAmount = 370; // card width + gap
 
-            if (direction === 'left') {
-                container.scrollLeft -= scrollAmount;
+                if (direction === 'left') {
+                    container.scrollLeft -= scrollAmount;
             } else {
-                container.scrollLeft += scrollAmount;
+                    container.scrollLeft += scrollAmount;
             }
         }
 
-        // Toggle project expand
-        function toggleExpand(card) {
-            card.classList.toggle('expanded');
+                // Toggle project expand
+                function toggleExpand(card) {
+                    card.classList.toggle('expanded');
         }
 
-        // Toggle tool expand (accordion behavior)
-        function toggleToolExpand(card) {
+                // Toggle tool expand (accordion behavior)
+                function toggleToolExpand(card) {
             const allCards = document.querySelectorAll('.tool-card');
             allCards.forEach(c => {
                 if (c !== card) {
                     c.classList.remove('expanded');
                 }
             });
-            card.classList.toggle('expanded');
+                card.classList.toggle('expanded');
         }
 
-        // Toggle CV item expand
-        function toggleCVExpand(item) {
-            item.classList.toggle('expanded');
+                // Toggle CV item expand
+                function toggleCVExpand(item) {
+                    item.classList.toggle('expanded');
         }
 
-        // Toggle skills
-        function toggleSkills() {
+                // Toggle skills
+                function toggleSkills() {
             const skillsList = document.getElementById('skillsList');
-            const button = document.querySelector('.skills-toggle');
+                const button = document.querySelector('.skills-toggle');
 
-            skillsList.classList.toggle('expanded');
+                skillsList.classList.toggle('expanded');
 
-            if (skillsList.classList.contains('expanded')) {
-                button.textContent = 'Hide Technical Skills';
+                if (skillsList.classList.contains('expanded')) {
+                    button.textContent = 'Hide Technical Skills';
                 // Animate skill tags
                 const tags = skillsList.querySelectorAll('.skill-tag');
                 tags.forEach((tag, index) => {
@@ -587,7 +543,7 @@
                     }, 0);
                 });
             } else {
-                button.textContent = 'Show Technical Skills';
+                    button.textContent = 'Show Technical Skills';
             }
         }
 
@@ -604,29 +560,29 @@
             }
         });
 
-        // Touch gesture handling
-        let touchStartX = 0;
-        let touchEndX = 0;
+                // Touch gesture handling
+                let touchStartX = 0;
+                let touchEndX = 0;
 
-        function handleSwipeGesture(element, onSwipeLeft, onSwipeRight) {
-            element.addEventListener('touchstart', e => {
-                touchStartX = e.changedTouches[0].screenX;
-            }, false);
+                function handleSwipeGesture(element, onSwipeLeft, onSwipeRight) {
+                    element.addEventListener('touchstart', e => {
+                        touchStartX = e.changedTouches[0].screenX;
+                    }, false);
 
             element.addEventListener('touchend', e => {
-                touchEndX = e.changedTouches[0].screenX;
+                    touchEndX = e.changedTouches[0].screenX;
                 handleSwipe();
             }, false);
 
-            function handleSwipe() {
+                function handleSwipe() {
                 const swipeThreshold = 50;
                 const swipeLength = touchEndX - touchStartX;
 
                 if (Math.abs(swipeLength) > swipeThreshold) {
                     if (swipeLength > 0) {
-                        onSwipeRight();
+                    onSwipeRight();
                     } else {
-                        onSwipeLeft();
+                    onSwipeLeft();
                     }
                 }
             }
@@ -634,21 +590,21 @@
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
-            // Set first nav dot as active
-            document.querySelector('.nav-dot').classList.add('active');
+                    // Set first nav dot as active
+                    document.querySelector('.nav-dot').classList.add('active');
 
-            // Add swipe gestures for tools
-            const toolsGrid = document.querySelector('.tools-grid');
-            if (toolsGrid) {
-                let currentToolIndex = 0;
+                // Add swipe gestures for tools
+                const toolsGrid = document.querySelector('.tools-grid');
+                if (toolsGrid) {
+                    let currentToolIndex = 0;
                 handleSwipeGesture(toolsGrid.parentElement,
                     () => {
                         if (window.matchMedia('(max-width: 390px)').matches) {
                             const tools = toolsGrid.children;
-                            if (currentToolIndex < tools.length - 1) {
-                                tools[currentToolIndex].style.transform = 'translateX(-100%)';
-                                currentToolIndex++;
-                                tools[currentToolIndex].style.transform = 'translateX(0)';
+                if (currentToolIndex < tools.length - 1) {
+                    tools[currentToolIndex].style.transform = 'translateX(-100%)';
+                currentToolIndex++;
+                tools[currentToolIndex].style.transform = 'translateX(0)';
                             }
                         }
                     },
@@ -656,9 +612,9 @@
                         if (window.matchMedia('(max-width: 390px)').matches) {
                             const tools = toolsGrid.children;
                             if (currentToolIndex > 0) {
-                                tools[currentToolIndex].style.transform = 'translateX(100%)';
-                                currentToolIndex--;
-                                tools[currentToolIndex].style.transform = 'translateX(0)';
+                    tools[currentToolIndex].style.transform = 'translateX(100%)';
+                currentToolIndex--;
+                tools[currentToolIndex].style.transform = 'translateX(0)';
                             }
                         }
                     }
