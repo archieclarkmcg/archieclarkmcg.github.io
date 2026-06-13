@@ -1,126 +1,126 @@
 [
- {
-   "category": "game",
-   "title": "Centurion Centenary Showdown (Game Jam)",
-   "gif": "assets/gifs/centurionshowdown.gif",
-   "role": "Character art, UI, Sound",
-   "team-size": 4,
-   "desc": "A 1v1 in which players must spear each other off the edge of the colosseum. ",
-   "link": ""
- },
- {
-   "category": "game",
-   "title": "Connect 4 Ever (Game Jam)",
-   "gif": "assets/gifs/connect4ever.gif",
-   "role": "UI design and Implementation\n",
-   "team-size": 4,
-   "desc": "Connect 4 with special cards introducing new counters and abilities",
-   "link": ""
- },
- {
-   "category": "game",
-   "title": "Roll of the Necrochancer (WIP)",
-   "gif": "assets/gifs/dicegame.gif",
-   "role": "Gameplay design, VFX, Sound, Playtesting",
-   "team-size": 6,
-   "desc": "Wave survival rogue-like",
-   "link": ""
- },
- {
-   "category": "game",
-   "title": "E-Scape (Game Jam)",
-   "gif": "assets/gifs/escape.gif",
-   "role": "AI and Character scripting, Music, Sound",
-   "team-size": 4,
-   "desc": "Beat 'em up. Escape the cloning facility and take down the hostile AI that control it",
-   "link": ""
- },
- {
-   "category": "game",
-   "title": "Hammer Slammers (WIP)",
-   "gif": "assets/gifs/hammerslammers.gif",
-   "role": "Gameplay Design",
-   "team-size": 4,
-   "desc": "A free-for-all time-based shooter, ricochet your bullets and time your attacks to kill your friends!",
-   "link": ""
- },
- {
-   "category": "game",
-   "title": "Final Major Project (University)",
-   "gif": "assets/gifs/fmp.gif",
-   "role": "Everything",
-   "team-size": 1,
-   "desc": "A game alongside a 10,000 word dissertation created to measure the difference in player experience whether using diegetic or non-diegetic navigational cues. Certain assets are paid for, including the soundtrack and certain UI elements.",
-   "link": ""
- },
- {
-   "category": "game",
-   "title": "Just-Ice (Game Jam)",
-   "gif": "assets/gifs/justice.gif",
-   "role": "Character design, sound, music, level design\n",
-   "team-size": 5,
-   "desc": "A platformer in which the player uses heating and freezing to traverse the levels",
-   "link": ""
- },
- {
-   "category": "game",
-   "title": "Parry-lel (Game Jam)",
-   "gif": "assets/gifs/parrylel.gif",
-   "role": "Gameplay, Character scripting, Sounds\n",
-   "team-size": 4,
-   "desc": "An arcade game in which the player deflects the projectiles to stay alive",
-   "link": ""
- },
- {
-   "category": "game",
-   "title": "Jungle Hero (Digital Narratives of The Amazon)",
-   "gif": "assets/gifs/junglehero.gif",
-   "role": "Sounds, Music Sound implementation, Translation",
-   "team-size": 8,
-   "desc": "With a production time of one week, we created a game focused on promoting animal conservation in the Amazonian regions of Ecuador. \nAs the only native English speaker on the team, I helped localise to English, I composed the music from scratch and sourced all SFX including real recordings from our time in The Amazon Jungle",
-   "link": ""
- },
- {
-   "category": "tool",
-   "title": "Dust Box",
-   "image": "assets/images/dustbox.jpg",
-   "role": "",
-   "team-size": null,
-   "desc": "Unreal Engine VFX Blueprint \n\nA tool for adding dust and ambient effects to Unreal Engine scenes",
-   "link": "https://www.fab.com/listings/eea0aa29-bbf9-4f26-9188-92b615bea487"
- },
- {
-   "category": "tool",
-   "title": "Cliff Cooker",
-   "image": "assets/images/cliffcooker.jpg",
-   "role": "",
-   "team-size": null,
-   "desc": "Blender Geometry Node Setup for Procedural Cliff Generation \n\nCliff Cooker is a Geometry Nodes tool which generates cliff and rock formations from simple base meshes. By adjusting base shapes and scattered meshes, you can customize the parameters to achieve a wide variety of cliff styles. ",
-   "link": "https://superhivemarket.com/products/cliff-cooker"
- },
- {
-   "category": "tool",
-   "title": "Wood Works",
-   "image": "assets/images/woodworks.png",
-   "role": "",
-   "team-size": null,
-   "desc": "Procedural Wood Painting Toolkit\n\nUsing an intuitive painting mode, you can effortlessly add color to models just like painting real wooden figures to perfectly match your creative vision. You can also add wooden carving to your models for added realism and create flat cutouts from 3D models. Wood Works handles all aspects of materials, textures, and UVs, allowing you to focus entirely on unleashing your creativity without any technical distractions.",
-   "link": "https://superhivemarket.com/products/wood-works"
- },
- {
-   "category": "tool",
-   "title": "The Hanging Village",
-   "image": "https://img.youtube.com/vi/xo_t9yuU6Yk/maxresdefault.jpg",
-   "role": "",
-   "team-size": null,
-   "desc": "A cinematic environmental showcase featuring stylized cliff-side architectures, generated using Cliff Cooker and custom procedural workflows in Blender and Unreal Engine.",
-   "link": "https://www.youtube.com/watch?v=xo_t9yuU6Yk"
- },
+  {
+    "category": "game",
+    "title": "Centurion Centenary Showdown (Game Jam)",
+    "gif": "assets/gifs/centurionshowdown.gif",
+    "role": "Character art, UI, Sound",
+    "team-size": 4,
+    "desc": "A 1v1 in which players must spear each other off the edge of the colosseum. ",
+    "link": ""
+  },
+  {
+    "category": "game",
+    "title": "Connect 4 Ever (Game Jam)",
+    "gif": "assets/gifs/connect4ever.gif",
+    "role": "UI design and Implementation\n",
+    "team-size": 4,
+    "desc": "Connect 4 with special cards introducing new counters and abilities",
+    "link": ""
+  },
+  {
+    "category": "game",
+    "title": "Roll of the Necrochancer (WIP)",
+    "gif": "assets/gifs/dicegame.gif",
+    "role": "Gameplay design, VFX, Sound, Playtesting",
+    "team-size": 6,
+    "desc": "Wave survival rogue-like",
+    "link": ""
+  },
+  {
+    "category": "game",
+    "title": "E-Scape (Game Jam)",
+    "gif": "assets/gifs/escape.gif",
+    "role": "AI and Character scripting, Music, Sound",
+    "team-size": 4,
+    "desc": "Beat 'em up. Escape the cloning facility and take down the hostile AI that control it",
+    "link": ""
+  },
+  {
+    "category": "game",
+    "title": "Hammer Slammers (WIP)",
+    "gif": "assets/gifs/hammerslammers.gif",
+    "role": "Gameplay Design",
+    "team-size": 4,
+    "desc": "A free-for-all time-based shooter, ricochet your bullets and time your attacks to kill your friends!",
+    "link": ""
+  },
+  {
+    "category": "game",
+    "title": "Final Major Project (University)",
+    "gif": "assets/gifs/fmp.gif",
+    "role": "Everything",
+    "team-size": 1,
+    "desc": "A game alongside a 10,000 word dissertation created to measure the difference in player experience whether using diegetic or non-diegetic navigational cues. Certain assets are paid for, including the soundtrack and certain UI elements.",
+    "link": ""
+  },
+  {
+    "category": "game",
+    "title": "Just-Ice (Game Jam)",
+    "gif": "assets/gifs/justice.gif",
+    "role": "Character design, sound, music, level design\n",
+    "team-size": 5,
+    "desc": "A platformer in which the player uses heating and freezing to traverse the levels",
+    "link": ""
+  },
+  {
+    "category": "game",
+    "title": "Parry-lel (Game Jam)",
+    "gif": "assets/gifs/parrylel.gif",
+    "role": "Gameplay, Character scripting, Sounds\n",
+    "team-size": 4,
+    "desc": "An arcade game in which the player deflects the projectiles to stay alive",
+    "link": ""
+  },
+  {
+    "category": "game",
+    "title": "Jungle Hero (Digital Narratives of The Amazon)",
+    "gif": "assets/gifs/junglehero.gif",
+    "role": "Sounds, Music Sound implementation, Translation",
+    "team-size": 8,
+    "desc": "With a production time of one week, we created a game focused on promoting animal conservation in the Amazonian regions of Ecuador. \nAs the only native English speaker on the team, I helped localise to English, I composed the music from scratch and sourced all SFX including real recordings from our time in The Amazon Jungle",
+    "link": ""
+  },
+  {
+    "category": "tool",
+    "title": "Dust Box",
+    "image": "assets/images/dustbox.jpg",
+    "role": "",
+    "team-size": 1,
+    "desc": "Unreal Engine VFX Blueprint \n\nA tool for adding dust and ambient effects to Unreal Engine scenes",
+    "link": "https://www.fab.com/listings/eea0aa29-bbf9-4f26-9188-92b615bea487"
+  },
+  {
+    "category": "tool",
+    "title": "Cliff Cooker",
+    "image": "assets/images/cliffcooker.jpg",
+    "role": "",
+    "team-size": 2,
+    "desc": "Blender Geometry Node Setup for Procedural Cliff Generation \n\nCliff Cooker is a Geometry Nodes tool which generates cliff and rock formations from simple base meshes. By adjusting base shapes and scattered meshes, you can customize the parameters to achieve a wide variety of cliff styles. ",
+    "link": "https://superhivemarket.com/products/cliff-cooker"
+  },
+  {
+    "category": "tool",
+    "title": "Wood Works",
+    "image": "assets/images/woodworks.png",
+    "role": "",
+    "team-size": 3,
+    "desc": "Procedural Wood Painting Toolkit\n\nUsing an intuitive painting mode, you can effortlessly add color to models just like painting real wooden figures to perfectly match your creative vision. You can also add wooden carving to your models for added realism and create flat cutouts from 3D models. Wood Works handles all aspects of materials, textures, and UVs, allowing you to focus entirely on unleashing your creativity without any technical distractions.",
+    "link": "https://superhivemarket.com/products/wood-works"
+  },
+  {
+    "category": "tool",
+    "title": "The Hanging Village",
+    "image": "https://img.youtube.com/vi/xo_t9yuU6Yk/maxresdefault.jpg",
+    "role": "",
+    "team-size": 2,
+    "desc": "A cinematic environmental showcase featuring stylized cliff-side architectures, generated using Cliff Cooker and custom procedural workflows in Blender and Unreal Engine.",
+    "link": "https://www.youtube.com/watch?v=xo_t9yuU6Yk"
+  },
   {
     "category": "game",
     "title": "Gamble Inc.",
     "gif": "assets/gifs/gambleinc.gif",
-    "role": "Indie Game Developer",
+    "role": "Game Visuals, VFX, UI, Game Feel, Steam Admin, Community Management and Social Media",
     "team-size": 3,
     "desc": "Tired of making money for your corporate overlords while you get paid peanuts? Hack into your work computer and syphon cash straight from the slots and into your bank. In this corporate dystopia jobs have been reduced to betting all you've got and letting the house (your boss) win. Now Hiring!",
     "link": "https://store.steampowered.com/app/4632620/Gamble_Inc/"
@@ -129,8 +129,8 @@
     "category": "game",
     "title": "Animal Mystery Crew",
     "gif": "assets/gifs/animalmysterycrew.gif",
-    "role": "Indie Game Developer",
-    "team-size": 1,
+    "role": "Level Design, Environment Art, VFX, Writing, Makreting+",
+    "team-size": 5,
     "desc": "Live your Capybara Detective dream in Animal Mystery Crew! Crack every quirky case through peculiar problems and absurdist intrigue. Use evidence and interrogation to solve the different mysteries in the park!",
     "link": "https://store.steampowered.com/app/3883040/Animal_Mystery_Crew/"
   },
@@ -139,21 +139,21 @@
     "title": "Siggraph Asia 2024 – Houdini Hive",
     "link": "https://www.sidefx.com/houdini-hive/siggraph-asia-2024/#labs",
     "image": "assets/images/article_placeholder.png",
-    "desc": "Showcase of Houdini Hive at Siggraph Asia 2024."
+    "desc": "Showcase of A video and envrionment created by me used to show off real-time water physics in Houdini at Siggraph Asia 2024"
   },
   {
     "category": "article",
     "title": "Overconsumption – The Guardian",
     "link": "https://www.theguardian.com/environment/2025/oct/17/overconsumption-before-after-images-tech-harm-planet",
     "image": "assets/images/article_placeholder.png",
-    "desc": "Investigating tech's environmental impact."
+    "desc": "Investigating tech's environmental impact through a photoshop and 3d Unreal Engine scene of Venice used in an art gallery for an exhibition."
   },
   {
     "category": "article",
     "title": "Transform Your Blender Scene into Wood – 80.lv",
     "link": "https://80.lv/articles/transform-your-blender-scene-into-wood-environment-with-this-procedural-tool",
     "image": "assets/images/article_placeholder.png",
-    "desc": "Procedural wood environment tutorial."
+    "desc": "Procedural wood environment tool I lead development on for Blender featured on 80lvl. With mention of Cliff Cooker, another tool I lead development on."
   },
   {
     "category": "tool",
