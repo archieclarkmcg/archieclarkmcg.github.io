@@ -115,5 +115,23 @@
    "team-size": null,
    "desc": "A cinematic environmental showcase featuring stylized cliff-side architectures, generated using Cliff Cooker and custom procedural workflows in Blender and Unreal Engine.",
    "link": "https://www.youtube.com/watch?v=xo_t9yuU6Yk"
+ },
+ {
+   "category": "game",
+   "title": "Gamble Inc.",
+   "gif": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4632620/header.jpg",
+   "role": "Indie Game Developer",
+   "team-size": 1,
+   "desc": "Tired of making money for your corporate overlords while you get paid peanuts? Hack into your work computer and syphon cash straight from the slots and into your bank. In this corporate dystopia jobs have been reduced to betting all you've got and letting the house (your boss) win. Now Hiring!",
+   "link": "https://store.steampowered.com/app/4632620/Gamble_Inc/"
+ },
+ {
+   "category": "game",
+   "title": "Animal Mystery Crew",
+   "gif": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3883040/header.jpg",
+   "role": "Indie Game Developer",
+   "team-size": 1,
+   "desc": "Live your Capybara Detective dream in Animal Mystery Crew! Crack every quirky case through peculiar problems and absurdist intrigue. Use evidence and interrogation to solve the different mysteries in the park!",
+   "link": "https://store.steampowered.com/app/3883040/Animal_Mystery_Crew/"
  }
 ]
