@@ -80,149 +80,15 @@
             </div>
         </div>
     </div>
-    </div>
 
     <!-- Projects Section -->
     <section class="section" id="projects">
         <h2 class="section-title">Game Projects</h2>
         <p class="section-subtitle">Click on projects to explore the details</p>
-
         <div class="projects-container">
             <div class="mosaic-grid" id="mosaicGrid"></div>
         </div>
-
-        <!-- Dynamic Game Projects Grid -->
-        <div id="game-projects-list" style="margin-top:2rem;"></div>
-
-        <script>
-            // Load game projects from assets/cms.json for the mosaic grid
-            let projects = [];
-            let expandedIndex = null;
-            const mosaicGrid = document.getElementById('mosaicGrid');
-
-            function renderMosaic() {
-                mosaicGrid.innerHTML = '';
-                projects.forEach((p, idx) => {
-                    const card = document.createElement('div');
-                    card.className = 'project-card';
-                    if (p.title && p.title.toLowerCase().includes('jungle hero')) {
-                        card.classList.add('jungle-hero-card');
-                    }
-
-                    const isExpanded = (expandedIndex === idx);
-                    if (isExpanded) {
-                        card.classList.add('expanded');
-                        card.innerHTML = `
-                        <div class="gif expanded-gif">
-                            <img src="${p.gif}" alt="${p.title} GIF" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
-                        </div>
-                        <div class="project-content expanded-content">
-                            <div>
-                                <h3 class="project-title">${p.title}</h3>
-                                <p class="project-subtitle">Team size: ${p['team-size']}</p>
-                                <p class="project-role"><strong>My role(s):</strong> ${p.role.replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>
-                                <p class="project-description"><strong>Description:</strong> ${p.desc.replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>
-                                <a href="${p.link}" target="_blank" class="cta-button">View on Steam</a>
-                            </div>
-                            <button class="return-btn">Return</button>
-                        </div>
-                    `;
-
-                        card.querySelector('.return-btn').onclick = (e) => {
-                            e.stopPropagation();
-                            expandedIndex = null;
-                            renderMosaic();
-                            setTimeout(() => {
-                                const collapsedCard = mosaicGrid.children[idx];
-                                if (collapsedCard) {
-                                    collapsedCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                                }
-                            }, 50);
-                        };
-                    } else {
-                        card.innerHTML = `
-                        <div class="gif">
-                            <img src="${p.gif}" alt="${p.title} GIF" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">${p.title}</h3>
-                            <p class="project-subtitle">Team size: ${p['team-size']}</p>
-                            <p class="expand-hint">Click to see details</p>
-                        </div>
-                    `;
-                    }
-
-                    card.onclick = (e) => {
-                        if (isExpanded) {
-                            if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A' && !e.target.closest('.return-btn')) {
-                                expandedIndex = null;
-                                renderMosaic();
-                            }
-                        } else {
-                            expandedIndex = idx;
-                            renderMosaic();
-                            setTimeout(() => {
-                                const newExpandedCard = mosaicGrid.children[idx];
-                                if (newExpandedCard) {
-                                    newExpandedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                }
-                            }, 50);
-                        }
-                    };
-
-                    mosaicGrid.appendChild(card);
-                });
-            }
-
-            // Fetch and render dynamic content after DOM is loaded
-            document.addEventListener('DOMContentLoaded', () => {
-                // Game Projects
-                fetch('assets/cms.json')
-                    .then(r => r.json())
-                    .then(data => {
-                        // Update the outer projects array
-                        projects = data.filter(item => item.category === 'game' && item.gif);
-                        // Preload GIFs
-                        projects.forEach(p => { if (p.gif) { const img = new Image(); img.src = p.gif; } });
-                        // Render mosaic using updated projects
-                        renderMosaic();
-                    })
-                    .catch(err => console.error('Failed to load game projects:', err));
-
-                // Development Tools
-                fetch('assets/cms.json')
-                    .then(r => r.json())
-                    .then(data => {
-                        const tools = data.filter(item => item.category === 'tool');
-                        renderTools(tools);
-                    })
-                    .catch(err => console.error('Failed to load tools:', err));
-
-                // Articles
-                fetch('assets/cms.json')
-                    .then(r => r.json())
-                    .then(data => {
-                        const articles = data.filter(item => item.category === 'article');
-                        const grid = document.getElementById('articlesGrid');
-                        articles.forEach(article => {
-                            const card = document.createElement('div');
-                            card.className = 'article-card';
-                            const imgSrc = article.image || article.gif || '';
-                            const cardHtml = `
-                    <div class="article-image"><img src="${imgSrc}" alt="${article.title}" style="width:100%;height:100%;object-fit:cover;"></div>
-                    <div class="article-header"><h3 class="article-title">${article.title}</h3></div>
-                    <div class="article-description"><p>${article.desc.replace(/\\n/g, '<br>')}</p></div>
-                    <a href="${article.link}" target="_blank" class="cta-button">Read Article</a>
-                `;
-                            card.innerHTML = cardHtml;
-                            grid.appendChild(card);
-                        });
-                    })
-                    .catch(err => console.error('Failed to load articles:', err));
-            });
-
-// Existing render functions (renderMosaic, renderTools) remain unchanged.
-    </section >
+    </section>
 
     <!-- Development Tools Section -->
     <section class="section" id="tools">
@@ -235,32 +101,11 @@
         </div>
     </section>
 
-    <!--Articles Section-- >
-                <section class="section" id="articles">
-                    <h2 class="section-title">Articles</h2>
-                    <p class="section-subtitle">Articles and Exhibitions of my work and projects I was involved in</p>
-                    <div class="articles-grid" id="articlesGrid"></div>
-                    <script>
-            // Render articles
-                        fetch('assets/cms.json')
-                .then(r => r.json())
-                .then(data => {
-                    const articles = data.filter(item => item.category === 'article');
-                        const grid = document.getElementById('articlesGrid');
-                    articles.forEach(article => {
-                        const card = document.createElement('div');
-                        card.className = 'article-card';
-                        const cardHtml = `
-                        <div class="article-image"><img src="${article.image || article.gif || ''}" alt="${article.title}" style="width:100%;height:100%;object-fit:cover;"></div>
-                        <div class="article-header"><h3 class="article-title">${article.title}</h3></div>
-                        <div class="article-description"><p>${article.desc.replace(/\\n/g, '<br>')}</p></div>
-                        <a href="${article.link}" target="_blank" class="cta-button">Read Article</a>
-                            `;
-                        card.innerHTML = cardHtml;
-                        grid.appendChild(card);
-                    });
-                });
-        </script>
+    <!-- Articles Section -->
+    <section class="section" id="articles">
+        <h2 class="section-title">Articles</h2>
+        <p class="section-subtitle">Articles and Exhibitions of my work and projects I was involved in</p>
+        <div class="articles-grid" id="articlesGrid"></div>
     </section>
 
     <!-- CV Section -->
@@ -441,184 +286,203 @@
     </footer>
 
     <script>
-                // Mobile detection and toggle
-                function toggleDesktopView() {
-                    document.documentElement.classList.toggle('force-desktop');
-                const button = document.querySelector('.desktop-toggle button');
-                const isMobile = !document.documentElement.classList.contains('force-desktop');
-                button.textContent = isMobile ? 'View Desktop Version' : 'View Mobile Version';
+        // ── Mosaic grid state ──────────────────────────────────────
+        let projects = [];
+        let expandedIndex = null;
+        const mosaicGrid = document.getElementById('mosaicGrid');
 
-                // Store preference
-                localStorage.setItem('preferDesktop', !isMobile);
+        function renderMosaic() {
+            if (!mosaicGrid) return;
+            mosaicGrid.innerHTML = '';
+            projects.forEach((p, idx) => {
+                const card = document.createElement('div');
+                card.className = 'project-card';
+                if (p.title && p.title.toLowerCase().includes('jungle hero')) {
+                    card.classList.add('jungle-hero-card');
+                }
+                const isExpanded = (expandedIndex === idx);
+                if (isExpanded) {
+                    card.classList.add('expanded');
+                    card.innerHTML = `
+                        <div class="gif expanded-gif">
+                            <img src="${p.gif}" alt="${p.title} GIF" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+                        </div>
+                        <div class="project-content expanded-content">
+                            <div>
+                                <h3 class="project-title">${p.title}</h3>
+                                <p class="project-subtitle">Team size: ${p['team-size']}</p>
+                                <p class="project-role"><strong>My role(s):</strong> ${(p.role||'').replace(/\\n/g,'<br>').replace(/\n/g,'<br>')}</p>
+                                <p class="project-description"><strong>Description:</strong> ${(p.desc||'').replace(/\\n/g,'<br>').replace(/\n/g,'<br>')}</p>
+                                ${p.link ? `<a href="${p.link}" target="_blank" class="cta-button">View on Steam</a>` : ''}
+                            </div>
+                            <button class="return-btn">Return</button>
+                        </div>
+                    `;
+                    card.querySelector('.return-btn').onclick = (e) => {
+                        e.stopPropagation();
+                        expandedIndex = null;
+                        renderMosaic();
+                    };
+                } else {
+                    card.innerHTML = `
+                        <div class="gif">
+                            <img src="${p.gif}" alt="${p.title} GIF" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">${p.title}</h3>
+                            <p class="project-subtitle">Team size: ${p['team-size']}</p>
+                            <p class="expand-hint">Click to see details</p>
+                        </div>
+                    `;
+                }
+                card.onclick = (e) => {
+                    if (isExpanded) {
+                        if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A' && !e.target.closest('.return-btn')) {
+                            expandedIndex = null;
+                            renderMosaic();
+                        }
+                    } else {
+                        expandedIndex = idx;
+                        renderMosaic();
+                        setTimeout(() => {
+                            const el = mosaicGrid.children[idx];
+                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 50);
+                    }
+                };
+                mosaicGrid.appendChild(card);
+            });
         }
 
-        // Check stored preference on load
+        // ── Tools renderer ─────────────────────────────────────────
+        function renderTools(tools) {
+            const grid = document.querySelector('.tools-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            tools.forEach(tool => {
+                const card = document.createElement('div');
+                card.className = 'tool-card';
+                card.onclick = () => toggleToolExpand(card);
+                card.innerHTML = `
+                    <div class="tool-header">
+                        <h3 class="tool-name">${tool.title}</h3>
+                        <span class="tool-expand-hint">Click to expand</span>
+                    </div>
+                    <div class="tool-details">
+                        <p>${(tool.desc||'').replace(/\\n/g,'<br>').replace(/\n/g,'<br>')}</p>
+                        ${tool.link ? `<a href="${tool.link}" target="_blank" class="cta-button" style="margin-top:1rem;">View Tool</a>` : ''}
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // ── Fetch all CMS data once, then render each section ──────
         document.addEventListener('DOMContentLoaded', () => {
+            // Nav init
+            const firstDot = document.querySelector('.nav-dot');
+            if (firstDot) firstDot.classList.add('active');
+
+            // Desktop preference
             const preferDesktop = localStorage.getItem('preferDesktop') === 'true';
-                if (preferDesktop) {
-                    document.documentElement.classList.add('force-desktop');
-                document.querySelector('.desktop-toggle button').textContent = 'View Mobile Version';
+            if (preferDesktop) {
+                document.documentElement.classList.add('force-desktop');
+                const btn = document.querySelector('.desktop-toggle button');
+                if (btn) btn.textContent = 'View Mobile Version';
             }
+
+            fetch('assets/cms.json')
+                .then(r => r.json())
+                .then(data => {
+                    // Game Projects
+                    projects = data.filter(item => item.category === 'game' && item.gif);
+                    projects.forEach(p => { const img = new Image(); img.src = p.gif; });
+                    renderMosaic();
+
+                    // Development Tools
+                    const tools = data.filter(item => item.category === 'tool');
+                    renderTools(tools);
+
+                    // Articles
+                    const articles = data.filter(item => item.category === 'article');
+                    const articlesGrid = document.getElementById('articlesGrid');
+                    if (articlesGrid) {
+                        articles.forEach(article => {
+                            const card = document.createElement('div');
+                            card.className = 'article-card';
+                            const imgSrc = article.image || article.gif || '';
+                            card.innerHTML = `
+                                <div class="article-image"><img src="${imgSrc}" alt="${article.title}" style="width:100%;height:100%;object-fit:cover;"></div>
+                                <div class="article-header"><h3 class="article-title">${article.title}</h3></div>
+                                <div class="article-description"><p>${(article.desc||'').replace(/\\n/g,'<br>').replace(/\n/g,'<br>')}</p></div>
+                                ${article.link ? `<a href="${article.link}" target="_blank" class="cta-button">Read Article</a>` : ''}
+                            `;
+                            articlesGrid.appendChild(card);
+                        });
+                    }
+                })
+                .catch(err => console.error('CMS load error:', err));
         });
 
-                // Floating navigation
-                function scrollToSection(sectionId) {
-                    document.getElementById(sectionId).scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        // ── UI helpers ─────────────────────────────────────────────
+        function toggleDesktopView() {
+            document.documentElement.classList.toggle('force-desktop');
+            const button = document.querySelector('.desktop-toggle button');
+            const isMobile = !document.documentElement.classList.contains('force-desktop');
+            button.textContent = isMobile ? 'View Desktop Version' : 'View Mobile Version';
+            localStorage.setItem('preferDesktop', !isMobile);
         }
 
-        // Update active nav dot on scroll
-        window.addEventListener('scroll', () => {
-            const sections = ['hero', 'projects', 'tools', 'cv', 'contact'];
-                const navDots = document.querySelectorAll('.nav-dot');
+        function scrollToSection(sectionId) {
+            const el = document.getElementById(sectionId);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
 
-                let current = '';
-            sections.forEach(sectionId => {
-                const section = document.getElementById(sectionId);
-                const sectionTop = section.offsetTop - 100;
-                const sectionBottom = sectionTop + section.offsetHeight;
+        function toggleExpand(card) { card.classList.toggle('expanded'); }
 
-                if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
-                    current = sectionId;
-                }
+        function toggleToolExpand(card) {
+            document.querySelectorAll('.tool-card').forEach(c => {
+                if (c !== card) c.classList.remove('expanded');
             });
-
-            navDots.forEach((dot, index) => {
-                    dot.classList.remove('active');
-                if (sections[index] === current) {
-                    dot.classList.add('active');
-                }
-            });
-        });
-
-                // Project carousel
-                function scrollCarousel(direction) {
-            const container = document.querySelector('.carousel-container');
-                const scrollAmount = 370; // card width + gap
-
-                if (direction === 'left') {
-                    container.scrollLeft -= scrollAmount;
-            } else {
-                    container.scrollLeft += scrollAmount;
-            }
+            card.classList.toggle('expanded');
         }
 
-                // Toggle project expand
-                function toggleExpand(card) {
-                    card.classList.toggle('expanded');
-        }
+        function toggleCVExpand(item) { item.classList.toggle('expanded'); }
 
-                // Toggle tool expand (accordion behavior)
-                function toggleToolExpand(card) {
-            const allCards = document.querySelectorAll('.tool-card');
-            allCards.forEach(c => {
-                if (c !== card) {
-                    c.classList.remove('expanded');
-                }
-            });
-                card.classList.toggle('expanded');
-        }
-
-                // Toggle CV item expand
-                function toggleCVExpand(item) {
-                    item.classList.toggle('expanded');
-        }
-
-                // Toggle skills
-                function toggleSkills() {
+        function toggleSkills() {
             const skillsList = document.getElementById('skillsList');
-                const button = document.querySelector('.skills-toggle');
-
-                skillsList.classList.toggle('expanded');
-
-                if (skillsList.classList.contains('expanded')) {
-                    button.textContent = 'Hide Technical Skills';
-                // Animate skill tags
-                const tags = skillsList.querySelectorAll('.skill-tag');
-                tags.forEach((tag, index) => {
-                    setTimeout(() => {
-                        tag.style.animationDelay = `${index * 0.1}s`;
-                    }, 0);
+            const button = document.querySelector('.skills-toggle');
+            skillsList.classList.toggle('expanded');
+            if (skillsList.classList.contains('expanded')) {
+                button.textContent = 'Hide Technical Skills';
+                skillsList.querySelectorAll('.skill-tag').forEach((tag, i) => {
+                    tag.style.animationDelay = `${i * 0.1}s`;
                 });
             } else {
-                    button.textContent = 'Show Technical Skills';
+                button.textContent = 'Show Technical Skills';
             }
         }
 
-        // Parallax effect for hero (disabled on mobile)
+        // ── Scroll listeners ───────────────────────────────────────
         window.addEventListener('scroll', () => {
-            if (!window.matchMedia('(max-width: 390px)').matches) {
-                const scrolled = window.pageYOffset;
-                const hero = document.querySelector('.hero');
-                const rate = scrolled * -0.5;
-
-                if (hero) {
-                    hero.style.transform = `translateY(${rate}px)`;
-                }
-            }
+            const sections = ['hero', 'projects', 'tools', 'articles', 'cv', 'contact'];
+            const navDots = document.querySelectorAll('.nav-dot');
+            let current = '';
+            sections.forEach(id => {
+                const sec = document.getElementById(id);
+                if (!sec) return;
+                const top = sec.offsetTop - 100;
+                if (window.scrollY >= top && window.scrollY < top + sec.offsetHeight) current = id;
+            });
+            navDots.forEach((dot, i) => {
+                dot.classList.toggle('active', sections[i] === current);
+            });
         });
 
-                // Touch gesture handling
-                let touchStartX = 0;
-                let touchEndX = 0;
-
-                function handleSwipeGesture(element, onSwipeLeft, onSwipeRight) {
-                    element.addEventListener('touchstart', e => {
-                        touchStartX = e.changedTouches[0].screenX;
-                    }, false);
-
-            element.addEventListener('touchend', e => {
-                    touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-            }, false);
-
-                function handleSwipe() {
-                const swipeThreshold = 50;
-                const swipeLength = touchEndX - touchStartX;
-
-                if (Math.abs(swipeLength) > swipeThreshold) {
-                    if (swipeLength > 0) {
-                    onSwipeRight();
-                    } else {
-                    onSwipeLeft();
-                    }
-                }
-            }
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-                    // Set first nav dot as active
-                    document.querySelector('.nav-dot').classList.add('active');
-
-                // Add swipe gestures for tools
-                const toolsGrid = document.querySelector('.tools-grid');
-                if (toolsGrid) {
-                    let currentToolIndex = 0;
-                handleSwipeGesture(toolsGrid.parentElement,
-                    () => {
-                        if (window.matchMedia('(max-width: 390px)').matches) {
-                            const tools = toolsGrid.children;
-                if (currentToolIndex < tools.length - 1) {
-                    tools[currentToolIndex].style.transform = 'translateX(-100%)';
-                currentToolIndex++;
-                tools[currentToolIndex].style.transform = 'translateX(0)';
-                            }
-                        }
-                    },
-                    () => {
-                        if (window.matchMedia('(max-width: 390px)').matches) {
-                            const tools = toolsGrid.children;
-                            if (currentToolIndex > 0) {
-                    tools[currentToolIndex].style.transform = 'translateX(100%)';
-                currentToolIndex--;
-                tools[currentToolIndex].style.transform = 'translateX(0)';
-                            }
-                        }
-                    }
-                );
+        window.addEventListener('scroll', () => {
+            if (!window.matchMedia('(max-width: 390px)').matches) {
+                const hero = document.querySelector('.hero');
+                if (hero) hero.style.transform = `translateY(${window.pageYOffset * -0.5}px)`;
             }
         });
     </script>
