@@ -1,1284 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archie McGrath</title>
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/krillin.ico" />
-    <style>
-        :root {
-            --is-mobile: 0;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        /* Mobile Toggle Button */
-        .desktop-toggle {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--secondary-bg);
-            padding: 8px;
-            text-align: center;
-            z-index: 1000;
-            display: none;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .desktop-toggle button {
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            cursor: pointer;
-        }
-        @media (max-width: 390px) {
-            :root {
-                --is-mobile: 1;
-            }
-            .desktop-toggle {
-                display: block;
-            }
-            body {
-                padding-top: 40px;
-            }
-        }
-
-        :root {
-            --primary-bg: #0a0a0a;
-            --secondary-bg: #1a1a1a;
-            --accent-color: #646cff;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --border-color: #333;
-            --hover-bg: #252525;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: var(--primary-bg);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Floating Sidebar Navigation */
-        .floating-nav {
-            position: fixed;
-            right: 2rem;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 100;
-            background: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            border-radius: 50px;
-            padding: 1rem 0.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .nav-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--text-secondary);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-dot.active {
-            background: var(--accent-color);
-            transform: scale(1.3);
-        }
-
-        .nav-dot:hover {
-            background: var(--accent-color);
-            transform: scale(1.2);
-        }
-
-        .nav-dot::after {
-            content: attr(data-label);
-            position: absolute;
-            right: 1.5rem;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(26, 26, 26, 0.95);
-            color: var(--text-primary);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
-        }
-
-        .nav-dot:hover::after {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            background: linear-gradient(135deg, var(--primary-bg) 0%, #1a1a2e 100%);
-        }
-
-        .hero-content {
-            max-width: 1000px;
-            padding: 2rem;
-            z-index: 2;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        @media (max-width: 390px) {
-            .hero {
-                min-height: calc(100vh - 40px);
-                padding-top: 1rem;
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                padding: 1rem;
-                text-align: center;
-            }
-
-            .hero-text {
-                text-align: center;
-                order: 2;
-            }
-
-            .hero-visual {
-                order: 1;
-            }
-
-            .hero-avatar {
-                width: 200px;
-                height: 200px;
-            }
-
-            .hero h1 {
-                font-size: clamp(2rem, 8vw, 3rem);
-            }
-
-            .hero h2 {
-                font-size: clamp(1.2rem, 4vw, 1.5rem);
-            }
-
-            .hero-description {
-                font-size: 1rem;
-                margin-bottom: 1.5rem;
-            }
-        }
-
-        .hero-text {
-            text-align: left;
-        }
-
-        .hero-visual {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .hero-avatar {
-            width: 300px;
-            height: 300px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, var(--accent-color), #7c3aed);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8rem;
-            color: white;
-            box-shadow: 0 20px 60px rgba(100, 108, 255, 0.3);
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 6vw, 4rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--text-primary), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero h2 {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 300;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        .hero-description {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background: #5a67d8;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(100, 108, 255, 0.3);
-        }
-
-        /* Experience Strip */
-        .experience-strip {
-            background: var(--secondary-bg);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-            padding: 1.5rem 0;
-            margin-bottom: 4rem;
-        }
-
-        @media (max-width: 390px) {
-            .experience-strip {
-                padding: 1rem 0;
-            }
-
-            .experience-timeline {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 0 1rem;
-            }
-
-            .timeline-item {
-                padding: 1rem;
-                border-radius: 15px;
-            }
-
-            .timeline-item:active {
-                background: var(--hover-bg);
-            }
-
-            .company-logo {
-                width: 50px;
-                height: 50px;
-            }
-
-            .timeline-info h4 {
-                font-size: 1.1rem;
-            }
-
-            .timeline-info p {
-                font-size: 0.9rem;
-            }
-        }
-
-        .experience-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .experience-title {
-            text-align: center;
-            font-size: 1.2rem;
-            color: var(--accent-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .experience-timeline {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .timeline-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 1.5rem;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
-            border-radius: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-item:hover {
-            border-color: var(--accent-color);
-            transform: translateY(-2px);
-        }
-
-        .company-logo {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            background: var(--accent-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        .timeline-info h4 {
-            font-size: 1rem;
-            color: var(--text-primary);
-            margin-bottom: 0.2rem;
-        }
-
-        .timeline-info p {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        /* Sections */
-        .section {
-            padding: 6rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--text-primary);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: 4rem;
-        }
-
-        /* Projects Carousel */
-        .projects-carousel {
-          position: relative;
-          margin-top: 4rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 420px;
-        }
-
-        .mosaic-arrow {
-            background: var(--secondary-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            padding: 1rem;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 2rem;
-            transition: all 0.3s ease;
-            margin: 0 1rem;
-            z-index: 10;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        .mosaic-arrow:first-child {
-            left: 0;
-        }
-        .mosaic-arrow:last-child {
-            right: 0;
-        }
-        .mosaic-arrow:hover {
-            background: var(--accent-color);
-            color: white;
-        }
-
-        .mosaic-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 2rem;
-            width: 100%;
-            max-width: 1200px;
-            min-height: 420px;
-            align-items: stretch;
-            position: relative;
-            padding-bottom: 40px;
-        }
-        .project-card {
-            opacity: 1;
-            transition: opacity 0.5s, filter 0.5s;
-        }
-        .project-card.center-hidden {
-            display: none !important;
-        }
-        .project-card {
-            background: var(--secondary-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: box-shadow 0.3s cubic-bezier(.4,0,.2,1);
-            cursor: pointer;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            min-height: 340px;
-            height: 340px;
-        }
-        .project-card.expanded {
-            box-shadow: 0 8px 32px rgba(100,108,255,0.12);
-            z-index: 2;
-        }
-        .project-card.expanded.jungle-hero-card .gif img {
-            max-width: 50%;
-            max-height: 180px;
-            display: block;
-            margin: 0 auto;
-        }
-        .project-card .project-image {
-          height: 320px;
-          flex-shrink: 0;
-          transition: height 0.3s cubic-bezier(.4,0,.2,1);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 7rem;
-          line-height: 1;
-          user-select: none;
-          overflow: hidden;
-        }
-        .project-card .project-content {
-            padding: 0.5rem 1.2rem 0.7rem 1.2rem;
-            flex: 0 0 32px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            transition: flex-basis 0.3s cubic-bezier(.4,0,.2,1), padding 0.3s cubic-bezier(.4,0,.2,1);
-        }
-        .project-card .project-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin: 0rem 0 rem 0;
-            text-align: center;
-            display: block;
-            padding-top: 1.2rem;
-            padding-bottom: 1rem;
-        }
-        .project-card .project-subtitle {
-            color: var(--accent-color);
-            font-size: 1rem;
-            text-align: center;
-            padding: 0.2rem 0 0.2rem 0;
-            display: block;
-        }
-        .project-card .expand-hint,
-        .project-card .project-description {
-            display: none;
-        }
-        .project-card.expanded {
-            box-shadow: 0 8px 32px rgba(100,108,255,0.12);
-            z-index: 10;
-            min-height: 320px;
-            grid-column: 2 / span 3;
-            height: auto;
-            position: relative;
-        }
-        .project-card.expanded .project-image {
-          height: 100px;
-          font-size: 4rem;
-        }
-        .project-card.expanded .project-content {
-            flex: 1;
-            padding: 1.2rem;
-            position: relative;
-        }
-        .return-btn {
-            position: absolute;
-            bottom: 18px;
-            right: 18px;
-            background: var(--accent-color);
-            color: #fff;
-            border: none;
-            border-radius: 20px;
-            padding: 0.4rem 1.2rem;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            z-index: 20;
-        }
-        .project-card.expanded .project-title {
-            margin-bottom: 0.5rem;
-        }
-        .project-card.expanded .expand-hint {
-            display: block;
-            color: var(--accent-color);
-            font-size: 0.85rem;
-            margin-top: 0.5rem;
-            opacity: 0.7;
-        }
-        .project-card.expanded .project-description {
-            display: block;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            max-height: none;
-            margin-top: 1rem;
-            overflow: visible;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            border-color: var(--accent-color);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .project-card {
-            background: var(--secondary-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: box-shadow 0.3s cubic-bezier(.4,0,.2,1);
-            cursor: pointer;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            min-height: 380px;
-            height: 380px;
-        }
-        .project-card.expanded .project-image {
-            height: 180px;
-        }
-
-        .project-content {
-            padding: 1.2rem;
-            flex: 1;
-        }
-
-        .project-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-
-        .project-description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .project-card.expanded .project-description {
-            max-height: 200px;
-            margin-top: 1rem;
-        }
-
-        .expand-hint {
-            color: var(--accent-color);
-            font-size: 0.85rem;
-            margin-top: 0.5rem;
-            opacity: 0.7;
-        }
-
-        .project-card.expanded .expand-hint {
-            display: none;
-        }
-
-        @media (max-width: 1024px) {
-            .mosaic-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        @media (max-width: 390px) {
-            .projects-carousel {
-                height: auto;
-                padding: 0 1rem;
-            }
-
-            .mosaic-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-                min-height: auto;
-            }
-
-            .project-card {
-                height: auto;
-                min-height: 300px;
-            }
-
-            .project-card .project-image {
-                height: 200px;
-            }
-
-            .mosaic-arrow {
-                display: none;
-            }
-
-            .project-card.expanded {
-                grid-column: auto;
-                width: 100%;
-            }
-
-            /* Show swipe hint on mobile */
-            .mosaic-grid::after {
-                content: 'Swipe to navigate';
-                display: block;
-                text-align: center;
-                color: var(--text-secondary);
-                font-size: 0.9rem;
-                margin-top: 1rem;
-                opacity: 0.7;
-            }
-
-            /* Optimize touch targets */
-            .project-card .project-content {
-                padding: 1rem;
-            }
-
-            .project-card .project-title {
-                font-size: 1.2rem;
-            }
-
-            .project-card.expanded .project-description {
-                font-size: 1rem;
-                line-height: 1.5;
-            }
-
-            .return-btn {
-                padding: 8px 16px;
-                font-size: 1rem;
-            }
-        }
-
-        /* Tools Section */
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        @media (max-width: 390px) {
-            .tools-grid {
-                display: flex;
-                flex-direction: column;
-                gap: 1rem;
-                overflow: hidden;
-            }
-
-            .tools-wrapper {
-                position: relative;
-                margin-top: 2rem;
-            }
-
-            .tool-card {
-                flex: 0 0 100%;
-                min-height: 300px;
-                height: auto;
-                margin-bottom: 1rem;
-                transform: translateX(0);
-                transition: transform 0.3s ease;
-            }
-
-            .tool-card.expanded {
-                max-width: 100%;
-            }
-
-            .tool-card .tool-image {
-                height: 180px;
-                font-size: 5rem;
-            }
-
-            .tool-card .tool-content {
-                padding: 1rem;
-            }
-
-            .tool-description {
-                font-size: 1rem;
-                line-height: 1.5;
-            }
-
-            /* Show swipe hint on mobile */
-            .tools-wrapper::after {
-                content: 'Swipe to navigate';
-                display: block;
-                text-align: center;
-                color: var(--text-secondary);
-                font-size: 0.9rem;
-                margin-top: 1rem;
-                opacity: 0.7;
-            }
-        }
-
-        .tool-card {
-            background: var(--secondary-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .tool-card:hover {
-            border-color: var(--accent-color);
-            transform: translateY(-2px);
-        }
-
-        .tool-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .tool-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            padding-top: 1.2rem;
-            padding-bottom: 0.3rem;
-        }
-
-        .tool-subtitle {
-            color: var(--accent-color);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .tool-description {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            padding-bottom: 0;
-        }
-
-        .tool-card.expanded .tool-description {
-            max-height: 800px;
-            padding-bottom: 2rem;
-            font-size: 1.15rem;
-        }
-
-        .tool-card {
-            background: var(--secondary-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: box-shadow 0.3s cubic-bezier(.4,0,.2,1);
-            cursor: pointer;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            min-height: 380px;
-            height: 380px;
-        }
-        .tool-card.expanded {
-            box-shadow: 0 8px 32px rgba(100,108,255,0.12);
-            z-index: 2;
-            min-height: 420px;
-            height: auto;
-            width: 100%;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        .tool-image {
-            height: 320px;
-            flex-shrink: 0;
-            transition: height 0.3s cubic-bezier(.4,0,.2,1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 7rem;
-            line-height: 1;
-            user-select: none;
-            overflow: hidden;
-            background: linear-gradient(45deg, var(--accent-color), #7c3aed);
-            border-radius: 12px 12px 0 0;
-            color: white;
-        }
-        .tool-card.expanded .tool-image {
-            height: 380px;
-        }
-            /* Prevent all tool cards from expanding to the same height */
-            .tools-grid {
-                align-items: start;
-            }
-        /* Prevent all tool cards from expanding to the same height */
-        .tools-grid {
-            align-items: start;
-        }
-
-        .expand-icon {
-            color: var(--accent-color);
-            font-size: 1.2rem;
-            transition: transform 0.3s ease;
-        }
-
-        .tool-card.expanded .expand-icon {
-            transform: rotate(180deg);
-             }
-        .tool-card.center-hidden {
-            display: none !important;
-        }
-        /* CV Section */
-        .cv-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 4rem;
-            margin-top: 3rem;
-        }
-
-        @media (max-width: 390px) {
-            .cv-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                margin-top: 2rem;
-            }
-
-            .cv-column {
-                padding: 1.5rem;
-            }
-
-            .cv-section-title {
-                font-size: 1.3rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .cv-item {
-                margin-bottom: 1.5rem;
-                padding-bottom: 0.8rem;
-            }
-
-            .cv-role {
-                font-size: 1.1rem;
-            }
-
-            .cv-period {
-                font-size: 0.8rem;
-                padding: 0.2rem 0.6rem;
-            }
-
-            .cv-company {
-                font-size: 0.9rem;
-                margin-bottom: 0.8rem;
-            }
-
-            .cv-details li {
-                font-size: 0.9rem;
-                line-height: 1.4;
-                margin-bottom: 0.4rem;
-            }
-
-            .language-item {
-                padding: 0.6rem;
-            }
-
-            .language-name {
-                font-size: 0.9rem;
-            }
-
-            .language-level {
-                font-size: 0.8rem;
-                padding: 0.2rem 0.5rem;
-            }
-        }
-
-        .cv-column {
-            background: var(--secondary-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2.5rem;
-        }
-
-        .cv-section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            margin-bottom: 2rem;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 0.5rem;
-        }
-
-        .cv-item {
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-color);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .cv-item:last-child {
-            border-bottom: none;
-        }
-
-        .cv-item:hover {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 8px;
-            padding: 1rem;
-            margin: 0 -1rem 2rem;
-        }
-
-        .cv-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .cv-role {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin: 0;
-        }
-
-        .cv-period {
-            font-size: 0.9rem;
-            color: var(--accent-color);
-            background: rgba(100, 108, 255, 0.1);
-            padding: 0.2rem 0.8rem;
-            border-radius: 12px;
-        }
-
-        .cv-company {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .cv-details {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .cv-item.expanded .cv-details {
-            max-height: 300px;
-        }
-
-        .cv-details li {
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            position: relative;
-            line-height: 1.5;
-        }
-
-        .cv-details li::before {
-            content: '▸';
-            color: var(--accent-color);
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-
-        .expand-hint-cv {
-            color: var(--accent-color);
-            font-size: 0.85rem;
-            opacity: 0.7;
-        }
-
-        .cv-item.expanded .expand-hint-cv {
-            display: none;
-        }
-
-        /* Skills Collapsible */
-            .skills-list-wide {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 1rem;
-                margin-top: 1rem;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease;
-                width: 100%;
-                box-sizing: border-box;
-            }
-
-        .skills-toggle {
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .skills-toggle:hover {
-            background: #5a67d8;
-        }
-
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .skills-list.expanded {
-            max-height: 300px;
-        }
-
-        .skill-tag {
-            padding: 0.5rem 1rem;
-            background: var(--hover-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            opacity: 0;
-            transform: translateY(10px);
-            animation: skillFadeIn 0.3s ease forwards;
-        }
-
-        @keyframes skillFadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .languages-grid {
-            display: grid;
-            gap: 0.75rem;
-            margin-bottom: 2rem;
-        }
-
-        .language-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-
-        .language-name {
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        .language-level {
-            font-size: 0.85rem;
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-            font-weight: 600;
-        }
-
-        .language-level.native {
-            background: #10b981;
-            color: white;
-        }
-
-        .language-level.fluent {
-            background: #3b82f6;
-            color: white;
-        }
-
-        .language-level.beginner {
-            background: #f59e0b;
-            color: white;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--secondary-bg);
-            border-top: 1px solid var(--border-color);
-            padding: 3rem 2rem 2rem;
-            text-align: center;
-            margin-top: 6rem;
-        }
-
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-info {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: var(--text-primary);
-        }
-
-        .footer-text {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .floating-nav {
-                right: 1rem;
-            }
-            
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .hero-text {
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .floating-nav {
-                display: none;
-            }
-            
-            .section {
-                padding: 4rem 1rem;
-            }
-            
-            .hero-content {
-                padding: 1rem;
-            }
-
-            .cv-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .cv-column {
-                padding: 1.5rem;
-            }
-
-            .experience-timeline {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .timeline-item {
-                justify-content: flex-start;
-            }
-
-            .projects-track {
-                padding: 0 1rem;
-            }
-
-            .project-card {
-                min-width: 280px;
-            }
-
-            /* Force desktop mode overrides */
-            :root.force-desktop {
-                --is-mobile: 0;
-            }
-            :root.force-desktop .desktop-toggle {
-                display: block;
-            }
-            :root.force-desktop .floating-nav {
-                display: flex;
-            }
-            :root.force-desktop .hero-content {
-                grid-template-columns: 1fr 1fr;
-                text-align: left;
-            }
-            :root.force-desktop .hero-text {
-                text-align: left;
-            }
-            :root.force-desktop .cv-grid {
-                grid-template-columns: 2fr 1fr;
-            }
-        }
-
-        /* Mobile Animation Optimizations */
-        @media (max-width: 390px) {
-            /* Reduce or remove hover animations */
-            .project-card:hover,
-            .tool-card:hover,
-            .cv-item:hover,
-            .timeline-item:hover {
-                transform: none;
-                box-shadow: none;
-            }
-
-            /* Simplify transitions */
-            .project-card,
-            .tool-card,
-            .cv-item,
-            .timeline-item {
-                transition: none;
-            }
-
-            /* Disable parallax */
-            .hero {
-                transform: none !important;
-            }
-
-            /* Simplify expanded state transitions */
-            .project-card.expanded,
-            .tool-card.expanded {
-                transition: all 0.2s ease;
-            }
-
-            /* Optimize skill tag animations */
-            .skill-tag {
-                animation: none;
-                opacity: 1;
-                transform: none;
-            }
-
-            /* Remove hover effects on buttons */
-            .cta-button:hover {
-                transform: none;
-                box-shadow: none;
-            }
-
-            /* Simplify nav dot animations */
-            .nav-dot {
-                transition: background-color 0.2s ease;
-            }
-            .nav-dot:hover,
-            .nav-dot.active {
-                transform: none;
-            }
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/styles.css">
 </head>
+
 <body>
     <div class="desktop-toggle">
         <button onclick="toggleDesktopView()">View Desktop Version</button>
@@ -1305,7 +35,8 @@
                 <a href="#contact" class="cta-button">Get In Touch</a>
             </div>
             <div class="hero-visual">
-                <div class="hero-avatar"><img src="assets/images/myface.jpg" alt="Archie McGrath" style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
+                <div class="hero-avatar"><img src="assets/images/myface.jpg" alt="Archie McGrath"
+                        style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
             </div>
         </div>
     </section>
@@ -1316,14 +47,16 @@
             <h3 class="experience-title">Current Journey</h3>
             <div class="experience-timeline">
                 <div class="timeline-item">
-                    <div class="company-logo"><img src="assets/images/ferallogo.jpg" alt="Feral Interactive" style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
+                    <div class="company-logo"><img src="assets/images/ferallogo.jpg" alt="Feral Interactive"
+                            style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
                     <div class="timeline-info">
                         <h4>Technical Artist</h4>
                         <p>Feral Interactive • OCT 2025~</p>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="company-logo"><img src="assets/images/sportylogo.jpeg" alt="SportyUK" style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
+                    <div class="company-logo"><img src="assets/images/sportylogo.jpeg" alt="SportyUK"
+                            style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
                     <div class="timeline-info">
                         <h4>Technical Animator</h4>
                         <p>Sporty Group • JUN2025-OCT2025</p>
@@ -1337,160 +70,123 @@
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="company-logo"><img src="assets/images/metameowlogo.jpeg" alt="Meta Meow" style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
+                    <div class="company-logo"><img src="assets/images/metameowlogo.jpeg" alt="Meta Meow"
+                            style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
                     <div class="timeline-info">
                         <h4>Technical Art Intern</h4>
                         <p>Meta Meow • MAR2024-MAR2025</p>
                     </div>
                 </div>
-                </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- Projects Section -->
     <section class="section" id="projects">
         <h2 class="section-title">Game Projects</h2>
         <p class="section-subtitle">Click on projects to explore the details</p>
-        
-        <div class="projects-carousel">
-            <button class="mosaic-arrow" onclick="mosaicPrev()">&#8592;</button>
+
+        <div class="projects-container">
             <div class="mosaic-grid" id="mosaicGrid"></div>
-            <button class="mosaic-arrow" onclick="mosaicNext()">&#8594;</button>
         </div>
 
         <!-- Dynamic Game Projects Grid -->
         <div id="game-projects-list" style="margin-top:2rem;"></div>
 
-        <!-- Hide the list of all game projects below carousel -->
-        <style>
-            #game-projects-list { display: none !important; }
-        </style>
-
         <script>
-        // Load game projects from assets/cms.json for the mosaic carousel
-        let projects = [];
-        let mosaicIndex = 0;
-        const mosaicGrid = document.getElementById('mosaicGrid');
-        const mosaicCols = () => window.innerWidth < 768 ? 1 : (window.innerWidth < 1024 ? 2 : 3);
+            // Load game projects from assets/cms.json for the mosaic grid
+            let projects = [];
+            let expandedIndex = null;
+            const mosaicGrid = document.getElementById('mosaicGrid');
 
-        function renderMosaic() {
-            const isMobile = window.matchMedia('(max-width: 390px)').matches;
-            const visible = isMobile ? 1 : 5;
-            mosaicGrid.innerHTML = '';
-            let cardRefs = [];
-            for (let i = 0; i < visible; i++) {
-                let projIdx = (mosaicIndex + i) % projects.length;
-                if (projIdx < 0) projIdx += projects.length;
-                const p = projects[projIdx];
-                const card = document.createElement('div');
-                card.className = 'project-card';
-                if (p.title && p.title.toLowerCase().includes('jungle hero')) {
-                    card.classList.add('jungle-hero-card');
-                }
-                // Fade logic: center 3 fully opaque, 2 outer faded
-                if (i === 0 || i === 4) {
-                    card.classList.add('fade');
-                    card.style.opacity = '0.3';
-                } else {
-                    card.style.opacity = '1';
-                }
-                // Mark center cards for later
-                if (i === 1 || i === 2 || i === 3) {
-                    card.classList.add('center');
-                }
-                // Allow left, center, right center cards to expand
-                if (i === 1 || i === 2 || i === 3) {
-                    let expanded = false;
-                    card.onclick = (e) => {
-                        // If not already center, shift carousel so this card is center
-                        if (i !== 2) {
-                            mosaicIndex = (mosaicIndex + (i - 2) + projects.length) % projects.length;
+            function renderMosaic() {
+                mosaicGrid.innerHTML = '';
+                projects.forEach((p, idx) => {
+                    const card = document.createElement('div');
+                    card.className = 'project-card';
+                    if (p.title && p.title.toLowerCase().includes('jungle hero')) {
+                        card.classList.add('jungle-hero-card');
+                    }
+
+                    const isExpanded = (expandedIndex === idx);
+                    if (isExpanded) {
+                        card.classList.add('expanded');
+                        card.innerHTML = `
+                        <div class="gif expanded-gif">
+                            <img src="${p.gif}" alt="${p.title} GIF" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+                        </div>
+                        <div class="project-content expanded-content">
+                            <div>
+                                <h3 class="project-title">${p.title}</h3>
+                                <p class="project-subtitle">Team size: ${p['team-size']}</p>
+                                <p class="project-role"><strong>My role(s):</strong> ${p.role.replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>
+                                <p class="project-description"><strong>Description:</strong> ${p.desc.replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>
+                            </div>
+                            <button class="return-btn">Return</button>
+                        </div>
+                    `;
+
+                        card.querySelector('.return-btn').onclick = (e) => {
+                            e.stopPropagation();
+                            expandedIndex = null;
                             renderMosaic();
                             setTimeout(() => {
-                                const centerCard = mosaicGrid.children[2];
-                                if (centerCard) centerCard.click();
-                            }, 0);
-                            return;
-                        }
-                        // If already expanded, collapse
-                        if (card.classList.contains('expanded')) {
-                            card.classList.remove('expanded');
-                            document.querySelectorAll('.project-card.center-hidden').forEach(c => c.classList.remove('center-hidden'));
-                            expanded = false;
-                            return;
-                        }
-                        // Expand
-                        document.querySelectorAll('.project-card.expanded').forEach(c => c.classList.remove('expanded'));
-                        document.querySelectorAll('.project-card.center-hidden').forEach(c => c.classList.remove('center-hidden'));
-                        card.classList.add('expanded');
-                        expanded = true;
-                        // Hide other center cards
-                        cardRefs.forEach((ref, idx) => {
-                            if ((idx === 1 || idx === 3) && ref !== card) {
-                                ref.classList.add('center-hidden');
+                                const collapsedCard = mosaicGrid.children[idx];
+                                if (collapsedCard) {
+                                    collapsedCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                                }
+                            }, 50);
+                        };
+                    } else {
+                        card.innerHTML = `
+                        <div class="gif">
+                            <img src="${p.gif}" alt="${p.title} GIF" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">${p.title}</h3>
+                            <p class="project-subtitle">Team size: ${p['team-size']}</p>
+                            <p class="expand-hint">Click to see details</p>
+                        </div>
+                    `;
+                    }
+
+                    card.onclick = (e) => {
+                        if (isExpanded) {
+                            if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A' && !e.target.closest('.return-btn')) {
+                                expandedIndex = null;
+                                renderMosaic();
                             }
-                        });
-                        // Add return button
-                        const content = card.querySelector('.project-content');
-                        if (content && !content.querySelector('.return-btn')) {
-                            const btn = document.createElement('button');
-                            btn.className = 'return-btn';
-                            btn.textContent = 'Return';
-                            btn.onclick = (ev) => {
-                                ev.stopPropagation();
-                                card.classList.remove('expanded');
-                                document.querySelectorAll('.project-card.center-hidden').forEach(c => c.classList.remove('center-hidden'));
-                                expanded = false;
-                            };
-                            content.appendChild(btn);
+                        } else {
+                            expandedIndex = idx;
+                            renderMosaic();
+                            setTimeout(() => {
+                                const newExpandedCard = mosaicGrid.children[idx];
+                                if (newExpandedCard) {
+                                    newExpandedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }
+                            }, 50);
                         }
                     };
-                } else {
-                    card.onclick = null;
-                }
-                card.innerHTML = `
-                    <div class="gif"><img src="${p.gif}" alt="${p.title} GIF" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></div>
-                    <div class="project-content">
-                        <h3 class="project-title">${p.title}</h3>
-                        <p class="project-subtitle">Team size: ${p['team-size']}</p>
-                        <p class="expand-hint">Click to see details</p>
-                        <p class="project-description"><strong>Description:</strong> ${p.desc}</p>
-                        <p class="project-role"><strong>My role(s):</strong> ${p.role}</p>
-                    </div>
-                `;
-                mosaicGrid.appendChild(card);
-                cardRefs.push(card);
-            }
-        }
 
-        function mosaicPrev() {
-            mosaicIndex = (mosaicIndex - 1 + projects.length) % projects.length;
-            renderMosaic();
-        }
-        function mosaicNext() {
-            mosaicIndex = (mosaicIndex + 1) % projects.length;
-            renderMosaic();
-        }
-
-        // Fetch projects from JSON and initialize carousel
-        fetch('assets/cms.json')
-            .then(response => response.json())
-            .then(data => {
-                projects = data.filter(item => item.category === 'game' && item.gif);
-                // Preload all GIFs
-                projects.forEach(p => {
-                    if (p.gif) {
-                        const img = new Image();
-                        img.src = p.gif;
-                    }
+                    mosaicGrid.appendChild(card);
                 });
-                mosaicIndex = 0;
-                renderMosaic();
-            });
+            }
 
-        window.addEventListener('resize', renderMosaic);
-        document.addEventListener('DOMContentLoaded', renderMosaic);
+            // Fetch projects from JSON and initialize mosaic grid
+            fetch('assets/cms.json')
+                .then(response => response.json())
+                .then(data => {
+                    projects = data.filter(item => item.category === 'game' && item.gif);
+                    // Preload all GIFs
+                    projects.forEach(p => {
+                        if (p.gif) {
+                            const img = new Image();
+                            img.src = p.gif;
+                        }
+                    });
+                    renderMosaic();
+                });
         </script>
     </section>
 
@@ -1498,30 +194,52 @@
     <section class="section" id="tools">
         <h2 class="section-title">Development Tools</h2>
         <p class="section-subtitle">Custom tools and utilities I've created for game development</p>
-        
+
         <div class="tools-wrapper">
             <div class="tools-grid">
             </div>
         </div>
         <script>
-                        // Dynamically render tools from JSON with improved expansion logic
-                        fetch('assets/cms.json')
-                            .then(response => response.json())
-                            .then(data => {
-                                const tools = data.filter(item => item.category === 'tool');
-                                const grid = document.querySelector('.tools-grid');
-                                let expandedIndex = null;
-                                function renderTools() {
-                                    grid.innerHTML = '';
-                                    tools.forEach((tool, i) => {
-                                        const card = document.createElement('div');
-                                        card.className = 'tool-card';
-                                        if (expandedIndex === i) {
-                                            card.classList.add('expanded');
-                                        } else if (expandedIndex !== null) {
-                                            card.classList.add('center-hidden');
-                                        }
-                                        card.innerHTML = `
+            // Dynamically render tools from JSON with improved expansion logic
+            fetch('assets/cms.json')
+                .then(response => response.json())
+                .then(data => {
+                    const tools = data.filter(item => item.category === 'tool');
+                    const grid = document.querySelector('.tools-grid');
+                    let expandedIndex = null;
+                    function renderTools() {
+                        grid.innerHTML = '';
+                        tools.forEach((tool, i) => {
+                            const card = document.createElement('div');
+                            card.className = 'tool-card';
+                            if (expandedIndex === i) {
+                                card.classList.add('expanded');
+                            } else if (expandedIndex !== null) {
+                                card.classList.add('center-hidden');
+                            }
+
+                            const isYouTube = tool.link && (tool.link.includes('youtube.com') || tool.link.includes('youtu.be'));
+                            let videoEmbedHtml = '';
+                            if (isYouTube && expandedIndex === i) {
+                                let videoId = '';
+                                if (tool.link.includes('v=')) {
+                                    videoId = tool.link.split('v=')[1].split('&')[0];
+                                } else if (tool.link.includes('youtu.be/')) {
+                                    videoId = tool.link.split('youtu.be/')[1].split('?')[0];
+                                }
+                                if (videoId) {
+                                    videoEmbedHtml = `
+                                                    <div class="video-container" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin-top:1.5rem;margin-bottom:1rem;border-radius:8px;box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+                                                        <iframe src="https://www.youtube.com/embed/${videoId}" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen></iframe>
+                                                    </div>
+                                                `;
+                                }
+                            }
+
+                            const buttonText = isYouTube ? 'Watch on YouTube' : 'View Tool';
+                            const returnButton = (expandedIndex === i) ? `<button class="return-btn" style="margin-top:1rem;margin-left:1rem;display:inline-block;">Return</button>` : '';
+
+                            card.innerHTML = `
                                             <div class="tool-image"><img src="${tool.image}" alt="${tool.title}" style="width:100%;height:100%;object-fit:cover;"></div>
                                             <div class="tool-header">
                                                 <div>
@@ -1529,43 +247,40 @@
                                                 </div>
                                                 <span class="expand-icon">▼</span>
                                             </div>
-                                            <p class="tool-description">
-                                                ${tool.desc.replace(/\\n/g, '<br>')}
+                                            <div class="tool-description">
+                                                ${tool.desc.replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}
+                                                ${videoEmbedHtml}
                                                 <br>
-                                                <a href="${tool.link}" target="_blank" class="cta-button" style="margin-top:1rem;display:inline-block;">View Tool</a>
-                                            </p>
+                                                <div style="display:flex;align-items:center;">
+                                                    <a href="${tool.link}" target="_blank" class="cta-button" style="margin-top:1rem;display:inline-block;">${buttonText}</a>
+                                                    ${returnButton}
+                                                </div>
+                                            </div>
                                         `;
-                                        card.onclick = function(e) {
-                                            if (expandedIndex === i) {
-                                                expandedIndex = null;
-                                                renderTools();
-                                            } else {
-                                                expandedIndex = i;
-                                                renderTools();
-                                            }
-                                        };
-                                        if (expandedIndex === i) {
-                                            // Add return button
-                                            const desc = card.querySelector('.tool-description');
-                                            if (desc && !desc.querySelector('.return-btn')) {
-                                                const btn = document.createElement('button');
-                                                btn.className = 'return-btn';
-                                                btn.textContent = 'Return';
-                                                btn.style = 'margin-top:1rem;display:inline-block;';
-                                                btn.onclick = function(ev) {
-                                                    ev.stopPropagation();
-                                                    expandedIndex = null;
-                                                    renderTools();
-                                                };
-                                                desc.appendChild(btn);
-                                            }
-                                        }
-                                        grid.appendChild(card);
-                                    });
+
+                            card.onclick = function (e) {
+                                if (e.target.closest('a') || e.target.closest('iframe')) {
+                                    return;
                                 }
-                                renderTools();
-                            });
-                        </script>
+                                if (e.target.closest('.return-btn')) {
+                                    expandedIndex = null;
+                                    renderTools();
+                                    return;
+                                }
+                                if (expandedIndex === i) {
+                                    expandedIndex = null;
+                                    renderTools();
+                                } else {
+                                    expandedIndex = i;
+                                    renderTools();
+                                }
+                            };
+                            grid.appendChild(card);
+                        });
+                    }
+                    renderTools();
+                });
+        </script>
         </div>
     </section>
 
@@ -1573,27 +288,32 @@
     <section class="section" id="cv">
         <h2 class="section-title">Complete Experience</h2>
         <p class="section-subtitle">Full professional history and qualifications</p>
-        <a href="assets\pdfs\Archie_CV_ENG.pdf" class="cta-button" download style="display:block;max-width:250px;margin:0 auto 2rem auto;text-align:center;">Download My CV (PDF)</a>
+        <a href="assets\pdfs\Archie_CV_ENG.pdf" class="cta-button" download
+            style="display:block;max-width:250px;margin:0 auto 2rem auto;text-align:center;">Download My CV (PDF)</a>
         <div class="cv-grid">
             <!-- Work Experience Column -->
             <div class="cv-column">
                 <h3 class="cv-section-title">Work Experience</h3>
-                
+
                 <div class="cv-item" onclick="toggleCVExpand(this)">
                     <div class="cv-header">
                         <h4 class="cv-role">Technical Artist</h4>
                         <span class="cv-period">2025 - Present</span>
                     </div>
                     <p class="cv-company">
-                        <img src="assets/images/ferallogo.jpg" alt="Feral Interactive" style="height:2em;vertical-align:middle;margin-right:0.5em;">
+                        <img src="assets/images/ferallogo.jpg" alt="Feral Interactive"
+                            style="height:2em;vertical-align:middle;margin-right:0.5em;">
                         Feral Interactive
                     </p>
                     <p class="expand-hint-cv">Click to see details</p>
                     <ul class="cv-details">
-                        <li>Sole in-house technical artist, working with design and engineering teams on AAA projects</li>
-                        <li>Asset development and implementation in-engine using Maya, 3DS Max, Blender (models, animations, rigs, textures and materials)</li>
+                        <li>Sole in-house technical artist, working with design and engineering teams on AAA projects
+                        </li>
+                        <li>Asset development and implementation in-engine using Maya, 3DS Max, Blender (models,
+                            animations, rigs, textures and materials)</li>
                         <li>Scripting pipeline tools across DCCs using Python, MEL</li>
-                        <li>Implementation, testing and optimisation of art and game mechanics in proprietary game engines across various platforms (VR and Mobile)</li>
+                        <li>Implementation, testing and optimisation of art and game mechanics in proprietary game
+                            engines across various platforms (VR and Mobile)</li>
                         <li>Using SVN, Jira, Confluence</li>
                     </ul>
                 </div>
@@ -1604,8 +324,10 @@
                         <span class="cv-period">JUN 2025 - OCT 2025</span>
                     </div>
                     <p class="cv-company">
-                        <img src="assets/images/sportylogo.jpeg" alt="SportyUK" style="height:2em;vertical-align:middle;margin-right:0.5em;">
-                        Sporty Group</p>
+                        <img src="assets/images/sportylogo.jpeg" alt="SportyUK"
+                            style="height:2em;vertical-align:middle;margin-right:0.5em;">
+                        Sporty Group
+                    </p>
                     <p class="expand-hint-cv">Click to see details</p>
                     <ul class="cv-details">
                         <li>Rigging, weight painting and animation of characters using Blender</li>
@@ -1633,13 +355,17 @@
                         <span class="cv-period">MAR 2024 - MAR 2025</span>
                     </div>
                     <p class="cv-company">
-                        <img src="assets/images/metameowlogo.jpeg" alt="Meta Meow" style="height:2em;vertical-align:middle;margin-right:0.5em;">
-                        Meta Meow (Tokyo)</p>
+                        <img src="assets/images/metameowlogo.jpeg" alt="Meta Meow"
+                            style="height:2em;vertical-align:middle;margin-right:0.5em;">
+                        Meta Meow (Tokyo)
+                    </p>
                     <p class="expand-hint-cv">Click to see details</p>
                     <ul class="cv-details">
                         <li>AAA games outsourcing projects for Square Enix, ORCA and GameFreak</li>
-                        <li>Shipped 3 DCC tools taking them from conception to market with documentation, user support and updates in Blender and Unreal.</li>
-                        <li>Shader, material and VFX creation using Substance Painter, Designer, Python scripting, Blender procedural node workflows and basic Houdini </li>
+                        <li>Shipped 3 DCC tools taking them from conception to market with documentation, user support
+                            and updates in Blender and Unreal.</li>
+                        <li>Shader, material and VFX creation using Substance Painter, Designer, Python scripting,
+                            Blender procedural node workflows and basic Houdini </li>
                     </ul>
                 </div>
 
@@ -1676,8 +402,10 @@
                         <span class="cv-period">SEPT 2023~</span>
                     </div>
                     <p class="cv-company">
-                        <img src="assets/images/dulogo.png" alt="Digital Umami" style="height:2em;vertical-align:middle;margin-right:0.5em;">
-                        Digital Umami (Remote)</p>
+                        <img src="assets/images/dulogo.png" alt="Digital Umami"
+                            style="height:2em;vertical-align:middle;margin-right:0.5em;">
+                        Digital Umami (Remote)
+                    </p>
                     <p class="expand-hint-cv">Click to see details</p>
                     <ul class="cv-details">
                         <li>Company and Project management</li>
@@ -1691,7 +419,7 @@
             <!-- Education & Skills Column -->
             <div class="cv-column">
                 <h3 class="cv-section-title">Education</h3>
-                
+
                 <div class="cv-item">
                     <div class="cv-header">
                         <h4 class="cv-role">BSc Game Design</h4>
@@ -1703,49 +431,49 @@
                         <li>TIGA Graduate of the Year</li>
                     </ul>
                     <br>
-                <div class="cv-item">
-                    <div class="cv-header">
-                        <h4 class="cv-role">A-Levels</h4>
-                        <span class="cv-period">2020 - 2023</span>
-                    </div>
-                    <p class="cv-company">Reigate Grammar School</p>
-                    <ul class="cv-details" style="max-height: none;">
-                        <li>Politics    A</li>
-                        <li>Spanish     A</li>
-                        <li>Psychology  B</li>
+                    <div class="cv-item">
+                        <div class="cv-header">
+                            <h4 class="cv-role">A-Levels</h4>
+                            <span class="cv-period">2020 - 2023</span>
+                        </div>
+                        <p class="cv-company">Reigate Grammar School</p>
+                        <ul class="cv-details" style="max-height: none;">
+                            <li>Politics A</li>
+                            <li>Spanish A</li>
+                            <li>Psychology B</li>
 
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
-                <h3 class="cv-section-title">Languages</h3>
-                <div class="languages-grid">
-                    <div class="language-item">
-                        <span class="language-name">🇬🇧 English</span>
-                        <span class="language-level native">Native</span>
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">🇪🇸 Spanish</span>
-                        <span class="language-level fluent">Fluent</span>
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">🇯🇵 Japanese</span>
-                        <span class="language-level fluent">Fluent</span>
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">🇮🇹 Italian</span>
-                        <span class="language-level beginner">Beginner</span>
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">🇵🇹 Portuguese</span>
-                        <span class="language-level beginner">Beginner</span>
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">🇨🇳 Mandarin</span>
-                        <span class="language-level beginner">Beginner</span>
+                    <h3 class="cv-section-title">Languages</h3>
+                    <div class="languages-grid">
+                        <div class="language-item">
+                            <span class="language-name">🇬🇧 English</span>
+                            <span class="language-level native">Native</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">🇪🇸 Spanish</span>
+                            <span class="language-level fluent">Fluent</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">🇯🇵 Japanese</span>
+                            <span class="language-level fluent">Fluent</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">🇮🇹 Italian</span>
+                            <span class="language-level beginner">Beginner</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">🇵🇹 Portuguese</span>
+                            <span class="language-level beginner">Beginner</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">🇨🇳 Mandarin</span>
+                            <span class="language-level beginner">Beginner</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- Contact Section -->
@@ -1769,7 +497,7 @@
             const button = document.querySelector('.desktop-toggle button');
             const isMobile = !document.documentElement.classList.contains('force-desktop');
             button.textContent = isMobile ? 'View Desktop Version' : 'View Mobile Version';
-            
+
             // Store preference
             localStorage.setItem('preferDesktop', !isMobile);
         }
@@ -1795,18 +523,18 @@
         window.addEventListener('scroll', () => {
             const sections = ['hero', 'projects', 'tools', 'cv', 'contact'];
             const navDots = document.querySelectorAll('.nav-dot');
-            
+
             let current = '';
             sections.forEach(sectionId => {
                 const section = document.getElementById(sectionId);
                 const sectionTop = section.offsetTop - 100;
                 const sectionBottom = sectionTop + section.offsetHeight;
-                
+
                 if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
                     current = sectionId;
                 }
             });
-            
+
             navDots.forEach((dot, index) => {
                 dot.classList.remove('active');
                 if (sections[index] === current) {
@@ -1819,7 +547,7 @@
         function scrollCarousel(direction) {
             const container = document.querySelector('.carousel-container');
             const scrollAmount = 370; // card width + gap
-            
+
             if (direction === 'left') {
                 container.scrollLeft -= scrollAmount;
             } else {
@@ -1852,9 +580,9 @@
         function toggleSkills() {
             const skillsList = document.getElementById('skillsList');
             const button = document.querySelector('.skills-toggle');
-            
+
             skillsList.classList.toggle('expanded');
-            
+
             if (skillsList.classList.contains('expanded')) {
                 button.textContent = 'Hide Technical Skills';
                 // Animate skill tags
@@ -1875,7 +603,7 @@
                 const scrolled = window.pageYOffset;
                 const hero = document.querySelector('.hero');
                 const rate = scrolled * -0.5;
-                
+
                 if (hero) {
                     hero.style.transform = `translateY(${rate}px)`;
                 }
@@ -1885,21 +613,21 @@
         // Touch gesture handling
         let touchStartX = 0;
         let touchEndX = 0;
-        
+
         function handleSwipeGesture(element, onSwipeLeft, onSwipeRight) {
             element.addEventListener('touchstart', e => {
                 touchStartX = e.changedTouches[0].screenX;
             }, false);
-            
+
             element.addEventListener('touchend', e => {
                 touchEndX = e.changedTouches[0].screenX;
                 handleSwipe();
             }, false);
-            
+
             function handleSwipe() {
                 const swipeThreshold = 50;
                 const swipeLength = touchEndX - touchStartX;
-                
+
                 if (Math.abs(swipeLength) > swipeThreshold) {
                     if (swipeLength > 0) {
                         onSwipeRight();
@@ -1914,13 +642,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Set first nav dot as active
             document.querySelector('.nav-dot').classList.add('active');
-            
-            // Add swipe gestures for projects
-            const mosaicGrid = document.getElementById('mosaicGrid');
-            handleSwipeGesture(mosaicGrid, 
-                () => mosaicNext(),
-                () => mosaicPrev()
-            );
 
             // Add swipe gestures for tools
             const toolsGrid = document.querySelector('.tools-grid');
@@ -1952,4 +673,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -106,5 +106,14 @@
    "team-size": null,
    "desc": "Procedural Wood Painting Toolkit\n\nUsing an intuitive painting mode, you can effortlessly add color to models just like painting real wooden figures to perfectly match your creative vision. You can also add wooden carving to your models for added realism and create flat cutouts from 3D models. Wood Works handles all aspects of materials, textures, and UVs, allowing you to focus entirely on unleashing your creativity without any technical distractions.",
    "link": "https://superhivemarket.com/products/wood-works"
+ },
+ {
+   "category": "tool",
+   "title": "The Hanging Village",
+   "image": "https://img.youtube.com/vi/xo_t9yuU6Yk/maxresdefault.jpg",
+   "role": "",
+   "team-size": null,
+   "desc": "A cinematic environmental showcase featuring stylized cliff-side architectures, generated using Cliff Cooker and custom procedural workflows in Blender and Unreal Engine.",
+   "link": "https://www.youtube.com/watch?v=xo_t9yuU6Yk"
  }
 ]
