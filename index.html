@@ -228,18 +228,31 @@
         function renderMosaic() {
             if (!mosaicGrid) return;
             mosaicGrid.innerHTML = '';
+            const hasExpanded = expandedIndex !== null;
+            mosaicGrid.classList.toggle('has-expanded', hasExpanded);
+
+            // Hide/show carousel arrows when expanded
+            const pPrevBtn = document.getElementById('mosaicPrev');
+            const pNextBtn = document.getElementById('mosaicNext');
+            if (pPrevBtn) pPrevBtn.style.display = hasExpanded ? 'none' : '';
+            if (pNextBtn) pNextBtn.style.display = hasExpanded ? 'none' : '';
+
             projects.forEach((p, idx) => {
+                const isExpanded = (expandedIndex === idx);
+
+                // Hide non-expanded cards when one is expanded
+                if (hasExpanded && !isExpanded) return;
+
                 const card = document.createElement('div');
                 card.className = 'project-card';
                 if (p.title && p.title.toLowerCase().includes('jungle hero')) {
                     card.classList.add('jungle-hero-card');
                 }
-                const isExpanded = (expandedIndex === idx);
                 if (isExpanded) {
                     card.classList.add('expanded');
                     card.innerHTML = `
                         <div class="gif expanded-gif">
-                            <img src="${p.gif}" alt="${p.title} GIF" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+                            <img src="${p.gif}" alt="${p.title} GIF">
                         </div>
                         <div class="project-content expanded-content">
                             <div>
@@ -260,7 +273,7 @@
                 } else {
                     card.innerHTML = `
                         <div class="gif">
-                            <img src="${p.gif}" alt="${p.title} GIF" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+                            <img src="${p.gif}" alt="${p.title} GIF">
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">${p.title}</h3>
@@ -279,7 +292,7 @@
                         expandedIndex = idx;
                         renderMosaic();
                         setTimeout(() => {
-                            const el = mosaicGrid.children[idx];
+                            const el = mosaicGrid.querySelector('.project-card.expanded');
                             if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         }, 50);
                     }
@@ -297,19 +310,30 @@
             const toolsGrid = document.getElementById('toolsGrid');
             if (!toolsGrid) return;
             toolsGrid.innerHTML = '';
+            const hasExpanded = expandedToolIndex !== null;
+            toolsGrid.classList.toggle('has-expanded', hasExpanded);
+
+            // Hide/show carousel arrows when expanded
+            const prevBtn = document.getElementById('toolsPrev');
+            const nextBtn = document.getElementById('toolsNext');
+            if (prevBtn) prevBtn.style.display = hasExpanded ? 'none' : '';
+            if (nextBtn) nextBtn.style.display = hasExpanded ? 'none' : '';
 
             toolsData.forEach((tool, idx) => {
-                const card = document.createElement('div');
-                card.className = 'project-card';
-
                 const isExpanded = (expandedToolIndex === idx);
                 const imgSrc = tool.image || tool.gif || '';
+
+                // Hide non-expanded cards when one is expanded
+                if (hasExpanded && !isExpanded) return;
+
+                const card = document.createElement('div');
+                card.className = 'project-card';
 
                 if (isExpanded) {
                     card.classList.add('expanded');
                     card.innerHTML = `
                         <div class="gif expanded-gif">
-                            <img src="${imgSrc}" alt="${tool.title}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+                            <img src="${imgSrc}" alt="${tool.title}">
                         </div>
                         <div class="project-content expanded-content">
                             <div>
@@ -330,7 +354,7 @@
                 } else {
                     card.innerHTML = `
                         <div class="gif">
-                            ${imgSrc ? `<img src="${imgSrc}" alt="${tool.title}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">` : `<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;background:linear-gradient(45deg, var(--accent-color), #7c3aed);color:white;">🔧</div>`}
+                            ${imgSrc ? `<img src="${imgSrc}" alt="${tool.title}">` : `<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;background:linear-gradient(45deg, var(--accent-color), #7c3aed);color:white;">🔧</div>`}
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">${tool.title}</h3>
@@ -350,7 +374,7 @@
                         expandedToolIndex = idx;
                         renderTools();
                         setTimeout(() => {
-                            const el = toolsGrid.children[idx];
+                            const el = toolsGrid.querySelector('.project-card.expanded');
                             if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         }, 50);
                     }
@@ -358,16 +382,17 @@
                 toolsGrid.appendChild(card);
             });
 
-            const container = document.getElementById('toolsContainer');
-            const prevBtn = document.getElementById('toolsPrev');
-            const nextBtn = document.getElementById('toolsNext');
-            if (container && prevBtn && nextBtn) {
-                prevBtn.onclick = () => {
-                    container.scrollBy({ left: -container.clientWidth * 0.8, behavior: 'smooth' });
-                };
-                nextBtn.onclick = () => {
-                    container.scrollBy({ left: container.clientWidth * 0.8, behavior: 'smooth' });
-                };
+            // Only rebind arrows if not expanded (they're hidden otherwise)
+            if (!hasExpanded) {
+                const container = document.getElementById('toolsContainer');
+                if (container && prevBtn && nextBtn) {
+                    prevBtn.onclick = () => {
+                        container.scrollBy({ left: -container.clientWidth * 0.8, behavior: 'smooth' });
+                    };
+                    nextBtn.onclick = () => {
+                        container.scrollBy({ left: container.clientWidth * 0.8, behavior: 'smooth' });
+                    };
+                }
             }
         }
 
