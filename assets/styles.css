@@ -885,14 +885,23 @@ body {
     overflow: hidden;
     position: relative;
     border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #060810;
 }
 
-.project-card .gif img {
+.project-card .gif img,
+.project-card .gif video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     filter: brightness(0.92) contrast(1.02);
     transition: filter 0.3s ease;
 }
 
-.project-card:hover .gif img {
+.project-card:hover .gif img,
+.project-card:hover .gif video {
     filter: brightness(1.02) contrast(1.05);
 }
 
@@ -926,18 +935,30 @@ body {
     font-size: 0.85rem;
 }
 
+/* Grid override when a card is expanded — full-width block layout */
+.mosaic-grid.has-expanded {
+    display: block;
+    width: 100%;
+    grid-template-rows: none;
+    grid-auto-flow: unset;
+    grid-auto-columns: unset;
+}
+
 /* Expanded Card CRPG Inspector Window */
 .project-card.expanded {
     height: auto;
-    min-height: 420px;
+    min-height: unset;
+    width: 100%;
+    max-width: 100%;
     display: grid;
-    grid-template-columns: 1.1fr 1.2fr;
-    gap: 2rem;
-    padding: 2.2rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    padding: 2.5rem;
     cursor: default;
     border-color: var(--border-gold-glow);
     background: rgba(8, 12, 22, 0.97);
     box-shadow: 0 0 35px rgba(0, 0, 0, 0.95), 0 0 25px rgba(100, 160, 230, 0.15);
+    overflow: visible;
 }
 
 .project-card.expanded:hover {
@@ -945,17 +966,33 @@ body {
 }
 
 .project-card.expanded .gif.expanded-gif {
-    height: 100%;
+    height: auto;
     min-height: 290px;
+    max-height: 550px;
     border: 1px solid var(--border-gold);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #060810;
+    border-bottom: none;
+}
+
+.project-card.expanded .gif.expanded-gif img,
+.project-card.expanded .gif.expanded-gif video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
 }
 
 .project-card.expanded .project-content.expanded-content {
-    padding: 0;
+    padding: 0.5rem 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 1rem;
+    overflow: visible;
 }
 
 .project-card.expanded .project-title {
@@ -964,6 +1001,10 @@ body {
     color: var(--text-primary);
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.5rem;
+}
+
+.project-card.expanded .project-subtitle {
+    font-size: 1rem;
 }
 
 .project-card.expanded .project-role {
@@ -1010,11 +1051,6 @@ body {
 
 .project-card:nth-child(8) {
     grid-column: span 2;
-}
-
-.project-card.expanded {
-    grid-column: span 2 !important;
-    min-width: 580px;
 }
 
 /* CV Section - Styled as Character Stats & Qualifications Window */
@@ -1378,6 +1414,7 @@ footer {
 
     .project-card.expanded .gif.expanded-gif {
         min-height: 200px;
+        max-height: 350px;
     }
 
     .mosaic-grid {
@@ -1410,6 +1447,16 @@ footer {
 
 :root.force-desktop .cv-grid {
     grid-template-columns: 2fr 1fr;
+}
+
+/* Global Media Containment Safety Net */
+.gif img,
+.gif video,
+.article-image img,
+.article-image video {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 /* Hide obsolete elements */
