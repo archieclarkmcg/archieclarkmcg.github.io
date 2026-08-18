@@ -138,21 +138,21 @@
     "category": "article",
     "title": "Siggraph Asia 2024 – Houdini Hive",
     "link": "https://www.sidefx.com/houdini-hive/siggraph-asia-2024/#labs",
-    "image": "assets/images/article_placeholder.png",
+    "image": "assets/images/UE5_EnvironmentArt_River.png",
     "desc": "Showcase of A video and envrionment created by me used to show off real-time water physics in Houdini at Siggraph Asia 2024"
   },
   {
     "category": "article",
     "title": "Environmental Impact of Overconsumption and Tech (The Guardian)",
     "link": "https://www.theguardian.com/environment/2025/oct/17/overconsumption-before-after-images-tech-harm-planet",
-    "image": "assets/images/article_placeholder.png",
+    "image": "assets/images/backmarket_venice_edit.png",
     "desc": "Investigating tech's environmental impact through a photoshop and 3d Unreal Engine scene of Venice used in an art gallery for an exhibition."
   },
   {
     "category": "article",
     "title": "Wood Works (80.lv)",
     "link": "https://80.lv/articles/transform-your-blender-scene-into-wood-environment-with-this-procedural-tool",
-    "image": "assets/images/article_placeholder.png",
+    "image": "assets/images/woodworks_scene.jpeg",
     "desc": "Procedural wood environment tool I lead development on for Blender featured on 80lvl. With mention of Cliff Cooker, another tool I lead development on."
   }
 ]

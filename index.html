@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archie McGrath</title>
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/krillin.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=Marcellus&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 
@@ -24,69 +27,136 @@
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Archie McGrath</h1>
-                <h2>Game Developer
-                </h2>
-                <div class="hero-description">
-                    Currently a Technical Artist at Feral Interactive.
+        <div class="hero-wrapper">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="ds-title">Archie McGrath</h1>
+                    <h2>Game Developer</h2>
+                    <div class="hero-description">
+                        Currently a Technical Artist at Feral Interactive.
+                    </div>
+                    <a href="#contact" class="cta-button">Get In Touch</a>
                 </div>
-                <a href="#contact" class="cta-button">Get In Touch</a>
+                <div class="hero-visual">
+                    <div class="hero-avatar"><img src="assets/images/myface.jpg" alt="Archie McGrath"
+                            style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
+                </div>
             </div>
-            <div class="hero-visual">
-                <div class="hero-avatar"><img src="assets/images/myface.jpg" alt="Archie McGrath"
-                        style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
+
+            <!-- Current Journey Experience Strip (integrated in Hero) -->
+            <div class="experience-strip" id="journey">
+                <div class="experience-content">
+                    <h3 class="experience-title">Current Journey</h3>
+                    
+                    <!-- Current Job Featured Top -->
+                    <div class="current-job-featured">
+                        <div class="timeline-item timeline-item-active current-featured-item">
+                            <span class="active-badge">PRESENT ROLE</span>
+                            <div class="company-logo"><img src="assets/images/ferallogo.jpg" alt="Feral Interactive"
+                                    style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
+                            <div class="timeline-info">
+                                <h4>Technical Artist</h4>
+                                <p>Feral Interactive • OCT 2025 ~</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Previous Roles Heading -->
+                    <div class="previous-roles-header">
+                        <span class="prev-decor">===</span>
+                        <span class="prev-title">Previous Roles</span>
+                        <span class="prev-decor">===</span>
+                    </div>
+
+                    <!-- Previous Roles List -->
+                    <div class="previous-roles-timeline">
+                        <div class="timeline-item timeline-item-previous">
+                            <div class="company-logo"><img src="assets/images/sportylogo.jpeg" alt="SportyUK"
+                                    style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
+                            <div class="timeline-info">
+                                <h4>Technical Animator</h4>
+                                <p>Sporty Group • JUN 2025 - OCT 2025</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item timeline-item-previous">
+                            <div class="company-logo"><img src="assets/images/CGHUBLogo_cropped.png" alt="CG Hub"
+                                    style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
+                            <div class="timeline-info">
+                                <h4>Technical Art Experience</h4>
+                                <p>CG Hub • APR 2025</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item timeline-item-previous">
+                            <div class="company-logo"><img src="assets/images/metameowlogo.jpeg" alt="Meta Meow"
+                                    style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
+                            <div class="timeline-info">
+                                <h4>Technical Art Intern</h4>
+                                <p>Meta Meow • MAR 2024 - MAR 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Strip -->
-    <div class="experience-strip">
-        <div class="experience-content">
-            <h3 class="experience-title">Current Journey</h3>
-            <div class="experience-timeline">
-                <div class="timeline-item">
-                    <div class="company-logo"><img src="assets/images/ferallogo.jpg" alt="Feral Interactive"
-                            style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
-                    <div class="timeline-info">
-                        <h4>Technical Artist</h4>
-                        <p>Feral Interactive • OCT 2025~</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="company-logo"><img src="assets/images/sportylogo.jpeg" alt="SportyUK"
-                            style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
-                    <div class="timeline-info">
-                        <h4>Technical Animator</h4>
-                        <p>Sporty Group • JUN2025-OCT2025</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="company-logo">CG</div>
-                    <div class="timeline-info">
-                        <h4>Technical Art Experience</h4>
-                        <p>CG Hub • APR 2025</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="company-logo"><img src="assets/images/metameowlogo.jpeg" alt="Meta Meow"
-                            style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
-                    <div class="timeline-info">
-                        <h4>Technical Art Intern</h4>
-                        <p>Meta Meow • MAR2024-MAR2025</p>
-                    </div>
-                </div>
-            </div>
+    <!-- Standalone CRPG Section Navigation Menu Bar -->
+    <nav class="crpg-section-menu">
+        <div class="crpg-menu-header">
+            <span class="header-decor">===</span>
+            <span class="header-title">◆ NAVIGATION MENU ◆</span>
+            <span class="header-decor">===</span>
         </div>
-    </div>
+        <div class="crpg-menu-container">
+            <a href="#projects" onclick="scrollToSection('projects'); return false;" class="crpg-menu-item">
+                <span class="crpg-menu-symbol">⚔</span>
+                <div class="crpg-menu-text">
+                    <span class="crpg-menu-title">Game Projects</span>
+                </div>
+            </a>
+            <span class="crpg-menu-divider">◆</span>
+            <a href="#tools" onclick="scrollToSection('tools'); return false;" class="crpg-menu-item">
+                <span class="crpg-menu-symbol">⚒</span>
+                <div class="crpg-menu-text">
+                    <span class="crpg-menu-title">Development Tools</span>
+                </div>
+            </a>
+            <span class="crpg-menu-divider">◆</span>
+            <a href="#articles" onclick="scrollToSection('articles'); return false;" class="crpg-menu-item">
+                <span class="crpg-menu-symbol">📜</span>
+                <div class="crpg-menu-text">
+                    <span class="crpg-menu-title">Articles</span>
+                </div>
+            </a>
+            <span class="crpg-menu-divider">◆</span>
+            <a href="#cv" onclick="scrollToSection('cv'); return false;" class="crpg-menu-item">
+                <span class="crpg-menu-symbol">🛡</span>
+                <div class="crpg-menu-text">
+                    <span class="crpg-menu-title">Experience</span>
+                </div>
+            </a>
+            <span class="crpg-menu-divider">◆</span>
+            <a href="#contact" onclick="scrollToSection('contact'); return false;" class="crpg-menu-item">
+                <span class="crpg-menu-symbol">🔮</span>
+                <div class="crpg-menu-text">
+                    <span class="crpg-menu-title">Contact</span>
+                </div>
+            </a>
+        </div>
+    </nav>
 
     <!-- Projects Section -->
     <section class="section" id="projects">
         <h2 class="section-title">Game Projects</h2>
         <p class="section-subtitle">Click on projects to explore the details</p>
-        <div class="projects-container">
-            <div class="mosaic-grid" id="mosaicGrid"></div>
+        <div class="projects-carousel-wrapper">
+            <button class="mosaic-arrow mosaic-arrow-left" id="mosaicPrev" aria-label="Previous Projects">&#10094;</button>
+            <div class="projects-container" id="projectsContainer">
+                <div class="mosaic-grid" id="mosaicGrid"></div>
+            </div>
+            <button class="mosaic-arrow mosaic-arrow-right" id="mosaicNext" aria-label="Next Projects">&#10095;</button>
         </div>
     </section>
 
@@ -95,9 +165,12 @@
         <h2 class="section-title">Development Tools</h2>
         <p class="section-subtitle">Custom tools and utilities I've created for game development</p>
 
-        <div class="tools-wrapper">
-            <div class="tools-grid">
+        <div class="projects-carousel-wrapper">
+            <button class="mosaic-arrow mosaic-arrow-left" id="toolsPrev" aria-label="Previous Tools">&#10094;</button>
+            <div class="projects-container" id="toolsContainer">
+                <div class="mosaic-grid" id="toolsGrid"></div>
             </div>
+            <button class="mosaic-arrow mosaic-arrow-right" id="toolsNext" aria-label="Next Tools">&#10095;</button>
         </div>
     </section>
 
@@ -163,7 +236,11 @@
                         <h4 class="cv-role">Technical Art Work Experience</h4>
                         <span class="cv-period">APR 2025</span>
                     </div>
-                    <p class="cv-company">CG Hub (Tokyo)</p>
+                    <p class="cv-company">
+                        <img src="assets/images/CGHUBLogo_cropped.png" alt="CG Hub"
+                            style="height:2em;vertical-align:middle;margin-right:0.5em;">
+                        CG Hub (Tokyo)
+                    </p>
                     <p class="expand-hint-cv">Click to see details</p>
                     <ul class="cv-details">
                         <li>Car ADAS creation and shader development in Kanzi Engine</li>
@@ -360,34 +437,87 @@
             });
         }
 
-        // ── Tools renderer ─────────────────────────────────────────
+        // ── Tools mosaic grid state ────────────────────────────────
+        let toolsData = [];
+        let expandedToolIndex = null;
+
         function renderTools(tools) {
-            const grid = document.querySelector('.tools-grid');
-            if (!grid) return;
-            grid.innerHTML = '';
-            tools.forEach(tool => {
+            if (tools) toolsData = tools;
+            const toolsGrid = document.getElementById('toolsGrid');
+            if (!toolsGrid) return;
+            toolsGrid.innerHTML = '';
+
+            toolsData.forEach((tool, idx) => {
                 const card = document.createElement('div');
-                card.className = 'tool-card';
-                card.onclick = () => toggleToolExpand(card);
+                card.className = 'project-card';
 
-                const imgSrc = tool.image || '';
-                const imageHtml = imgSrc
-                    ? `<img src="${imgSrc}" alt="${tool.title}" style="width:100%;height:100%;object-fit:cover;">`
-                    : `<span style="font-size:3rem;">🔧</span>`;
+                const isExpanded = (expandedToolIndex === idx);
+                const imgSrc = tool.image || tool.gif || '';
 
-                card.innerHTML = `
-                    <div class="tool-image">${imageHtml}</div>
-                    <div class="tool-header">
-                        <h3 class="tool-title">${tool.title}</h3>
-                        <span class="expand-icon">▼</span>
-                    </div>
-                    <div class="tool-description">
-                        <p>${(tool.desc || '').replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>
-                        ${tool.link ? `<a href="${tool.link}" target="_blank" class="cta-button" style="margin-top:1rem;display:inline-block;">View Tool</a>` : ''}
-                    </div>
-                `;
-                grid.appendChild(card);
+                if (isExpanded) {
+                    card.classList.add('expanded');
+                    card.innerHTML = `
+                        <div class="gif expanded-gif">
+                            <img src="${imgSrc}" alt="${tool.title}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+                        </div>
+                        <div class="project-content expanded-content">
+                            <div>
+                                <h3 class="project-title">${tool.title}</h3>
+                                ${tool['team-size'] ? `<p class="project-subtitle">Team size: ${tool['team-size']}</p>` : ''}
+                                ${tool.role ? `<p class="project-role"><strong>My role(s):</strong> ${(tool.role).replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>` : ''}
+                                <p class="project-description"><strong>Description:</strong> ${(tool.desc || '').replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>
+                                ${tool.link ? `<a href="${tool.link}" target="_blank" class="cta-button">View Tool</a>` : ''}
+                            </div>
+                            <button class="return-btn">Return</button>
+                        </div>
+                    `;
+                    card.querySelector('.return-btn').onclick = (e) => {
+                        e.stopPropagation();
+                        expandedToolIndex = null;
+                        renderTools();
+                    };
+                } else {
+                    card.innerHTML = `
+                        <div class="gif">
+                            ${imgSrc ? `<img src="${imgSrc}" alt="${tool.title}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">` : `<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;background:linear-gradient(45deg, var(--accent-color), #7c3aed);color:white;">🔧</div>`}
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">${tool.title}</h3>
+                            <p class="project-subtitle">${tool['team-size'] ? 'Team size: ' + tool['team-size'] : 'Custom Tool'}</p>
+                            <p class="expand-hint">Click to see details</p>
+                        </div>
+                    `;
+                }
+
+                card.onclick = (e) => {
+                    if (isExpanded) {
+                        if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A' && !e.target.closest('.return-btn')) {
+                            expandedToolIndex = null;
+                            renderTools();
+                        }
+                    } else {
+                        expandedToolIndex = idx;
+                        renderTools();
+                        setTimeout(() => {
+                            const el = toolsGrid.children[idx];
+                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 50);
+                    }
+                };
+                toolsGrid.appendChild(card);
             });
+
+            const container = document.getElementById('toolsContainer');
+            const prevBtn = document.getElementById('toolsPrev');
+            const nextBtn = document.getElementById('toolsNext');
+            if (container && prevBtn && nextBtn) {
+                prevBtn.onclick = () => {
+                    container.scrollBy({ left: -container.clientWidth * 0.8, behavior: 'smooth' });
+                };
+                nextBtn.onclick = () => {
+                    container.scrollBy({ left: container.clientWidth * 0.8, behavior: 'smooth' });
+                };
+            }
         }
 
         // ── Fetch all CMS data once, then render each section ──────
@@ -404,13 +534,26 @@
                 if (btn) btn.textContent = 'View Mobile Version';
             }
 
-            fetch('assets/cms.json')
+            fetch('assets/cms.json?v=' + Date.now())
                 .then(r => r.json())
                 .then(data => {
                     // Game Projects
                     projects = data.filter(item => item.category === 'game' && item.gif);
                     projects.forEach(p => { const img = new Image(); img.src = p.gif; });
                     renderMosaic();
+
+                    const container = document.getElementById('projectsContainer');
+                    const prevBtn = document.getElementById('mosaicPrev');
+                    const nextBtn = document.getElementById('mosaicNext');
+
+                    if (container && prevBtn && nextBtn) {
+                        prevBtn.addEventListener('click', () => {
+                            container.scrollBy({ left: -container.clientWidth * 0.8, behavior: 'smooth' });
+                        });
+                        nextBtn.addEventListener('click', () => {
+                            container.scrollBy({ left: container.clientWidth * 0.8, behavior: 'smooth' });
+                        });
+                    }
 
                     // Development Tools
                     const tools = data.filter(item => item.category === 'tool');
