@@ -1,27 +1,63 @@
-category,title,gif,role,team-size,desc,link
-game,Centurion Centenary Showdown (Game Jam),,"Character art, UI, Sound",4,A 1v1 in which players must spear each other off the edge of the colosseum. ,
-game,Connect 4 Ever (Game Jam),,"UI design and Implementation
-",4,Connect 4 with special cards introducing new counters and abilities,
-game,Roll of the Necrochancer (WIP),,"Gameplay design, VFX, Sound, Playtesting",6,Wave survival rogue-like,
-game,E-Scape (Game Jam),,"AI and Character scripting, Music, Sound",4,Beat 'em up. Escape the cloning facility and take down the hostile AI that control it,
-game,Hammer Slammers (WIP),,Gameplay Design,4,"A free-for-all time-based shooter, ricochet your bullets and time your attacks to kill your friends!",
-game,Final Major Project (University),,Everything,1,"A game alongside a 10,000 word dissertation created to measure the difference in player experience whether using diegetic or non-diegetic navigational cues. Certain assets are paid for, including the soundtrack and certain UI elements.",
-game,Just-Ice (Game Jam),,"Character design, sound, music, level design
-",5,A platformer in which the player uses heating and freezing to traverse the levels,
-game,Parry-lel (Game Jam),,"Gameplay, Character scripting, Sounds
-",4,An arcade game in which the player deflects the projectiles to stay alive,
-game,Jungle Hero (Digital Narratives of The Amazon),,"Sounds, Music Sound implementation, Translation",8,"With a production time of one week, we created a game focused on promoting animal conservation in the Amazonian regions of Ecuador. 
-As the only native English speaker on the team, I helped localise to English, I composed the music from scratch and sourced all SFX including real recordings from our time in The Amazon Jungle",
-tool,Dust Box,,,,"Unreal Engine VFX Blueprint 
-
-A tool for adding dust and ambient effects to Unreal Engine scenes",https://www.fab.com/listings/eea0aa29-bbf9-4f26-9188-92b615bea487
-tool,Cliff Cooker,,,,"Blender Geometry Node Setup for Procedural Cliff Generation 
-
-Cliff Cooker is a Geometry Nodes tool which generates cliff and rock formations from simple base meshes. By adjusting base shapes and scattered meshes, you can customize the parameters to achieve a wide variety of cliff styles. ",https://superhivemarket.com/products/cliff-cooker
-tool,Wood Works,,,,Procedural Wood Painting Toolkit,https://superhivemarket.com/products/wood-works
-,,,,,"Using an intuitive painting mode, you can effortlessly add color to models just like painting real wooden figures to perfectly match your creative vision. You can also add wooden carving to your models for added realism and create flat cutouts from 3D models. Wood Works handles all aspects of materials, textures, and UVs, allowing you to focus entirely on unleashing your creativity without any technical distractions.",
-tool,The Hanging Village,https://img.youtube.com/vi/xo_t9yuU6Yk/maxresdefault.jpg,,,"A cinematic environmental showcase featuring stylized cliff-side architectures, generated using Cliff Cooker and custom procedural workflows in Blender and Unreal Engine.",https://www.youtube.com/watch?v=xo_t9yuU6Yk
-game,Gamble Inc.,assets/gifs/gambleinc.gif,Indie,3,"An incremental slot spinning game. I worked on Tired of making money for your corporate overlords while you get paid peanuts? Hack into your work computer and syphon cash straight from the slots and into your bank. In this corporate dystopia jobs have been reduced to betting all you've got and letting the house (your boss) win. Now Hiring!",https://store.steampowered.com/app/4632620/Gamble_Inc/
-article,Siggraph Asia 2024 (Houdini Hive),,"",,"A video and envrionment created by me used to show off real-time water physics in Houdini",https://www.sidefx.com/houdini-hive/siggraph-asia-2024/#labs
-article,Environmental Impact of Overconsumption and Tech (The Guardian),,"",,"A photoshop and 3d Unreal Engine scene of Venice used in an art gallery for an exhibition.",https://www.theguardian.com/environment/2025/oct/17/overconsumption-before-after-images-tech-harm-planet
-article,Wood Works (80.lv),,"",,"A tool I developed for Blender.",https://80.lv/articles/transform-your-blender-scene-into-wood-environment-with-this-procedural-tool
+category,id,title,en,es,ja,it,pt,zh,media,link,role,team_size,extra
+ui,ui_hero_title,Hero Title,Archie McGrath,,,,,,,assets/images/myface.jpg,,,
+ui,ui_hero_subtitle,Hero Subtitle,Game Developer,,,,,,,,,,
+ui,ui_hero_desc,Hero Description,Currently a Technical Artist at Feral Interactive.,,,,,,,,,,
+ui,ui_hero_cta,Hero CTA Button,Get In Touch,,,,,,,#contact,,,
+ui,ui_journey_title,Journey Section Title,Current Journey,,,,,,,,,,
+ui,ui_journey_present_badge,Present Role Badge,PRESENT ROLE,,,,,,,,,,
+ui,ui_journey_prev_header,Previous Roles Header,Previous Roles,,,,,,,,,,
+ui,ui_nav_title,Navigation Header,NAVIGATION MENU,,,,,,,,,,
+ui,ui_nav_projects,Nav Projects,Game Projects,,,,,,,#projects,,,
+ui,ui_nav_tools,Nav Tools,Development Tools,,,,,,,#tools,,,
+ui,ui_nav_articles,Nav Articles,Articles,,,,,,,#articles,,,
+ui,ui_nav_experience,Nav Experience,Experience,,,,,,,#cv,,,
+ui,ui_nav_contact,Nav Contact,Contact,,,,,,,#contact,,,
+ui,ui_projects_title,Projects Section Title,Game Projects,,,,,,,,,,
+ui,ui_projects_subtitle,Projects Section Subtitle,Click on projects to explore the details,,,,,,,,,,
+ui,ui_tools_title,Tools Section Title,Development Tools,,,,,,,,,,
+ui,ui_tools_subtitle,Tools Section Subtitle,Custom tools and utilities I've created for game development,,,,,,,,,,
+ui,ui_articles_title,Articles Section Title,Articles,,,,,,,,,,
+ui,ui_articles_subtitle,Articles Section Subtitle,Articles and Exhibitions of my work and projects I was involved in,,,,,,,,,,
+ui,ui_cv_title,CV Section Title,Complete Experience,,,,,,,,,,
+ui,ui_cv_subtitle,CV Section Subtitle,Full professional history and qualifications,,,,,,,,,,
+ui,ui_cv_download,CV Download Button,Download My CV (PDF),,,,,,,assets/pdfs/Archie_CV_ENG.pdf,,,
+ui,ui_cv_work_header,CV Work Header,Work Experience,,,,,,,,,,
+ui,ui_cv_edu_header,CV Education Header,Education,,,,,,,,,,
+ui,ui_cv_lang_header,CV Languages Header,Languages,,,,,,,,,,
+ui,ui_cv_click_hint,CV Expand Hint,Click to see details,,,,,,,,,,
+ui,ui_contact_title,Contact Title,Get in touch!,,,,,,,,,,
+ui,ui_contact_subtitle,Contact Subtitle,I'm always interested in new opportunities,,,,,,,,,,
+ui,ui_contact_email,Contact Email,archieclarkmcg@gmail.com,,,,,,,,,mailto:archieclarkmcg@gmail.com,,
+ui,ui_footer_copyright,Footer Copyright,© 2025 Archie McGrath,,,,,,,,,,
+game,game_1,Gamble Inc.,Tired of making money for your corporate overlords while you get paid peanuts? Hack into your work computer and syphon cash straight from the slots and into your bank. In this corporate dystopia jobs have been reduced to betting all you've got and letting the house (your boss) win. Now Hiring!,,,,,,,assets/gifs/gambleinc.gif,https://store.steampowered.com/app/4632620/Gamble_Inc/,"Game Visuals, VFX, UI, Game Feel, Steam Admin, Community Management and Social Media",3,
+game,game_2,Animal Mystery Crew,Live your Capybara Detective dream in Animal Mystery Crew! Crack every quirky case through peculiar problems and absurdist intrigue. Use evidence and interrogation to solve the different mysteries in the park!,,,,,,,assets/gifs/animalmysterycrew.gif,https://store.steampowered.com/app/3883040/Animal_Mystery_Crew/,"Level Design, Environment Art, VFX, Writing, Makreting+",5,
+game,game_3,Centurion Centenary Showdown (Game Jam),A 1v1 in which players must spear each other off the edge of the colosseum. ,,,,,,,assets/gifs/centurionshowdown.gif,,"Character art, UI, Sound",4,
+game,game_4,Connect 4 Ever (Game Jam),Connect 4 with special cards introducing new counters and abilities,,,,,,,assets/gifs/connect4ever.gif,,"UI design and Implementation",4,
+game,game_5,Roll of the Necrochancer (WIP),Wave survival rogue-like,,,,,,,assets/gifs/dicegame.gif,,"Gameplay design, VFX, Sound, Playtesting",6,
+game,game_6,E-Scape (Game Jam),Beat 'em up. Escape the cloning facility and take down the hostile AI that control it,,,,,,,assets/gifs/escape.gif,,"AI and Character scripting, Music, Sound",4,
+game,game_7,Hammer Slammers (WIP),"A free-for-all time-based shooter, ricochet your bullets and time your attacks to kill your friends!",,,,,,,assets/gifs/hammerslammers.gif,,Gameplay Design,4,
+game,game_8,Final Major Project (University),"A game alongside a 10,000 word dissertation created to measure the difference in player experience whether using diegetic or non-diegetic navigational cues. Certain assets are paid for, including the soundtrack and certain UI elements.",,,,,,,assets/gifs/fmp.gif,,Everything,1,
+game,game_9,Just-Ice (Game Jam),A platformer in which the player uses heating and freezing to traverse the levels,,,,,,,assets/gifs/justice.gif,,"Character design, sound, music, level design",5,
+game,game_10,Parry-lel (Game Jam),An arcade game in which the player deflects the projectiles to stay alive,,,,,,,assets/gifs/parrylel.gif,,"Gameplay, Character scripting, Sounds",4,
+game,game_11,Jungle Hero (Digital Narratives of The Amazon),"With a production time of one week, we created a game focused on promoting animal conservation in the Amazonian regions of Ecuador. As the only native English speaker on the team, I helped localise to English, I composed the music from scratch and sourced all SFX including real recordings from our time in The Amazon Jungle",,,,,,,assets/gifs/junglehero.gif,,"Sounds, Music Sound implementation, Translation",8,
+tool,tool_1,Dust Box,"Unreal Engine VFX Blueprint setup. A tool for adding dust and ambient effects to Unreal Engine scenes",,,,,,,assets/images/dustbox.jpg,https://www.fab.com/listings/eea0aa29-bbf9-4f26-9188-92b615bea487,,1,
+tool,tool_2,Cliff Cooker,"Blender Geometry Node Setup for Procedural Cliff Generation. Cliff Cooker is a Geometry Nodes tool which generates cliff and rock formations from simple base meshes.",,,,,,,assets/images/cliffcooker.jpg,https://superhivemarket.com/products/cliff-cooker,,2,
+tool,tool_3,Wood Works,"Procedural Wood Painting Toolkit. Using an intuitive painting mode, you can effortlessly add color to models just like painting real wooden figures to perfectly match your creative vision.",,,,,,,assets/images/woodworks.png,https://superhivemarket.com/products/wood-works,,3,
+tool,tool_4,The Hanging Village,A cinematic environmental showcase featuring stylized cliff-side architectures generated using Cliff Cooker and custom procedural workflows in Blender and Unreal Engine.,,,,,,,https://img.youtube.com/vi/xo_t9yuU6Yk/maxresdefault.jpg,https://www.youtube.com/watch?v=xo_t9yuU6Yk,,2,
+article,article_1,Siggraph Asia 2024 – Houdini Hive,Showcase of a video and environment created by me used to show off real-time water physics in Houdini at Siggraph Asia 2024,,,,,,,assets/images/UE5_EnvironmentArt_River.png,https://www.sidefx.com/houdini-hive/siggraph-asia-2024/#labs,,,
+article,article_2,Environmental Impact of Overconsumption and Tech (The Guardian),Investigating tech's environmental impact through a photoshop and 3d Unreal Engine scene of Venice used in an art gallery for an exhibition.,,,,,,,assets/images/backmarket_venice_edit.png,https://www.theguardian.com/environment/2025/oct/17/overconsumption-before-after-images-tech-harm-planet,,,
+article,article_3,Wood Works (80.lv),Procedural wood environment tool I lead development on for Blender featured on 80lvl. With mention of Cliff Cooker another tool I lead development on.,,,,,,,assets/images/woodworks_scene.jpeg,https://80.lv/articles/transform-your-blender-scene-into-wood-environment-with-this-procedural-tool,,,
+cv_work,work_1,Technical Artist,Feral Interactive (London),,,,,,,assets/images/ferallogo.jpg,,OCT 2025 ~,,Sole in-house technical artist working with design and engineering teams on AAA projects|Asset development and implementation in-engine using Maya 3DS Max Blender|Scripting pipeline tools across DCCs using Python MEL|Implementation testing and optimisation of art and game mechanics in proprietary game engines
+cv_work,work_2,Technical Animator,Sporty Group (Remote - Bournemouth),,,,,,,assets/images/sportylogo.jpeg,,JUN 2025 - OCT 2025,,Rigging weight painting and animation of characters using Blender|Implementation and playtesting in Unity Engine for Mobile
+cv_work,work_3,Technical Art Work Experience,CG Hub (Tokyo),,,,,,,assets/images/CGHUBLogo_cropped.png,,APR 2025,,Car ADAS creation and shader development in Kanzi Engine
+cv_work,work_4,Technical Art Internship,Meta Meow (Tokyo),,,,,,,assets/images/metameowlogo.jpeg,,MAR 2024 - MAR 2025,,AAA games outsourcing projects for Square Enix ORCA Game Freak|Shipped 3 DCC tools taking them from conception to market with documentation user support and updates in Blender and Unreal|Shader material and VFX creation using Substance Painter Designer Python scripting Blender procedural node workflows and Houdini
+cv_work,work_5,Game Designer - Digital Narratives of The Amazon,Universidad de Las Americas (Quito),,,,,,,,,JUNE 2023,,Gameplay sound design and localisation developing a mobile game|C# Scripting in Unity Engine for Mobile
+cv_work,work_6,Websites Social Media Content Creation,Freelance (Remote - UK),,,,,,,,,NOV 2023~,,7000+ monthly visitor website SEO content renovations copywriting|Assisting Instagram account with 200000+ followers|Promoting an Amazon Sunday Times and Water Stones Best Seller
+cv_work,work_7,Indie Game Designer and Developer,Digital Umami (Remote - UK),,,,,,,assets/images/dulogo.png,,SEPT 2023 ~,,Indie Game Design and Development
+cv_edu,edu_1,Bsc Game Design,Bournemouth University,,,,,,,,,2020 - 2023,,First Class Honours|TIGA Graduate of the Year
+cv_lang,lang_1,🇬🇧 English,Native,,,,,,,,,,native
+cv_lang,lang_2,🇪🇸 Spanish,Fluent,,,,,,,,,,fluent
+cv_lang,lang_3,🇯🇵 Japanese,Business Fluency,,,,,,,,,,fluent
+cv_lang,lang_4,🇮🇹 Italian,Beginner,,,,,,,,,,beginner
+cv_lang,lang_5,🇵🇹 Portuguese,Beginner,,,,,,,,,,beginner
+cv_lang,lang_6,🇨🇳 Mandarin,Beginner,,,,,,,,,,beginner

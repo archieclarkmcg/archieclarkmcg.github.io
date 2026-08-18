@@ -30,12 +30,12 @@
         <div class="hero-wrapper">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1 class="ds-title">Archie McGrath</h1>
-                    <h2>Game Developer</h2>
-                    <div class="hero-description">
+                    <h1 class="ds-title" data-i18n="ui_hero_title">Archie McGrath</h1>
+                    <h2 data-i18n="ui_hero_subtitle">Game Developer</h2>
+                    <div class="hero-description" data-i18n="ui_hero_desc">
                         Currently a Technical Artist at Feral Interactive.
                     </div>
-                    <a href="#contact" class="cta-button">Get In Touch</a>
+                    <a href="#contact" class="cta-button" data-i18n="ui_hero_cta">Get In Touch</a>
                 </div>
                 <div class="hero-visual">
                     <div class="hero-avatar"><img src="assets/images/myface.jpg" alt="Archie McGrath"
@@ -149,8 +149,8 @@
 
     <!-- Projects Section -->
     <section class="section" id="projects">
-        <h2 class="section-title">Game Projects</h2>
-        <p class="section-subtitle">Click on projects to explore the details</p>
+        <h2 class="section-title" data-i18n="ui_projects_title">Game Projects</h2>
+        <p class="section-subtitle" data-i18n="ui_projects_subtitle">Click on projects to explore the details</p>
         <div class="projects-carousel-wrapper">
             <button class="mosaic-arrow mosaic-arrow-left" id="mosaicPrev" aria-label="Previous Projects">&#10094;</button>
             <div class="projects-container" id="projectsContainer">
@@ -162,8 +162,8 @@
 
     <!-- Development Tools Section -->
     <section class="section" id="tools">
-        <h2 class="section-title">Development Tools</h2>
-        <p class="section-subtitle">Custom tools and utilities I've created for game development</p>
+        <h2 class="section-title" data-i18n="ui_tools_title">Development Tools</h2>
+        <p class="section-subtitle" data-i18n="ui_tools_subtitle">Custom tools and utilities I've created for game development</p>
 
         <div class="projects-carousel-wrapper">
             <button class="mosaic-arrow mosaic-arrow-left" id="toolsPrev" aria-label="Previous Tools">&#10094;</button>
@@ -176,180 +176,31 @@
 
     <!-- Articles Section -->
     <section class="section" id="articles">
-        <h2 class="section-title">Articles</h2>
-        <p class="section-subtitle">Articles and Exhibitions of my work and projects I was involved in</p>
+        <h2 class="section-title" data-i18n="ui_articles_title">Articles</h2>
+        <p class="section-subtitle" data-i18n="ui_articles_subtitle">Articles and Exhibitions of my work and projects I was involved in</p>
         <div class="articles-grid" id="articlesGrid"></div>
     </section>
 
     <!-- CV Section -->
     <section class="section" id="cv">
-        <h2 class="section-title">Complete Experience</h2>
-        <p class="section-subtitle">Full professional history and qualifications</p>
-        <a href="assets\pdfs\Archie_CV_ENG.pdf" class="cta-button" download
+        <h2 class="section-title" data-i18n="ui_cv_title">Complete Experience</h2>
+        <p class="section-subtitle" data-i18n="ui_cv_subtitle">Full professional history and qualifications</p>
+        <a href="assets\pdfs\Archie_CV_ENG.pdf" class="cta-button" download data-i18n="ui_cv_download"
             style="display:block;max-width:250px;margin:0 auto 2rem auto;text-align:center;">Download My CV (PDF)</a>
         <div class="cv-grid">
             <!-- Work Experience Column -->
             <div class="cv-column">
-                <h3 class="cv-section-title">Work Experience</h3>
-
-                <div class="cv-item" onclick="toggleCVExpand(this)">
-                    <div class="cv-header">
-                        <h4 class="cv-role">Technical Artist</h4>
-                        <span class="cv-period">OCT 2025 ~</span>
-                    </div>
-                    <p class="cv-company">
-                        <img src="assets/images/ferallogo.jpg" alt="Feral Interactive"
-                            style="height:2em;vertical-align:middle;margin-right:0.5em;">
-                        Feral Interactive (London)
-                    </p>
-                    <p class="expand-hint-cv">Click to see details</p>
-                    <ul class="cv-details">
-                        <li>Sole in-house technical artist, working with design and engineering teams on AAA projects
-                        </li>
-                        <li>Asset development and implementation in-engine using Maya, 3DS Max, Blender (models,
-                            animations, rigs, textures and materials)</li>
-                        <li>Scripting pipeline tools across DCCs using Python, MEL</li>
-                        <li>Implementation, testing and optimisation of art and game mechanics in proprietary game
-                            engines across various platforms (VR and Mobile)</li>
-                    </ul>
-                </div>
-
-                <div class="cv-item" onclick="toggleCVExpand(this)">
-                    <div class="cv-header">
-                        <h4 class="cv-role">Technical Animator</h4>
-                        <span class="cv-period">JUN 2025 - OCT 2025</span>
-                    </div>
-                    <p class="cv-company">
-                        <img src="assets/images/sportylogo.jpeg" alt="SportyUK"
-                            style="height:2em;vertical-align:middle;margin-right:0.5em;">
-                        Sporty Group (Remote - Bournemouth)
-                    </p>
-                    <p class="expand-hint-cv">Click to see details</p>
-                    <ul class="cv-details">
-                        <li>Rigging, weight painting and animation of characters using Blender</li>
-                        <li>Implementation and playtesting in Unity Engine for Mobile</li>
-                    </ul>
-                </div>
-
-                <div class="cv-item" onclick="toggleCVExpand(this)">
-                    <div class="cv-header">
-                        <h4 class="cv-role">Technical Art Work Experience</h4>
-                        <span class="cv-period">APR 2025</span>
-                    </div>
-                    <p class="cv-company">
-                        <img src="assets/images/CGHUBLogo_cropped.png" alt="CG Hub"
-                            style="height:2em;vertical-align:middle;margin-right:0.5em;">
-                        CG Hub (Tokyo)
-                    </p>
-                    <p class="expand-hint-cv">Click to see details</p>
-                    <ul class="cv-details">
-                        <li>Car ADAS creation and shader development in Kanzi Engine</li>
-                    </ul>
-                </div>
-
-                <div class="cv-item" onclick="toggleCVExpand(this)">
-                    <div class="cv-header">
-                        <h4 class="cv-role">Technical Art Internship</h4>
-                        <span class="cv-period">MAR 2024 - MAR 2025</span>
-                    </div>
-                    <p class="cv-company">
-                        <img src="assets/images/metameowlogo.jpeg" alt="Meta Meow"
-                            style="height:2em;vertical-align:middle;margin-right:0.5em;">
-                        Meta Meow (Tokyo)
-                    </p>
-                    <p class="expand-hint-cv">Click to see details</p>
-                    <ul class="cv-details">
-                        <li>AAA games outsourcing projects for Square Enix, ORCA, Game Freak</li>
-                        <li>Shipped 3 DCC tools taking them from conception to market with documentation, user support
-                            and updates in Blender and Unreal.</li>
-                        <li>Shader, material and VFX creation using Substance Painter, Designer, Python scripting,
-                            Blender procedural node workflows and basic Houdini</li>
-                    </ul>
-                </div>
-
-                <div class="cv-item" onclick="toggleCVExpand(this)">
-                    <div class="cv-header">
-                        <h4 class="cv-role">Game Designer - Digital Narratives of The Amazon</h4>
-                        <span class="cv-period">JUNE 2023</span>
-                    </div>
-                    <p class="cv-company">Universidad de Las Americas (Quito)</p>
-                    <p class="expand-hint-cv">Click to see details</p>
-                    <ul class="cv-details">
-                        <li>Gameplay, sound design and localisation developing a mobile game</li>
-                        <li>C# Scripting in Unity Engine for Mobile</li>
-                    </ul>
-                </div>
-
-                <div class="cv-item" onclick="toggleCVExpand(this)">
-                    <div class="cv-header">
-                        <h4 class="cv-role">Websites, Social Media, Content Creation</h4>
-                        <span class="cv-period">NOV 2023~</span>
-                    </div>
-                    <p class="cv-company">Freelance (Remote - UK)</p>
-                    <p class="expand-hint-cv">Click to see details</p>
-                    <ul class="cv-details">
-                        <li>7,000+ monthly visitor website SEO, content renovations, copywriting</li>
-                        <li>Assisting Instagram account with 200,000+ followers</li>
-                        <li>Promoting an Amazon, Sunday Times and Water Stones Best Seller</li>
-                    </ul>
-                </div>
-
-                <div class="cv-item" onclick="toggleCVExpand(this)">
-                    <div class="cv-header">
-                        <h4 class="cv-role">Indie Game Designer and Developer</h4>
-                        <span class="cv-period">SEPT 2023 ~</span>
-                    </div>
-                    <p class="cv-company">
-                        <img src="assets/images/dulogo.png" alt="Digital Umami"
-                            style="height:2em;vertical-align:middle;margin-right:0.5em;">
-                        Digital Umami (Remote - UK)
-                    </p>
-                </div>
+                <h3 class="cv-section-title" data-i18n="ui_cv_work_header">Work Experience</h3>
+                <div id="cvWorkList"></div>
             </div>
 
             <!-- Education & Skills Column -->
             <div class="cv-column">
-                <h3 class="cv-section-title">Education</h3>
+                <h3 class="cv-section-title" data-i18n="ui_cv_edu_header">Education</h3>
+                <div id="cvEduList"></div>
 
-                <div class="cv-item">
-                    <div class="cv-header">
-                        <h4 class="cv-role">Bsc Game Design</h4>
-                        <span class="cv-period">2020 - 2023</span>
-                    </div>
-                    <p class="cv-company">Bournemouth University</p>
-                    <ul class="cv-details" style="max-height: none; padding-left: 1.2rem;">
-                        <li>First Class Honours</li>
-                        <li>TIGA Graduate of the Year</li>
-                    </ul>
-                </div>
-
-                <h3 class="cv-section-title">Languages</h3>
-                <div class="languages-grid">
-                    <div class="language-item">
-                        <span class="language-name">🇬🇧 English</span>
-                        <span class="language-level native">Native</span>
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">🇪🇸 Spanish</span>
-                        <span class="language-level fluent">Fluent</span>
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">🇯🇵 Japanese</span>
-                        <span class="language-level fluent">Business Fluency</span>
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">🇮🇹 Italian</span>
-                        <span class="language-level beginner">Beginner</span>
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">🇵🇹 Portuguese</span>
-                        <span class="language-level beginner">Beginner</span>
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">🇨🇳 Mandarin</span>
-                        <span class="language-level beginner">Beginner</span>
-                    </div>
-                </div>
+                <h3 class="cv-section-title" data-i18n="ui_cv_lang_header" style="margin-top:2rem;">Languages</h3>
+                <div class="languages-grid" id="languagesGrid"></div>
             </div>
         </div>
     </section>
@@ -358,11 +209,11 @@
     <footer id="contact">
         <div class="footer-content">
             <div class="contact-info">
-                <h3>Get in touch!</h3>
-                <p>I'm always interested in new opportunities</p>
-                <p style="margin-top: 1rem; color: var(--accent-color);">archieclarkmcg@gmail.com</p>
+                <h3 data-i18n="ui_contact_title">Get in touch!</h3>
+                <p data-i18n="ui_contact_subtitle">I'm always interested in new opportunities</p>
+                <p style="margin-top: 1rem; color: var(--accent-color);"><a href="mailto:archieclarkmcg@gmail.com" data-i18n="ui_contact_email" style="color:inherit;text-decoration:none;">archieclarkmcg@gmail.com</a></p>
             </div>
-            <p class="footer-text">
+            <p class="footer-text" data-i18n="ui_footer_copyright">
                 © 2025 Archie McGrath
             </p>
         </div>
@@ -520,6 +371,137 @@
             }
         }
 
+        let cmsData = [];
+        let currentLang = 'en';
+
+        function applyLocalization(lang = 'en') {
+            currentLang = lang;
+            if (!cmsData || !cmsData.length) return;
+
+            // 1. UI Text
+            cmsData.filter(item => item.category === 'ui').forEach(ui => {
+                const text = ui[lang] || ui['en'] || '';
+                const elements = document.querySelectorAll(`[data-i18n="${ui.id}"]`);
+                elements.forEach(el => {
+                    if (el.tagName === 'A' && ui.link && ui.link.startsWith('mailto:')) {
+                        el.href = ui.link;
+                    }
+                    el.innerHTML = text.replace(/\\n/g, '<br>').replace(/\n/g, '<br>');
+                });
+            });
+
+            // 2. Game Projects
+            projects = cmsData.filter(item => item.category === 'game').map(item => ({
+                title: item.title,
+                gif: item.media,
+                role: item.role,
+                'team-size': item.team_size,
+                desc: item[lang] || item['en'] || '',
+                link: item.link
+            }));
+            projects.forEach(p => { if (p.gif) { const img = new Image(); img.src = p.gif; } });
+            renderMosaic();
+
+            // 3. Development Tools
+            const tools = cmsData.filter(item => item.category === 'tool').map(item => ({
+                title: item.title,
+                image: item.media,
+                role: item.role,
+                'team-size': item.team_size,
+                desc: item[lang] || item['en'] || '',
+                link: item.link
+            }));
+            renderTools(tools);
+
+            // 4. Articles
+            const articles = cmsData.filter(item => item.category === 'article');
+            const articlesGrid = document.getElementById('articlesGrid');
+            if (articlesGrid) {
+                articlesGrid.innerHTML = '';
+                articles.forEach(article => {
+                    const card = document.createElement('div');
+                    card.className = 'article-card';
+                    const imgSrc = article.media || article.image || article.gif || '';
+                    const descText = article[lang] || article['en'] || article.desc || '';
+                    card.innerHTML = `
+                        <div class="article-image"><img src="${imgSrc}" alt="${article.title}" style="width:100%;height:100%;object-fit:cover;"></div>
+                        <div class="article-header"><h3 class="article-title">${article.title}</h3></div>
+                        <div class="article-description"><p>${descText.replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p></div>
+                        ${article.link ? `<a href="${article.link}" target="_blank" class="cta-button">Read Article</a>` : ''}
+                    `;
+                    articlesGrid.appendChild(card);
+                });
+            }
+
+            // 5. Work Experience (CV)
+            const cvWork = cmsData.filter(item => item.category === 'cv_work');
+            const cvWorkList = document.getElementById('cvWorkList');
+            if (cvWorkList) {
+                cvWorkList.innerHTML = '';
+                cvWork.forEach(item => {
+                    const bullets = (item.extra || '').split('|').filter(Boolean);
+                    const card = document.createElement('div');
+                    card.className = 'cv-item';
+                    card.onclick = function() { toggleCVExpand(this); };
+                    card.innerHTML = `
+                        <div class="cv-header">
+                            <h4 class="cv-role">${item.title}</h4>
+                            <span class="cv-period">${item.role}</span>
+                        </div>
+                        <p class="cv-company">
+                            ${item.media ? `<img src="${item.media}" alt="${item.title}" style="height:2em;vertical-align:middle;margin-right:0.5em;">` : ''}
+                            ${item[lang] || item['en'] || ''}
+                        </p>
+                        <p class="expand-hint-cv">Click to see details</p>
+                        <ul class="cv-details">
+                            ${bullets.map(b => `<li>${b}</li>`).join('')}
+                        </ul>
+                    `;
+                    cvWorkList.appendChild(card);
+                });
+            }
+
+            // 6. Education (CV)
+            const cvEdu = cmsData.filter(item => item.category === 'cv_edu');
+            const cvEduList = document.getElementById('cvEduList');
+            if (cvEduList) {
+                cvEduList.innerHTML = '';
+                cvEdu.forEach(item => {
+                    const bullets = (item.extra || '').split('|').filter(Boolean);
+                    const card = document.createElement('div');
+                    card.className = 'cv-item';
+                    card.innerHTML = `
+                        <div class="cv-header">
+                            <h4 class="cv-role">${item.title}</h4>
+                            <span class="cv-period">${item.role}</span>
+                        </div>
+                        <p class="cv-company">${item[lang] || item['en'] || ''}</p>
+                        <ul class="cv-details" style="max-height: none; padding-left: 1.2rem;">
+                            ${bullets.map(b => `<li>${b}</li>`).join('')}
+                        </ul>
+                    `;
+                    cvEduList.appendChild(card);
+                });
+            }
+
+            // 7. Languages
+            const cvLang = cmsData.filter(item => item.category === 'cv_lang');
+            const languagesGrid = document.getElementById('languagesGrid');
+            if (languagesGrid) {
+                languagesGrid.innerHTML = '';
+                cvLang.forEach(item => {
+                    const levelClass = item.extra || 'beginner';
+                    const card = document.createElement('div');
+                    card.className = 'language-item';
+                    card.innerHTML = `
+                        <span class="language-name">${item.title}</span>
+                        <span class="language-level ${levelClass}">${item[lang] || item['en'] || ''}</span>
+                    `;
+                    languagesGrid.appendChild(card);
+                });
+            }
+        }
+
         // ── Fetch all CMS data once, then render each section ──────
         document.addEventListener('DOMContentLoaded', () => {
             // Nav init
@@ -534,48 +516,19 @@
                 if (btn) btn.textContent = 'View Mobile Version';
             }
 
+            const pContainer = document.getElementById('projectsContainer');
+            const pPrevBtn = document.getElementById('mosaicPrev');
+            const pNextBtn = document.getElementById('mosaicNext');
+            if (pContainer && pPrevBtn && pNextBtn) {
+                pPrevBtn.addEventListener('click', () => pContainer.scrollBy({ left: -pContainer.clientWidth * 0.8, behavior: 'smooth' }));
+                pNextBtn.addEventListener('click', () => pContainer.scrollBy({ left: pContainer.clientWidth * 0.8, behavior: 'smooth' }));
+            }
+
             fetch('assets/cms.json?v=' + Date.now())
                 .then(r => r.json())
                 .then(data => {
-                    // Game Projects
-                    projects = data.filter(item => item.category === 'game' && item.gif);
-                    projects.forEach(p => { const img = new Image(); img.src = p.gif; });
-                    renderMosaic();
-
-                    const container = document.getElementById('projectsContainer');
-                    const prevBtn = document.getElementById('mosaicPrev');
-                    const nextBtn = document.getElementById('mosaicNext');
-
-                    if (container && prevBtn && nextBtn) {
-                        prevBtn.addEventListener('click', () => {
-                            container.scrollBy({ left: -container.clientWidth * 0.8, behavior: 'smooth' });
-                        });
-                        nextBtn.addEventListener('click', () => {
-                            container.scrollBy({ left: container.clientWidth * 0.8, behavior: 'smooth' });
-                        });
-                    }
-
-                    // Development Tools
-                    const tools = data.filter(item => item.category === 'tool');
-                    renderTools(tools);
-
-                    // Articles
-                    const articles = data.filter(item => item.category === 'article');
-                    const articlesGrid = document.getElementById('articlesGrid');
-                    if (articlesGrid) {
-                        articles.forEach(article => {
-                            const card = document.createElement('div');
-                            card.className = 'article-card';
-                            const imgSrc = article.image || article.gif || '';
-                            card.innerHTML = `
-                                <div class="article-image"><img src="${imgSrc}" alt="${article.title}" style="width:100%;height:100%;object-fit:cover;"></div>
-                                <div class="article-header"><h3 class="article-title">${article.title}</h3></div>
-                                <div class="article-description"><p>${(article.desc || '').replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p></div>
-                                ${article.link ? `<a href="${article.link}" target="_blank" class="cta-button">Read Article</a>` : ''}
-                            `;
-                            articlesGrid.appendChild(card);
-                        });
-                    }
+                    cmsData = data;
+                    applyLocalization('en');
                 })
                 .catch(err => console.error('CMS load error:', err));
         });
