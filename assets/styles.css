@@ -7,26 +7,35 @@
 
 :root {
     --is-mobile: 0;
-    
-    /* CRPG Color Palette */
-    --primary-bg: #090807;
-    --secondary-bg: #14110d;
-    --panel-bg: rgba(18, 15, 12, 0.92);
-    --panel-bg-solid: #15120e;
-    --hover-bg: #211b14;
-    
-    --accent-color: #c8aa6e;        /* Elden Ring Gold */
-    --accent-glow: #e2c27b;         /* Gold Glow Highlight */
-    --accent-dark: #6e5831;         /* Bronze/Dark Gold */
-    
-    --text-primary: #f0e6d2;        /* Parchment Light Text */
-    --text-secondary: #b8a890;      /* Warm Muted Parchment */
-    --text-muted: #786c5a;          /* Darker Subtext */
-    
-    --border-color: #3b3123;        /* Dark Gold Border Frame */
-    --border-gold: #8c764e;         /* Bright Frame Highlight */
-    --border-gold-glow: #c8aa6e;    /* Hover Border */
-    
+
+    /* Ethereal Blue Color Palette */
+    --primary-bg: #060810;
+    --secondary-bg: #0a0e1a;
+    --panel-bg: rgba(10, 14, 26, 0.92);
+    --panel-bg-solid: #0c1020;
+    --hover-bg: #121830;
+
+    --accent-color: #7eb8e8;
+    /* Ethereal Blue */
+    --accent-glow: #a0d4ff;
+    /* Ethereal Glow Highlight */
+    --accent-dark: #2a3d6e;
+    /* Deep Ethereal Blue */
+
+    --text-primary: #d0e2f5;
+    /* Icy Light Text */
+    --text-secondary: #8aa8c4;
+    /* Cool Muted Text */
+    --text-muted: #506880;
+    /* Darker Subtext */
+
+    --border-color: #1e2d48;
+    /* Dark Blue Border Frame */
+    --border-gold: #3a6a9e;
+    /* Blue Frame Highlight */
+    --border-gold-glow: #5eaadf;
+    /* Hover Border Glow */
+
     /* Fonts */
     --font-title: 'Cinzel', 'Marcellus', 'Georgia', serif;
     --font-heading: 'Marcellus', 'Cinzel', serif;
@@ -46,7 +55,7 @@ html {
 
 body {
     font-family: var(--font-body);
-    background: radial-gradient(circle at 50% 20%, #17130e 0%, #0a0907 60%, #040303 100%);
+    background: radial-gradient(circle at 50% 20%, #0c1025 0%, #060810 60%, #030408 100%);
     background-attachment: fixed;
     color: var(--text-primary);
     line-height: 1.7;
@@ -59,13 +68,16 @@ body {
     width: 8px;
     height: 8px;
 }
+
 ::-webkit-scrollbar-track {
-    background: #090807;
+    background: #060810;
 }
+
 ::-webkit-scrollbar-thumb {
     background: var(--border-gold);
     border-radius: 2px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-color);
 }
@@ -83,6 +95,7 @@ body {
     display: none;
     border-bottom: 1px solid var(--border-gold);
 }
+
 .desktop-toggle button {
     background: var(--panel-bg);
     color: var(--accent-color);
@@ -96,6 +109,7 @@ body {
     text-transform: uppercase;
     transition: all 0.3s ease;
 }
+
 .desktop-toggle button:hover {
     background: var(--accent-color);
     color: #000;
@@ -105,9 +119,11 @@ body {
     :root {
         --is-mobile: 1;
     }
+
     .desktop-toggle {
         display: block;
     }
+
     body {
         padding-top: 40px;
     }
@@ -120,10 +136,10 @@ body {
     top: 50%;
     transform: translateY(-50%);
     z-index: 100;
-    background: rgba(14, 12, 9, 0.95);
+    background: rgba(8, 12, 24, 0.95);
     backdrop-filter: blur(8px);
     border: 1px solid var(--border-gold);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8), inset 0 0 8px rgba(200, 170, 110, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8), inset 0 0 8px rgba(100, 160, 230, 0.1);
     border-radius: 4px;
     padding: 1.2rem 0.6rem;
     display: flex;
@@ -160,7 +176,7 @@ body {
     right: 2rem;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(16, 14, 11, 0.95);
+    background: rgba(10, 14, 26, 0.95);
     color: var(--accent-color);
     font-family: var(--font-title);
     letter-spacing: 0.15em;
@@ -190,6 +206,7 @@ body {
     width: 100%;
     max-width: 600px;
 }
+
 .crpg-divider::before,
 .crpg-divider::after {
     content: '';
@@ -197,6 +214,7 @@ body {
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--border-gold), transparent);
 }
+
 .crpg-divider-diamond {
     margin: 0 12px;
     color: var(--accent-color);
@@ -212,7 +230,7 @@ body {
     text-align: center;
     position: relative;
     padding: 3rem 1.5rem 4rem;
-    background: radial-gradient(circle at 50% 30%, rgba(35, 28, 19, 0.7) 0%, rgba(9, 8, 7, 0.96) 75%);
+    background: radial-gradient(circle at 50% 30%, rgba(15, 22, 50, 0.7) 0%, rgba(6, 8, 16, 0.96) 75%);
     border-bottom: 1px solid var(--border-gold);
 }
 
@@ -250,8 +268,8 @@ body {
     text-transform: uppercase;
     line-height: 1.15;
     margin-bottom: 0.5rem;
-    color: #c8aa6e;
-    -webkit-text-fill-color: #c8aa6e;
+    color: #8ec8f0;
+    -webkit-text-fill-color: #8ec8f0;
     background: none;
     text-shadow: 0 3px 10px rgba(0, 0, 0, 0.95), 0 0 2px rgba(0, 0, 0, 0.9);
 }
@@ -284,14 +302,14 @@ body {
     margin-bottom: 2.5rem;
     border-left: 2px solid var(--border-gold);
     padding-left: 1.2rem;
-    background: linear-gradient(90deg, rgba(200, 170, 110, 0.05), transparent);
+    background: linear-gradient(90deg, rgba(100, 160, 230, 0.05), transparent);
 }
 
 /* Elden Ring / CRPG Action Button */
 .cta-button {
     display: inline-block;
     padding: 0.85rem 2.2rem;
-    background: rgba(20, 17, 13, 0.9);
+    background: rgba(10, 14, 28, 0.9);
     color: var(--accent-color);
     text-decoration: none;
     font-family: var(--font-title);
@@ -300,7 +318,7 @@ body {
     font-size: 0.9rem;
     font-weight: 600;
     border: 1px solid var(--border-gold);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8), inset 0 0 12px rgba(200, 170, 110, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8), inset 0 0 12px rgba(100, 160, 230, 0.1);
     position: relative;
     transition: all 0.3s ease;
     cursor: pointer;
@@ -309,8 +327,11 @@ body {
 .cta-button::before {
     content: '';
     position: absolute;
-    top: 2px; left: 2px; right: 2px; bottom: 2px;
-    border: 1px solid rgba(200, 170, 110, 0.2);
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border: 1px solid rgba(100, 160, 230, 0.2);
     pointer-events: none;
     transition: all 0.3s ease;
 }
@@ -318,7 +339,7 @@ body {
 .cta-button:hover {
     background: var(--accent-color);
     color: #0c0a08;
-    box-shadow: 0 0 20px rgba(200, 170, 110, 0.5);
+    box-shadow: 0 0 20px rgba(100, 170, 240, 0.5);
     border-color: var(--accent-glow);
 }
 
@@ -338,7 +359,7 @@ body {
     height: 290px;
     border-radius: 4px;
     border: 2px solid var(--border-gold);
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.9), 0 0 15px rgba(200, 170, 110, 0.25), inset 0 0 15px rgba(0,0,0,0.8);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.9), 0 0 15px rgba(100, 160, 230, 0.25), inset 0 0 15px rgba(0, 0, 0, 0.8);
     position: relative;
     padding: 6px;
     background: var(--panel-bg-solid);
@@ -356,7 +377,7 @@ body {
 
 /* Experience Strip (Character Journey Bar) */
 .experience-strip {
-    background: rgba(16, 13, 10, 0.95);
+    background: rgba(8, 12, 22, 0.95);
     border-top: 1px solid var(--border-gold);
     border-bottom: 1px solid var(--border-gold);
     padding: 2.2rem 0;
@@ -404,7 +425,7 @@ body {
     align-items: center;
     gap: 1rem;
     padding: 0.85rem 1.4rem;
-    background: rgba(22, 18, 14, 0.85);
+    background: rgba(12, 16, 30, 0.85);
     border: 1px solid var(--border-color);
     border-radius: 2px;
     transition: all 0.3s ease;
@@ -414,8 +435,8 @@ body {
 
 .timeline-item:hover {
     border-color: var(--border-gold-glow);
-    background: rgba(32, 26, 20, 0.95);
-    box-shadow: 0 0 15px rgba(200, 170, 110, 0.2);
+    background: rgba(18, 24, 42, 0.95);
+    box-shadow: 0 0 15px rgba(100, 160, 230, 0.2);
     transform: translateY(-2px);
 }
 
@@ -429,13 +450,13 @@ body {
 .current-featured-item {
     padding: 1.1rem 2.2rem;
     border-color: var(--accent-glow);
-    background: linear-gradient(135deg, rgba(45, 36, 25, 0.95), rgba(20, 16, 12, 0.95));
-    box-shadow: 0 0 25px rgba(200, 170, 110, 0.4), inset 0 0 12px rgba(200, 170, 110, 0.15);
+    background: linear-gradient(135deg, rgba(18, 28, 55, 0.95), rgba(10, 14, 28, 0.95));
+    box-shadow: 0 0 25px rgba(100, 160, 230, 0.4), inset 0 0 12px rgba(100, 160, 230, 0.15);
 }
 
 .current-featured-item .timeline-info h4 {
     font-size: 1.2rem;
-    color: #fff2da;
+    color: #daf1ff;
 }
 
 /* Previous Roles Heading & List */
@@ -472,8 +493,8 @@ body {
 
 .timeline-item-previous {
     padding: 0.65rem 1.1rem;
-    background: rgba(18, 15, 12, 0.75);
-    border: 1px solid rgba(59, 49, 35, 0.6);
+    background: rgba(10, 14, 26, 0.75);
+    border: 1px solid rgba(30, 50, 80, 0.6);
     opacity: 0.88;
     transition: all 0.3s ease;
 }
@@ -481,7 +502,7 @@ body {
 .timeline-item-previous:hover {
     opacity: 1;
     border-color: var(--border-gold);
-    background: rgba(28, 23, 18, 0.9);
+    background: rgba(14, 20, 38, 0.9);
 }
 
 .timeline-item-previous .timeline-info h4 {
@@ -499,7 +520,7 @@ body {
     height: 44px;
     border-radius: 2px;
     border: 1px solid var(--border-gold);
-    background: #0e0c0a;
+    background: #0a0e1a;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -527,7 +548,7 @@ body {
 
 /* CRPG Section Navigation Menu Bar */
 .crpg-section-menu {
-    background: rgba(14, 11, 8, 0.95);
+    background: rgba(8, 12, 22, 0.95);
     border-top: 1px solid var(--border-gold);
     border-bottom: 1px solid var(--border-gold);
     padding: 1.8rem 1rem;
@@ -559,7 +580,7 @@ body {
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--accent-color);
-    text-shadow: 0 0 12px rgba(200, 170, 110, 0.35);
+    text-shadow: 0 0 12px rgba(100, 170, 240, 0.35);
 }
 
 .crpg-menu-container {
@@ -577,7 +598,7 @@ body {
     align-items: center;
     gap: 0.75rem;
     padding: 0.7rem 1.2rem;
-    background: rgba(22, 18, 14, 0.9);
+    background: rgba(12, 16, 30, 0.9);
     border: 1px solid var(--border-color);
     border-radius: 2px;
     text-decoration: none;
@@ -589,21 +610,24 @@ body {
 .crpg-menu-item::before {
     content: '';
     position: absolute;
-    top: 2px; left: 2px; right: 2px; bottom: 2px;
-    border: 1px solid rgba(200, 170, 110, 0.15);
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border: 1px solid rgba(100, 160, 230, 0.15);
     pointer-events: none;
     transition: all 0.3s ease;
 }
 
 .crpg-menu-item:hover {
     border-color: var(--border-gold-glow);
-    background: linear-gradient(135deg, rgba(38, 30, 22, 0.98), rgba(20, 16, 12, 0.98));
-    box-shadow: 0 0 20px rgba(200, 170, 110, 0.35);
+    background: linear-gradient(135deg, rgba(16, 24, 48, 0.98), rgba(10, 14, 28, 0.98));
+    box-shadow: 0 0 20px rgba(100, 160, 230, 0.35);
     transform: translateY(-3px);
 }
 
 .crpg-menu-item:hover::before {
-    border-color: rgba(200, 170, 110, 0.5);
+    border-color: rgba(100, 160, 230, 0.5);
 }
 
 .crpg-menu-symbol {
@@ -634,7 +658,7 @@ body {
 }
 
 .crpg-menu-item:hover .crpg-menu-title {
-    color: #fff2da;
+    color: #daeeff;
 }
 
 .crpg-menu-sub {
@@ -655,7 +679,7 @@ body {
     font-weight: 700;
     letter-spacing: 0.1em;
     color: var(--accent-color);
-    background: rgba(200, 170, 110, 0.1);
+    background: rgba(100, 160, 230, 0.1);
     border: 1px solid var(--border-gold);
     padding: 0.2rem 0.55rem;
     border-radius: 2px;
@@ -668,7 +692,7 @@ body {
     background: var(--accent-color);
     color: #090807;
     border-color: var(--accent-glow);
-    box-shadow: 0 0 10px rgba(200, 170, 110, 0.6);
+    box-shadow: 0 0 10px rgba(94, 170, 223, 0.6);
 }
 
 .crpg-menu-divider {
@@ -679,17 +703,26 @@ body {
 }
 
 @media (max-width: 768px) {
-    .desktop-arrow { display: none !important; }
-    .mobile-arrow { display: inline-block !important; }
+    .desktop-arrow {
+        display: none !important;
+    }
+
+    .mobile-arrow {
+        display: inline-block !important;
+    }
+
     .experience-timeline {
         flex-direction: column;
     }
+
     .crpg-menu-divider {
         display: none;
     }
+
     .crpg-menu-container {
         gap: 0.8rem;
     }
+
     .crpg-menu-item {
         width: 100%;
         justify-content: center;
@@ -712,8 +745,8 @@ body {
     text-align: center;
     margin-bottom: 0.6rem;
     color: var(--text-primary);
-    text-shadow: 0 0 15px rgba(200, 170, 110, 0.2);
-    background: linear-gradient(180deg, #f0e6d2 0%, #c8aa6e 100%);
+    text-shadow: 0 0 15px rgba(100, 170, 240, 0.2);
+    background: linear-gradient(180deg, #d0e6f8 0%, #6eb8e8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -778,7 +811,7 @@ body {
     width: 46px;
     height: 46px;
     border-radius: 2px;
-    background: rgba(14, 12, 9, 0.95);
+    background: rgba(8, 12, 24, 0.95);
     border: 1px solid var(--border-gold);
     color: var(--accent-color);
     font-size: 1.3rem;
@@ -795,12 +828,17 @@ body {
     background: var(--accent-color);
     color: #090807;
     border-color: var(--accent-glow);
-    box-shadow: 0 0 18px rgba(200, 170, 110, 0.5);
+    box-shadow: 0 0 18px rgba(100, 160, 230, 0.5);
     transform: translateY(-50%) scale(1.08);
 }
 
-.mosaic-arrow-left { left: -22px; }
-.mosaic-arrow-right { right: -22px; }
+.mosaic-arrow-left {
+    left: -22px;
+}
+
+.mosaic-arrow-right {
+    right: -22px;
+}
 
 /* CRPG Inspectable Card Baseline */
 .project-card {
@@ -814,14 +852,17 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
-    transition: all 0.3s cubic-bezier(.4,0,.2,1);
+    transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
 }
 
 .project-card::before {
     content: '';
     position: absolute;
-    top: 3px; left: 3px; right: 3px; bottom: 3px;
-    border: 1px solid rgba(140, 118, 78, 0.2);
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    border: 1px solid rgba(80, 130, 200, 0.2);
     pointer-events: none;
     border-radius: 1px;
     transition: border-color 0.3s ease;
@@ -830,11 +871,11 @@ body {
 .project-card:hover {
     transform: translateY(-4px);
     border-color: var(--border-gold-glow);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.9), 0 0 20px rgba(200, 170, 110, 0.2);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.9), 0 0 20px rgba(100, 160, 230, 0.2);
 }
 
 .project-card:hover::before {
-    border-color: rgba(200, 170, 110, 0.4);
+    border-color: rgba(100, 160, 230, 0.4);
 }
 
 .project-card .gif {
@@ -895,8 +936,8 @@ body {
     padding: 2.2rem;
     cursor: default;
     border-color: var(--border-gold-glow);
-    background: rgba(14, 11, 8, 0.97);
-    box-shadow: 0 0 35px rgba(0, 0, 0, 0.95), 0 0 25px rgba(200, 170, 110, 0.15);
+    background: rgba(8, 12, 22, 0.97);
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.95), 0 0 25px rgba(100, 160, 230, 0.15);
 }
 
 .project-card.expanded:hover {
@@ -941,7 +982,7 @@ body {
 .project-card.expanded .return-btn {
     align-self: flex-start;
     margin-top: 1.5rem;
-    background: rgba(20, 17, 13, 0.9);
+    background: rgba(10, 14, 28, 0.9);
     color: var(--accent-color);
     border: 1px solid var(--border-gold);
     padding: 0.6rem 1.8rem;
@@ -955,13 +996,21 @@ body {
 .project-card.expanded .return-btn:hover {
     background: var(--accent-color);
     color: #000;
-    box-shadow: 0 0 15px rgba(200, 170, 110, 0.4);
+    box-shadow: 0 0 15px rgba(100, 160, 230, 0.4);
 }
 
 /* Mosaic sizing overrides */
-.project-card:nth-child(1) { grid-column: span 2; }
-.project-card:nth-child(7) { grid-column: span 2; }
-.project-card:nth-child(8) { grid-column: span 2; }
+.project-card:nth-child(1) {
+    grid-column: span 2;
+}
+
+.project-card:nth-child(7) {
+    grid-column: span 2;
+}
+
+.project-card:nth-child(8) {
+    grid-column: span 2;
+}
 
 .project-card.expanded {
     grid-column: span 2 !important;
@@ -988,8 +1037,11 @@ body {
 .cv-column::before {
     content: '';
     position: absolute;
-    top: 4px; left: 4px; right: 4px; bottom: 4px;
-    border: 1px solid rgba(140, 118, 78, 0.15);
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px solid rgba(80, 130, 200, 0.15);
     pointer-events: none;
 }
 
@@ -1016,7 +1068,7 @@ body {
 .cv-item {
     margin-bottom: 2rem;
     padding-bottom: 1.2rem;
-    border-bottom: 1px solid rgba(59, 49, 35, 0.5);
+    border-bottom: 1px solid rgba(30, 50, 80, 0.5);
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -1026,7 +1078,7 @@ body {
 }
 
 .cv-item:hover {
-    background: rgba(35, 28, 20, 0.5);
+    background: rgba(16, 24, 44, 0.5);
     padding: 1rem;
     margin: -0.2rem -1rem 1.8rem;
     border-radius: 2px;
@@ -1053,7 +1105,7 @@ body {
     font-size: 0.85rem;
     letter-spacing: 0.1em;
     color: var(--accent-color);
-    background: rgba(200, 170, 110, 0.08);
+    background: rgba(100, 160, 230, 0.08);
     border: 1px solid var(--border-color);
     padding: 0.25rem 0.8rem;
     border-radius: 2px;
@@ -1120,7 +1172,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0.8rem 1.1rem;
-    background: rgba(20, 16, 12, 0.8);
+    background: rgba(10, 14, 26, 0.8);
     border: 1px solid var(--border-color);
     border-radius: 2px;
     transition: border-color 0.3s ease;
@@ -1188,14 +1240,14 @@ body {
 .article-card:hover {
     border-color: var(--border-gold-glow);
     transform: translateY(-4px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.9), 0 0 15px rgba(200, 170, 110, 0.2);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.9), 0 0 15px rgba(100, 160, 230, 0.2);
 }
 
 .article-card .article-image {
     width: 100%;
     height: 210px;
     overflow: hidden;
-    background: #0e0c0a;
+    background: #0a0e1a;
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -1238,7 +1290,7 @@ body {
 
 /* Footer (Footer / Credits HUD) */
 footer {
-    background: rgba(10, 8, 6, 0.98);
+    background: rgba(6, 8, 16, 0.98);
     border-top: 1px solid var(--border-gold);
     padding: 4rem 2rem 3rem;
     text-align: center;
@@ -1275,30 +1327,92 @@ footer {
 
 /* Responsive Styles */
 @media (max-width: 1024px) {
-    .floating-nav { right: 1rem; }
-    .hero-content { grid-template-columns: 1fr; text-align: center; }
-    .hero-text { text-align: center; }
-    .hero h2 { justify-content: center; }
-    .hero-description { border-left: none; border-bottom: 2px solid var(--border-gold); padding-left: 0; padding-bottom: 1rem; }
+    .floating-nav {
+        right: 1rem;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
+    .hero h2 {
+        justify-content: center;
+    }
+
+    .hero-description {
+        border-left: none;
+        border-bottom: 2px solid var(--border-gold);
+        padding-left: 0;
+        padding-bottom: 1rem;
+    }
 }
 
 @media (max-width: 768px) {
-    .floating-nav { display: none; }
-    .section { padding: 3.5rem 1.2rem; }
-    .cv-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .cv-column { padding: 1.5rem; }
-    .project-card.expanded { grid-template-columns: 1fr; min-width: auto; padding: 1.5rem; }
-    .project-card.expanded .gif.expanded-gif { min-height: 200px; }
-    .mosaic-grid { grid-template-rows: repeat(2, 340px); grid-auto-columns: 290px; }
+    .floating-nav {
+        display: none;
+    }
+
+    .section {
+        padding: 3.5rem 1.2rem;
+    }
+
+    .cv-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .cv-column {
+        padding: 1.5rem;
+    }
+
+    .project-card.expanded {
+        grid-template-columns: 1fr;
+        min-width: auto;
+        padding: 1.5rem;
+    }
+
+    .project-card.expanded .gif.expanded-gif {
+        min-height: 200px;
+    }
+
+    .mosaic-grid {
+        grid-template-rows: repeat(2, 340px);
+        grid-auto-columns: 290px;
+    }
 }
 
 /* Force Desktop Mode */
-:root.force-desktop { --is-mobile: 0; }
-:root.force-desktop .desktop-toggle { display: block; }
-:root.force-desktop .floating-nav { display: flex; }
-:root.force-desktop .hero-content { grid-template-columns: 1fr 1fr; text-align: left; }
-:root.force-desktop .hero-text { text-align: left; }
-:root.force-desktop .cv-grid { grid-template-columns: 2fr 1fr; }
+:root.force-desktop {
+    --is-mobile: 0;
+}
+
+:root.force-desktop .desktop-toggle {
+    display: block;
+}
+
+:root.force-desktop .floating-nav {
+    display: flex;
+}
+
+:root.force-desktop .hero-content {
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+}
+
+:root.force-desktop .hero-text {
+    text-align: left;
+}
+
+:root.force-desktop .cv-grid {
+    grid-template-columns: 2fr 1fr;
+}
 
 /* Hide obsolete elements */
-#game-projects-list { display: none !important; }
+#game-projects-list {
+    display: none !important;
+}
