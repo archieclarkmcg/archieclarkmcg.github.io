@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=Marcellus&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/styles.css?v=2.0">
+    <link rel="stylesheet" href="assets/styles.css?v=2.2">
 </head>
 
 <body>
@@ -20,7 +20,9 @@
     <nav class="floating-nav">
         <div class="nav-dot" data-label="Home" onclick="scrollToSection('hero')"></div>
         <div class="nav-dot" data-label="Projects" onclick="scrollToSection('projects')"></div>
+        <div class="nav-dot" data-label="Environment Art" onclick="scrollToSection('environment-art')"></div>
         <div class="nav-dot" data-label="Tools" onclick="scrollToSection('tools')"></div>
+        <div class="nav-dot" data-label="Articles" onclick="scrollToSection('articles')"></div>
         <div class="nav-dot" data-label="Experience" onclick="scrollToSection('cv')"></div>
         <div class="nav-dot" data-label="Contact" onclick="scrollToSection('contact')"></div>
     </nav>
@@ -117,6 +119,13 @@
                 </div>
             </a>
             <span class="crpg-menu-divider">◆</span>
+            <a href="#environment-art" onclick="scrollToSection('environment-art'); return false;" class="crpg-menu-item">
+                <span class="crpg-menu-symbol">🏔</span>
+                <div class="crpg-menu-text">
+                    <span class="crpg-menu-title">Environment Art</span>
+                </div>
+            </a>
+            <span class="crpg-menu-divider">◆</span>
             <a href="#tools" onclick="scrollToSection('tools'); return false;" class="crpg-menu-item">
                 <span class="crpg-menu-symbol">⚒</span>
                 <div class="crpg-menu-text">
@@ -151,6 +160,40 @@
     <section class="section" id="projects">
         <h2 class="section-title">Game Projects</h2>
         <p class="section-subtitle">Click on projects to explore the details</p>
+
+        <!-- Discipline & Program Filter Hub -->
+        <div class="project-filter-hub">
+            <div class="filter-group">
+                <span class="filter-label"><span class="filter-icon">⚔</span> Discipline:</span>
+                <div class="filter-tags" id="disciplineFilterTags">
+                    <button class="filter-tag active" data-type="discipline" data-value="All" onclick="setProjectFilter('discipline', 'All')">All</button>
+                    <button class="filter-tag" data-type="discipline" data-value="Gameplay Design" onclick="setProjectFilter('discipline', 'Gameplay Design')">Gameplay Design</button>
+                    <button class="filter-tag" data-type="discipline" data-value="AI" onclick="setProjectFilter('discipline', 'AI')">AI</button>
+                    <button class="filter-tag" data-type="discipline" data-value="Environment Design" onclick="setProjectFilter('discipline', 'Environment Design')">Environment Design</button>
+                    <button class="filter-tag" data-type="discipline" data-value="Scripting" onclick="setProjectFilter('discipline', 'Scripting')">Scripting</button>
+                    <button class="filter-tag" data-type="discipline" data-value="VFX" onclick="setProjectFilter('discipline', 'VFX')">VFX</button>
+                    <button class="filter-tag" data-type="discipline" data-value="Localisation" onclick="setProjectFilter('discipline', 'Localisation')">Localisation</button>
+                    <button class="filter-tag" data-type="discipline" data-value="Marketing" onclick="setProjectFilter('discipline', 'Marketing')">Marketing</button>
+                    <button class="filter-tag" data-type="discipline" data-value="Character Design" onclick="setProjectFilter('discipline', 'Character Design')">Character Design</button>
+                </div>
+            </div>
+            <div class="filter-group">
+                <span class="filter-label"><span class="filter-icon">⚙</span> Programs:</span>
+                <div class="filter-tags" id="programFilterTags">
+                    <button class="filter-tag active" data-type="program" data-value="All" onclick="setProjectFilter('program', 'All')">All</button>
+                    <button class="filter-tag" data-type="program" data-value="Unity" onclick="setProjectFilter('program', 'Unity')">Unity</button>
+                    <button class="filter-tag" data-type="program" data-value="Unreal" onclick="setProjectFilter('program', 'Unreal')">Unreal</button>
+                    <button class="filter-tag" data-type="program" data-value="Blueprints" onclick="setProjectFilter('program', 'Blueprints')">Blueprints</button>
+                    <button class="filter-tag" data-type="program" data-value="Blender" onclick="setProjectFilter('program', 'Blender')">Blender</button>
+                    <button class="filter-tag" data-type="program" data-value="Houdini" onclick="setProjectFilter('program', 'Houdini')">Houdini</button>
+                    <button class="filter-tag" data-type="program" data-value="C#" onclick="setProjectFilter('program', 'C#')">C#</button>
+                    <button class="filter-tag" data-type="program" data-value="Photoshop" onclick="setProjectFilter('program', 'Photoshop')">Photoshop</button>
+                    <button class="filter-tag" data-type="program" data-value="Substance Painter" onclick="setProjectFilter('program', 'Substance Painter')">Substance Painter</button>
+                    <button class="filter-tag" data-type="program" data-value="Substance Designer" onclick="setProjectFilter('program', 'Substance Designer')">Substance Designer</button>
+                </div>
+            </div>
+        </div>
+
         <div class="projects-carousel-wrapper">
             <button class="mosaic-arrow mosaic-arrow-left" id="mosaicPrev" aria-label="Previous Projects">&#10094;</button>
             <div class="projects-container" id="projectsContainer">
@@ -160,18 +203,20 @@
         </div>
     </section>
 
+    <!-- Environment Art Section -->
+    <section class="section" id="environment-art">
+        <h2 class="section-title">Environment Art</h2>
+        <p class="section-subtitle">Real-time environments, shaders, and cinematic world showcases</p>
+
+        <div class="env-grid" id="envGrid"></div>
+    </section>
+
     <!-- Development Tools Section -->
     <section class="section" id="tools">
         <h2 class="section-title">Development Tools</h2>
         <p class="section-subtitle">Custom tools and utilities I've created for game development</p>
 
-        <div class="projects-carousel-wrapper">
-            <button class="mosaic-arrow mosaic-arrow-left" id="toolsPrev" aria-label="Previous Tools">&#10094;</button>
-            <div class="projects-container" id="toolsContainer">
-                <div class="mosaic-grid" id="toolsGrid"></div>
-            </div>
-            <button class="mosaic-arrow mosaic-arrow-right" id="toolsNext" aria-label="Next Tools">&#10095;</button>
-        </div>
+        <div class="tools-grid" id="toolsGrid"></div>
     </section>
 
     <!-- Articles Section -->
@@ -369,27 +414,121 @@
     </footer>
 
     <script>
-        // ── Mosaic grid state ──────────────────────────────────────
+        // ── Filter State for Projects ─────────────────────────────
         let projects = [];
-        let expandedIndex = null;
+        let selectedDiscipline = 'All';
+        let selectedProgram = 'All';
+        let expandedProjectTitle = null;
+
         const mosaicGrid = document.getElementById('mosaicGrid');
+
+        function setProjectFilter(type, value) {
+            if (type === 'discipline') {
+                selectedDiscipline = (selectedDiscipline === value && value !== 'All') ? 'All' : value;
+            } else if (type === 'program') {
+                selectedProgram = (selectedProgram === value && value !== 'All') ? 'All' : value;
+            }
+            expandedProjectTitle = null;
+            updateFilterButtonsUI();
+            renderMosaic();
+            const container = document.getElementById('projectsContainer');
+            if (container) container.scrollLeft = 0;
+        }
+
+        function resetProjectFilters() {
+            selectedDiscipline = 'All';
+            selectedProgram = 'All';
+            expandedProjectTitle = null;
+            updateFilterButtonsUI();
+            renderMosaic();
+            const container = document.getElementById('projectsContainer');
+            if (container) container.scrollLeft = 0;
+        }
+
+        function updateFilterButtonsUI() {
+            document.querySelectorAll('#disciplineFilterTags .filter-tag').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-value') === selectedDiscipline);
+            });
+            document.querySelectorAll('#programFilterTags .filter-tag').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-value') === selectedProgram);
+            });
+        }
+
+        function renderTagBadges(disciplines = [], programs = []) {
+            const combined = [
+                ...disciplines.map(d => ({ text: d, type: 'discipline' })),
+                ...programs.map(p => ({ text: p, type: 'program' }))
+            ];
+            if (!combined.length) return '';
+
+            const maxDisplay = 3;
+            let html = '<div class="project-tags-preview">';
+
+            if (combined.length <= maxDisplay) {
+                combined.forEach(tag => {
+                    const cls = tag.type === 'discipline' ? 'discipline-badge' : 'program-badge';
+                    html += `<span class="badge-tag ${cls}">${tag.text}</span>`;
+                });
+            } else {
+                const visible = combined.slice(0, 2);
+                visible.forEach(tag => {
+                    const cls = tag.type === 'discipline' ? 'discipline-badge' : 'program-badge';
+                    html += `<span class="badge-tag ${cls}">${tag.text}</span>`;
+                });
+                const remaining = combined.length - 2;
+                html += `<span class="badge-tag more-badge">+${remaining} more</span>`;
+            }
+
+            html += '</div>';
+            return html;
+        }
 
         function renderMosaic() {
             if (!mosaicGrid) return;
             mosaicGrid.innerHTML = '';
-            const hasExpanded = expandedIndex !== null;
+
+            const isFiltered = (selectedDiscipline !== 'All' || selectedProgram !== 'All');
+            mosaicGrid.classList.toggle('is-filtered', isFiltered);
+
+            const displayedProjects = projects.filter(p => {
+                const matchDiscipline = (selectedDiscipline === 'All') ||
+                    (p.disciplines && p.disciplines.includes(selectedDiscipline));
+                const matchProgram = (selectedProgram === 'All') ||
+                    (p.programs && p.programs.some(pr => {
+                        const target = selectedProgram.toLowerCase();
+                        const cur = pr.toLowerCase();
+                        if (cur === target) return true;
+                        if (target === 'unreal' && cur.includes('unreal')) return true;
+                        if (target === 'unity' && cur.includes('unity')) return true;
+                        return false;
+                    }));
+                return matchDiscipline && matchProgram;
+            });
+
+            const hasExpanded = expandedProjectTitle !== null;
             mosaicGrid.classList.toggle('has-expanded', hasExpanded);
 
-            // Hide/show carousel arrows when expanded
+            // Hide/show carousel arrows
             const pPrevBtn = document.getElementById('mosaicPrev');
             const pNextBtn = document.getElementById('mosaicNext');
-            if (pPrevBtn) pPrevBtn.style.display = hasExpanded ? 'none' : '';
-            if (pNextBtn) pNextBtn.style.display = hasExpanded ? 'none' : '';
+            const shouldShowArrows = !hasExpanded && displayedProjects.length > 2;
+            if (pPrevBtn) pPrevBtn.style.display = shouldShowArrows ? '' : 'none';
+            if (pNextBtn) pNextBtn.style.display = shouldShowArrows ? '' : 'none';
 
-            projects.forEach((p, idx) => {
-                const isExpanded = (expandedIndex === idx);
+            if (displayedProjects.length === 0) {
+                const empty = document.createElement('div');
+                empty.className = 'empty-filter-state';
+                empty.innerHTML = `
+                    <p class="empty-filter-title">No Projects Found</p>
+                    <p class="empty-filter-desc">No game projects match the combination of <strong>${selectedDiscipline}</strong> and <strong>${selectedProgram}</strong>.</p>
+                    <button class="cta-button" onclick="resetProjectFilters()">Reset Filters</button>
+                `;
+                mosaicGrid.appendChild(empty);
+                return;
+            }
 
-                // Hide non-expanded cards when one is expanded
+            displayedProjects.forEach((p) => {
+                const isExpanded = (expandedProjectTitle === p.title);
                 if (hasExpanded && !isExpanded) return;
 
                 const card = document.createElement('div');
@@ -397,48 +536,73 @@
                 if (p.title && p.title.toLowerCase().includes('jungle hero')) {
                     card.classList.add('jungle-hero-card');
                 }
+
+                const disciplinesList = p.disciplines || [];
+                const programsList = p.programs || [];
+
                 if (isExpanded) {
                     card.classList.add('expanded');
                     card.innerHTML = `
                         <div class="gif expanded-gif">
-                            <img src="${p.gif}" alt="${p.title} GIF">
+                            <img src="${p.gif || p.image}" alt="${p.title}">
                         </div>
                         <div class="project-content expanded-content">
                             <div>
                                 <h3 class="project-title">${p.title}</h3>
-                                <p class="project-subtitle">Team size: ${p['team-size']}</p>
-                                <p class="project-role"><strong>My role(s):</strong> ${(p.role || '').replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>
+                                ${p['team-size'] ? `<p class="project-subtitle">Team size: ${p['team-size']}</p>` : ''}
+                                ${p.role ? `<p class="project-role"><strong>My role(s):</strong> ${(p.role || '').replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>` : ''}
                                 <p class="project-description"><strong>Description:</strong> ${(p.desc || '').replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>
-                                ${p.link ? `<a href="${p.link}" target="_blank" class="cta-button">View on Steam</a>` : ''}
+                                <div class="expanded-tags-container">
+                                    ${disciplinesList.length ? `
+                                        <div class="expanded-tag-section">
+                                            <strong>Disciplines:</strong>
+                                            <div class="expanded-tag-list">
+                                                ${disciplinesList.map(d => `<span class="badge-tag discipline-badge clickable-tag" onclick="event.stopPropagation(); setProjectFilter('discipline', '${d}')">${d}</span>`).join('')}
+                                            </div>
+                                        </div>
+                                    ` : ''}
+                                    ${programsList.length ? `
+                                        <div class="expanded-tag-section">
+                                            <strong>Programs:</strong>
+                                            <div class="expanded-tag-list">
+                                                ${programsList.map(pr => `<span class="badge-tag program-badge clickable-tag" onclick="event.stopPropagation(); setProjectFilter('program', '${pr}')">${pr}</span>`).join('')}
+                                            </div>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                                ${p.link ? `<a href="${p.link}" target="_blank" class="cta-button" style="margin-top: 1.2rem;">View on Steam</a>` : ''}
                             </div>
                             <button class="return-btn">Return</button>
                         </div>
                     `;
                     card.querySelector('.return-btn').onclick = (e) => {
                         e.stopPropagation();
-                        expandedIndex = null;
+                        expandedProjectTitle = null;
                         renderMosaic();
                     };
                 } else {
                     card.innerHTML = `
                         <div class="gif">
-                            <img src="${p.gif}" alt="${p.title} GIF">
+                            <img src="${p.gif || p.image}" alt="${p.title}">
                         </div>
                         <div class="project-content">
-                            <h3 class="project-title">${p.title}</h3>
-                            <p class="project-subtitle">Team size: ${p['team-size']}</p>
+                            <div>
+                                <h3 class="project-title">${p.title}</h3>
+                                ${renderTagBadges(disciplinesList, programsList)}
+                            </div>
                             <p class="expand-hint">Click to see details</p>
                         </div>
                     `;
                 }
+
                 card.onclick = (e) => {
                     if (isExpanded) {
-                        if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A' && !e.target.closest('.return-btn')) {
-                            expandedIndex = null;
+                        if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A' && !e.target.closest('.return-btn') && !e.target.closest('.clickable-tag')) {
+                            expandedProjectTitle = null;
                             renderMosaic();
                         }
                     } else {
-                        expandedIndex = idx;
+                        expandedProjectTitle = p.title;
                         renderMosaic();
                         setTimeout(() => {
                             const el = mosaicGrid.querySelector('.project-card.expanded');
@@ -450,7 +614,105 @@
             });
         }
 
-        // ── Tools mosaic grid state ────────────────────────────────
+        // ── Environment Art grid state ────────────────────────────
+        let envData = [];
+        let expandedEnvTitle = null;
+
+        function renderEnvironment(items) {
+            if (items) envData = items;
+            const envGrid = document.getElementById('envGrid');
+            if (!envGrid) return;
+            envGrid.innerHTML = '';
+            const hasExpanded = expandedEnvTitle !== null;
+            envGrid.classList.toggle('has-expanded', hasExpanded);
+
+            envData.forEach((env) => {
+                const isExpanded = (expandedEnvTitle === env.title);
+                const imgSrc = env.image || env.gif || '';
+
+                if (hasExpanded && !isExpanded) return;
+
+                const card = document.createElement('div');
+                card.className = 'project-card';
+
+                const disciplinesList = env.disciplines || [];
+                const programsList = env.programs || [];
+
+                if (isExpanded) {
+                    card.classList.add('expanded');
+                    card.innerHTML = `
+                        <div class="gif expanded-gif">
+                            <img src="${imgSrc}" alt="${env.title}">
+                        </div>
+                        <div class="project-content expanded-content">
+                            <div>
+                                <h3 class="project-title">${env.title}</h3>
+                                ${env['team-size'] ? `<p class="project-subtitle">Team size: ${env['team-size']}</p>` : ''}
+                                ${env.role ? `<p class="project-role"><strong>My role(s):</strong> ${(env.role).replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>` : ''}
+                                <p class="project-description"><strong>Description:</strong> ${(env.desc || '').replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>
+                                <div class="expanded-tags-container">
+                                    ${disciplinesList.length ? `
+                                        <div class="expanded-tag-section">
+                                            <strong>Disciplines:</strong>
+                                            <div class="expanded-tag-list">
+                                                ${disciplinesList.map(d => `<span class="badge-tag discipline-badge">${d}</span>`).join('')}
+                                            </div>
+                                        </div>
+                                    ` : ''}
+                                    ${programsList.length ? `
+                                        <div class="expanded-tag-section">
+                                            <strong>Programs:</strong>
+                                            <div class="expanded-tag-list">
+                                                ${programsList.map(pr => `<span class="badge-tag program-badge">${pr}</span>`).join('')}
+                                            </div>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                                ${env.link ? `<a href="${env.link}" target="_blank" class="cta-button" style="margin-top: 1.2rem;">View Showcase</a>` : ''}
+                            </div>
+                            <button class="return-btn">Return</button>
+                        </div>
+                    `;
+                    card.querySelector('.return-btn').onclick = (e) => {
+                        e.stopPropagation();
+                        expandedEnvTitle = null;
+                        renderEnvironment();
+                    };
+                } else {
+                    card.innerHTML = `
+                        <div class="gif">
+                            ${imgSrc ? `<img src="${imgSrc}" alt="${env.title}">` : `<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;background:linear-gradient(45deg, var(--accent-color), #7c3aed);color:white;">🏔</div>`}
+                        </div>
+                        <div class="project-content">
+                            <div>
+                                <h3 class="project-title">${env.title}</h3>
+                                ${renderTagBadges(disciplinesList, programsList)}
+                            </div>
+                            <p class="expand-hint">Click to see details</p>
+                        </div>
+                    `;
+                }
+
+                card.onclick = (e) => {
+                    if (isExpanded) {
+                        if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A' && !e.target.closest('.return-btn')) {
+                            expandedEnvTitle = null;
+                            renderEnvironment();
+                        }
+                    } else {
+                        expandedEnvTitle = env.title;
+                        renderEnvironment();
+                        setTimeout(() => {
+                            const el = envGrid.querySelector('.project-card.expanded');
+                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 50);
+                    }
+                };
+                envGrid.appendChild(card);
+            });
+        }
+
+        // ── Tools grid state ───────────────────────────────────────
         let toolsData = [];
         let expandedToolIndex = null;
 
@@ -462,21 +724,17 @@
             const hasExpanded = expandedToolIndex !== null;
             toolsGrid.classList.toggle('has-expanded', hasExpanded);
 
-            // Hide/show carousel arrows when expanded
-            const prevBtn = document.getElementById('toolsPrev');
-            const nextBtn = document.getElementById('toolsNext');
-            if (prevBtn) prevBtn.style.display = hasExpanded ? 'none' : '';
-            if (nextBtn) nextBtn.style.display = hasExpanded ? 'none' : '';
-
             toolsData.forEach((tool, idx) => {
                 const isExpanded = (expandedToolIndex === idx);
                 const imgSrc = tool.image || tool.gif || '';
 
-                // Hide non-expanded cards when one is expanded
                 if (hasExpanded && !isExpanded) return;
 
                 const card = document.createElement('div');
                 card.className = 'project-card';
+
+                const disciplinesList = tool.disciplines || [];
+                const programsList = tool.programs || [];
 
                 if (isExpanded) {
                     card.classList.add('expanded');
@@ -490,7 +748,25 @@
                                 ${tool['team-size'] ? `<p class="project-subtitle">Team size: ${tool['team-size']}</p>` : ''}
                                 ${tool.role ? `<p class="project-role"><strong>My role(s):</strong> ${(tool.role).replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>` : ''}
                                 <p class="project-description"><strong>Description:</strong> ${(tool.desc || '').replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>
-                                ${tool.link ? `<a href="${tool.link}" target="_blank" class="cta-button">View Tool</a>` : ''}
+                                <div class="expanded-tags-container">
+                                    ${disciplinesList.length ? `
+                                        <div class="expanded-tag-section">
+                                            <strong>Disciplines:</strong>
+                                            <div class="expanded-tag-list">
+                                                ${disciplinesList.map(d => `<span class="badge-tag discipline-badge">${d}</span>`).join('')}
+                                            </div>
+                                        </div>
+                                    ` : ''}
+                                    ${programsList.length ? `
+                                        <div class="expanded-tag-section">
+                                            <strong>Programs:</strong>
+                                            <div class="expanded-tag-list">
+                                                ${programsList.map(pr => `<span class="badge-tag program-badge">${pr}</span>`).join('')}
+                                            </div>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                                ${tool.link ? `<a href="${tool.link}" target="_blank" class="cta-button" style="margin-top: 1.2rem;">View Tool</a>` : ''}
                             </div>
                             <button class="return-btn">Return</button>
                         </div>
@@ -506,8 +782,10 @@
                             ${imgSrc ? `<img src="${imgSrc}" alt="${tool.title}">` : `<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;background:linear-gradient(45deg, var(--accent-color), #7c3aed);color:white;">🔧</div>`}
                         </div>
                         <div class="project-content">
-                            <h3 class="project-title">${tool.title}</h3>
-                            <p class="project-subtitle">${tool['team-size'] ? 'Team size: ' + tool['team-size'] : 'Custom Tool'}</p>
+                            <div>
+                                <h3 class="project-title">${tool.title}</h3>
+                                ${renderTagBadges(disciplinesList, programsList)}
+                            </div>
                             <p class="expand-hint">Click to see details</p>
                         </div>
                     `;
@@ -530,19 +808,6 @@
                 };
                 toolsGrid.appendChild(card);
             });
-
-            // Only rebind arrows if not expanded (they're hidden otherwise)
-            if (!hasExpanded) {
-                const container = document.getElementById('toolsContainer');
-                if (container && prevBtn && nextBtn) {
-                    prevBtn.onclick = () => {
-                        container.scrollBy({ left: -container.clientWidth * 0.8, behavior: 'smooth' });
-                    };
-                    nextBtn.onclick = () => {
-                        container.scrollBy({ left: container.clientWidth * 0.8, behavior: 'smooth' });
-                    };
-                }
-            }
         }
 
         // ── Fetch all CMS data once, then render each section ──────
@@ -579,6 +844,10 @@
                             container.scrollBy({ left: container.clientWidth * 0.8, behavior: 'smooth' });
                         });
                     }
+
+                    // Environment Art
+                    const envItems = data.filter(item => item.category === 'environment_art' || item.category === 'environment art');
+                    renderEnvironment(envItems);
 
                     // Development Tools
                     const tools = data.filter(item => item.category === 'tool');
@@ -646,7 +915,7 @@
 
         // ── Scroll listeners ───────────────────────────────────────
         window.addEventListener('scroll', () => {
-            const sections = ['hero', 'projects', 'tools', 'articles', 'cv', 'contact'];
+            const sections = ['hero', 'projects', 'environment-art', 'tools', 'articles', 'cv', 'contact'];
             const navDots = document.querySelectorAll('.nav-dot');
             let current = '';
             sections.forEach(id => {

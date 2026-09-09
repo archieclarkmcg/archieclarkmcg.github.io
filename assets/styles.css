@@ -906,33 +906,60 @@ body {
 }
 
 .project-card .project-content {
-    padding: 1.2rem;
+    padding: 1.1rem;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: hidden;
 }
 
 .project-card .project-title {
     font-family: var(--font-title);
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.05em;
     color: var(--text-primary);
+    line-height: 1.3;
+    margin-bottom: 0.35rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .project-card .project-subtitle {
     color: var(--accent-color);
     font-family: var(--font-heading);
-    font-size: 0.95rem;
-    letter-spacing: 0.05em;
+    font-size: 0.92rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.25rem;
 }
 
 .project-card .expand-hint {
-    color: var(--text-muted);
+    color: var(--accent-color);
     font-family: var(--font-body);
     font-style: italic;
     font-size: 0.85rem;
+    margin-top: auto;
+    padding-top: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    opacity: 0.85;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.project-card:hover .expand-hint {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+.project-card .expand-hint::before {
+    content: '◆';
+    font-size: 0.55rem;
+    color: var(--accent-color);
 }
 
 /* Grid override when a card is expanded — full-width block layout */
@@ -1041,15 +1068,15 @@ body {
 }
 
 /* Mosaic sizing overrides */
-.project-card:nth-child(1) {
+.mosaic-grid:not(.is-filtered) .project-card:nth-child(1) {
     grid-column: span 2;
 }
 
-.project-card:nth-child(7) {
+.mosaic-grid:not(.is-filtered) .project-card:nth-child(7) {
     grid-column: span 2;
 }
 
-.project-card:nth-child(8) {
+.mosaic-grid:not(.is-filtered) .project-card:nth-child(8) {
     grid-column: span 2;
 }
 
@@ -1463,3 +1490,266 @@ footer {
 #game-projects-list {
     display: none !important;
 }
+
+/* ─────────────────────────────────────────────────────────── */
+/* Project Filter Hub (Discipline & Program Tags)             */
+/* ─────────────────────────────────────────────────────────── */
+.project-filter-hub {
+    max-width: 1200px;
+    margin: 0 auto 2.2rem auto;
+    padding: 1.3rem 1.6rem;
+    background: rgba(8, 12, 24, 0.88);
+    border: 1px solid var(--border-gold);
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(10, 20, 40, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-label {
+    font-family: var(--font-title);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    min-width: 140px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.filter-icon {
+    font-size: 0.95rem;
+    color: var(--accent-glow);
+}
+
+.filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.filter-tag {
+    background: rgba(10, 16, 32, 0.7);
+    border: 1px solid rgba(80, 130, 200, 0.35);
+    color: var(--text-secondary);
+    font-family: var(--font-heading);
+    font-size: 0.84rem;
+    letter-spacing: 0.04em;
+    padding: 0.35rem 0.8rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.filter-tag:hover {
+    color: #fff;
+    border-color: var(--border-gold-glow);
+    background: rgba(20, 35, 70, 0.6);
+    box-shadow: 0 0 10px rgba(100, 160, 230, 0.25);
+    transform: translateY(-1px);
+}
+
+.filter-tag.active {
+    background: linear-gradient(135deg, rgba(30, 70, 130, 0.9), rgba(15, 40, 85, 0.9));
+    border-color: var(--accent-glow);
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(100, 170, 240, 0.5), inset 0 0 8px rgba(100, 170, 240, 0.2);
+    font-weight: 600;
+}
+
+.filter-tag.active::before {
+    content: '◆';
+    font-size: 0.6rem;
+    color: var(--accent-color);
+}
+
+/* Empty filter state */
+.empty-filter-state {
+    grid-column: 1 / -1;
+    padding: 3rem 2rem;
+    text-align: center;
+    background: rgba(8, 12, 24, 0.7);
+    border: 1px dashed var(--border-gold);
+    border-radius: 4px;
+    margin: 1rem 0;
+    width: 100%;
+}
+
+.empty-filter-title {
+    font-family: var(--font-title);
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.08em;
+}
+
+.empty-filter-desc {
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+}
+
+/* Badge tags on cards */
+.project-tags-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 0.6rem 0 0.3rem 0;
+}
+
+.badge-tag {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+    line-height: 1.2;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.discipline-badge {
+    background: rgba(40, 28, 10, 0.65);
+    border: 1px solid rgba(220, 160, 60, 0.45);
+    color: #f1cf8a;
+}
+
+.program-badge {
+    background: rgba(14, 30, 60, 0.7);
+    border: 1px solid rgba(80, 140, 220, 0.45);
+    color: #9cd4ff;
+}
+
+.clickable-tag {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.clickable-tag:hover {
+    filter: brightness(1.25);
+    transform: translateY(-1px);
+}
+
+/* Expanded Card Tag Sections */
+.expanded-tags-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(100, 160, 230, 0.15);
+}
+
+.expanded-tag-section {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.expanded-tag-section strong {
+    font-family: var(--font-title);
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    color: var(--text-primary);
+    min-width: 110px;
+}
+
+.expanded-tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.badge-tag.more-badge {
+    background: rgba(100, 160, 230, 0.15);
+    border: 1px dashed var(--accent-glow);
+    color: var(--accent-color);
+    font-style: italic;
+    cursor: pointer;
+}
+
+.badge-tag.more-badge:hover {
+    background: rgba(100, 160, 230, 0.3);
+    color: #fff;
+}
+
+/* Environment Art & Tools Grids */
+.env-grid,
+.tools-grid {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 10px 0 20px 0;
+    flex-wrap: wrap;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 380px));
+    justify-content: center;
+}
+
+.env-grid:not(.has-expanded) .project-card,
+.tools-grid:not(.has-expanded) .project-card {
+    width: 380px;
+    max-width: 100%;
+    min-height: 390px;
+    height: 390px;
+}
+
+/* Universal Expanded State Rules: Wide and Well-Proportioned */
+.mosaic-grid.has-expanded,
+.env-grid.has-expanded,
+.tools-grid.has-expanded {
+    display: block !important;
+    width: 100% !important;
+}
+
+.project-card.expanded,
+.mosaic-grid.has-expanded .project-card.expanded,
+.env-grid.has-expanded .project-card.expanded,
+.tools-grid.has-expanded .project-card.expanded {
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    display: grid !important;
+    grid-template-columns: 1.1fr 1fr !important;
+    gap: 2.5rem !important;
+    padding: 2.5rem !important;
+    box-sizing: border-box !important;
+    height: auto !important;
+    min-height: unset !important;
+}
+
+@media (max-width: 900px) {
+    .project-card.expanded,
+    .mosaic-grid.has-expanded .project-card.expanded,
+    .env-grid.has-expanded .project-card.expanded,
+    .tools-grid.has-expanded .project-card.expanded {
+        grid-template-columns: 1fr !important;
+        padding: 1.5rem !important;
+        gap: 1.5rem !important;
+    }
+}
