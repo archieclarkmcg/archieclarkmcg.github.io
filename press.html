@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Press · Archie McGrath</title>
+    <meta name="description" content="Articles and exhibitions featuring work by Archie McGrath.">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/krillin.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Marcellus&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css?v=3.0">
+    <link rel="stylesheet" href="assets/site.css?v=3.0">
+</head>
+
+<body>
+    <header id="site-nav"></header>
+
+    <header class="page-header">
+        <p class="breadcrumb"><a href="index.html">Home</a> ◆ Press</p>
+        <h1 class="section-title">Press &amp; Features</h1>
+        <p class="section-subtitle">Articles and exhibitions featuring my work and projects I was involved in</p>
+    </header>
+
+    <section class="section tight">
+        <div class="articles-grid" id="articlesGrid"></div>
+    </section>
+
+    <footer id="contact"></footer>
+
+    <script src="assets/site.js?v=3.0"></script>
+    <script>
+        (async () => {
+            renderChrome('press');
+            const data = await loadCMS();
+            const grid = document.getElementById('articlesGrid');
+            data.filter(i => i.category === 'article').forEach(a => {
+                const card = document.createElement('div');
+                card.className = 'article-card';
+                card.id = a.slug;
+                card.innerHTML = `
+                    <div class="article-image${a.video ? ' has-video' : ''}">${a.video ? videoPlayer(a) : `<img src="${esc(mediaSrc(a))}" alt="${esc(a.title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;">`}</div>
+                    <div class="article-header"><h3 class="article-title">${esc(a.title)}</h3></div>
+                    <div class="article-description"><p>${multiline(a.desc)}</p></div>
+                    ${a.link ? `<a href="${esc(a.link)}" target="_blank" rel="noopener" class="cta-button">Read Article</a>` : ''}`;
+                grid.appendChild(card);
+            });
+        })();
+    </script>
+</body>
+
+</html>

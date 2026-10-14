@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Art &amp; Tools · Archie McGrath</title>
+    <meta name="description" content="Procedural tools, character rigging and animation, and real-time environment art by Archie McGrath.">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/krillin.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Marcellus&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css?v=3.0">
+    <link rel="stylesheet" href="assets/site.css?v=3.0">
+</head>
+
+<body>
+    <header id="site-nav"></header>
+
+    <header class="page-header">
+        <p class="breadcrumb"><a href="index.html">Home</a> ◆ Tech Art &amp; Tools</p>
+        <h1 class="section-title">Tech Art &amp; Tools</h1>
+        <p class="section-subtitle">Procedural DCC tools I have led development on, character rigging and animation, and real-time environment showcases</p>
+    </header>
+
+    <section class="section tight" id="tools">
+        <h2 class="sub-section-title">Development Tools</h2>
+        <div class="card-grid" id="toolsGrid"></div>
+    </section>
+
+    <section class="section tight" id="animation">
+        <h2 class="sub-section-title">Character Animation &amp; Rigging</h2>
+        <div class="card-grid" id="animGrid"></div>
+    </section>
+
+    <section class="section tight" id="environment-art">
+        <h2 class="sub-section-title">Environment Art</h2>
+        <div class="card-grid" id="envGrid"></div>
+    </section>
+
+    <footer id="contact"></footer>
+
+    <script src="assets/site.js?v=3.0"></script>
+    <script>
+        (async () => {
+            renderChrome('tech-art');
+            const data = await loadCMS();
+            const make = (id, filter) => new FilterGrid({
+                items: data.filter(filter),
+                grid: document.getElementById(id),
+                renderItem: renderCard,
+                onOpen: item => openItem(item)
+            });
+            make('toolsGrid', i => i.category === 'tool');
+            make('animGrid', i => i.category === 'animation');
+            make('envGrid', i => i.category === 'environment_art' || i.category === 'environment art');
+            openFromHash(data.filter(i => catInfo(i).page === 'tech-art'), {});
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+# Source files kept locally but never pushed
+raw assets/
+
+# Fallbacks in case originals sit elsewhere
+assets/mp4/SiggraphVideo.mp4
+*.drx
+
+# Editable CV sources (personal details: keep private)
+assets/pdfs/*.xlsx
+assets/pdfs/*.docx
+
+# Local preview helper
+start-local-server.bat

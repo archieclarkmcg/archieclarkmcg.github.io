@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localisation · Archie McGrath</title>
+    <meta name="description" content="Translation, subtitling and localisation work by Archie McGrath across Japanese, Spanish and English.">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/krillin.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Marcellus&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css?v=3.0">
+    <link rel="stylesheet" href="assets/site.css?v=3.0">
+</head>
+
+<body>
+    <header id="site-nav"></header>
+
+    <header class="page-header">
+        <p class="breadcrumb"><a href="index.html">Home</a> ◆ Localisation</p>
+        <h1 class="section-title">Localisation &amp; Translation</h1>
+        <p class="section-subtitle">Translation, transcription and subtitling work across Japanese, Spanish and English</p>
+    </header>
+
+    <section class="section tight">
+        <div class="filter-panel">
+            <div class="project-filter-hub" id="pageFilters"></div>
+        </div>
+        <p class="filter-count" id="pageCount"></p>
+        <div class="card-grid" id="pageGrid"></div>
+    </section>
+
+    <footer id="contact"></footer>
+
+    <script src="assets/site.js?v=3.0"></script>
+    <script>
+        initCategoryPage({ pageId: 'localisation', filter: i => i.category === 'localisation' || (i.disciplines || []).includes('Localisation') });
+    </script>
+</body>
+
+</html>

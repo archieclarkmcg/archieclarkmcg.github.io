@@ -16,7 +16,8 @@
       "Unity",
       "C#",
       "Photoshop"
-    ]
+    ],
+    "featured": true
   },
   {
     "category": "game",
@@ -156,7 +157,8 @@
     "programs": [
       "Unity",
       "C#",
-      "Photoshop", "Audacity",
+      "Photoshop",
+      "Audacity",
       "Tiled 2D"
     ]
   },
@@ -250,6 +252,81 @@
     "programs": [
       "Blender",
       "Python"
+    ],
+    "featured": true
+  },
+  {
+    "category": "animation",
+    "title": "Sporty Group Character Animation",
+    "image": "assets/images/SportyGroup/ColinCard.png",
+    "role": "Technical Animator (Contract, Remote)",
+    "desc": "Character rigging and animation for a mobile game at Sporty Group. I worked on 4 characters, creating around 8 animations for each.\n\nFor every character I edited and prepped the mesh for animation, built the body and facial rigs, weight painted, and animated using a mix of motion capture and hand animation in Blender, then implemented and playtested the results in Unity for mobile.\n\nThe slideshow shows examples of animations used in the game, alongside the rigs behind them.",
+    "link": "",
+    "disciplines": [
+      "Animation",
+      "Rigging",
+      "Motion Capture"
+    ],
+    "programs": [
+      "Blender",
+      "Unity"
+    ],
+    "gallery": [
+      {
+        "src": "assets/mp4/SportyGroup/Colin_RedCard.mp4",
+        "poster": "assets/images/SportyGroup/posters/Colin_RedCard.jpg",
+        "caption": "Colin: Red Card"
+      },
+      {
+        "src": "assets/mp4/SportyGroup/Colin_WhistleBlow.mp4",
+        "poster": "assets/images/SportyGroup/posters/Colin_WhistleBlow.jpg",
+        "caption": "Colin: Whistle Blow, with rig visible"
+      },
+      {
+        "src": "assets/mp4/SportyGroup/Colin_Idle.mp4",
+        "poster": "assets/images/SportyGroup/posters/Colin_Idle.jpg",
+        "caption": "Colin: Idle"
+      },
+      {
+        "src": "assets/mp4/SportyGroup/Ben_WhistleBlow.mp4",
+        "poster": "assets/images/SportyGroup/posters/Ben_WhistleBlow.jpg",
+        "caption": "Ben: Whistle Blow"
+      },
+      {
+        "src": "assets/mp4/SportyGroup/Ben_Idle.mp4",
+        "poster": "assets/images/SportyGroup/posters/Ben_Idle.jpg",
+        "caption": "Ben: Idle"
+      },
+      {
+        "src": "assets/mp4/SportyGroup/Coach_Sad.mp4",
+        "poster": "assets/images/SportyGroup/posters/Coach_Sad.jpg",
+        "caption": "Coach: Sad"
+      },
+      {
+        "src": "assets/images/SportyGroup/CharacterRig.png",
+        "caption": "Body and face rig"
+      }
+    ]
+  },
+  {
+    "category": "environment_art",
+    "title": "Fluid Ring: Houdini Showcase (SIGGRAPH Asia 2024)",
+    "image": "assets/images/siggraph/ring_gold.jpg",
+    "video": "assets/mp4/SiggraphVideoComp.mp4",
+    "featured": true,
+    "role": "Environment Art, Texturing, Cinematography, Animation, Editing and Sound Design",
+    "desc": "A cinematic showcasing Houdini's fluid simulation capabilities through a ring formed of simulated water, featured at SideFX's Houdini Hive at SIGGRAPH Asia 2024. The fluid simulation was the centrepiece; I created and authored everything around it to support that goal.\n\nStarting from the ring model, I cut away part of it in Blender, then textured it in Substance Painter with extra detail such as dirt and polished, shinier areas. I built the Unreal Engine scene from pre-made assets, added fog made in Houdini, and set up the compositions, cameras and animation. Finally, I rendered into DaVinci Resolve, edited the piece and added the sound.",
+    "link": "https://www.sidefx.com/houdini-hive/siggraph-asia-2024/#labs",
+    "disciplines": [
+      "Environment Design",
+      "Sound Design"
+    ],
+    "programs": [
+      "Unreal",
+      "Houdini",
+      "Substance Painter",
+      "Blender",
+      "DaVinci Resolve"
     ]
   },
   {
@@ -266,36 +343,98 @@
     "programs": [
       "Blender",
       "Unreal"
-    ]
+    ],
+    "featured": true
   },
   {
     "category": "environment_art",
     "title": "Icelandic Riverside",
-    "image": "assets/images/UE5_EnvironmentArt_River.png",
+    "image": "assets/images/IcelandicRiverside/ScreenShot00020.jpg",
     "role": "Environment Art",
     "team-size": 1,
-    "desc": "Created following a brief that was to create an environment inspired by images of Icelandic cliffs, using Megascans assets including massive cliffs, lush foliage and water. Created in UE5 in 1 week.",
-    "link": "https://www.sidefx.com/houdini-hive/siggraph-asia-2024/#labs",
+    "desc": "Created following a brief that was to create an environment inspired by images of Icelandic cliffs, using Megascans assets including massive cliffs, lush foliage and water. Created in UE5 in 1 week.\n\nUse the arrows to step through the making-of, from first blockout to final render.",
+    "link": "",
     "disciplines": [
       "Environment Design"
     ],
     "programs": [
       "Unreal",
       "Houdini"
+    ],
+    "gallery": [
+      "assets/images/IcelandicRiverside/ScreenShot00020.jpg",
+      "assets/images/IcelandicRiverside/ScreenShot00000.jpg",
+      "assets/images/IcelandicRiverside/ScreenShot00001.jpg",
+      "assets/images/IcelandicRiverside/ScreenShot00002.jpg",
+      "assets/images/IcelandicRiverside/ScreenShot00003.jpg",
+      "assets/images/IcelandicRiverside/ScreenShot00004.jpg",
+      "assets/images/IcelandicRiverside/ScreenShot00005.jpg",
+      "assets/images/IcelandicRiverside/ScreenShot00006.jpg",
+      "assets/images/IcelandicRiverside/ScreenShot00007.jpg",
+      "assets/images/IcelandicRiverside/ScreenShot00008.jpg",
+      "assets/images/IcelandicRiverside/ScreenShot00009.jpg",
+      "assets/images/IcelandicRiverside/ScreenShot00010.jpg",
+      "assets/images/IcelandicRiverside/ScreenShot00011.jpg",
+      "assets/images/IcelandicRiverside/ScreenShot00012.jpg",
+      "assets/images/IcelandicRiverside/ScreenShot00013.jpg",
+      "assets/images/IcelandicRiverside/ScreenShot00014.jpg",
+      "assets/images/IcelandicRiverside/ScreenShot00015.jpg",
+      "assets/images/IcelandicRiverside/ScreenShot00016.jpg",
+      "assets/images/IcelandicRiverside/ScreenShot00017.jpg",
+      "assets/images/IcelandicRiverside/ScreenShot00018.jpg",
+      "assets/images/IcelandicRiverside/ScreenShot00019.jpg"
+    ],
+    "galleryCaptions": [
+      "Final render",
+      "Making-of: step 1 of 20",
+      "Making-of: step 2 of 20",
+      "Making-of: step 3 of 20",
+      "Making-of: step 4 of 20",
+      "Making-of: step 5 of 20",
+      "Making-of: step 6 of 20",
+      "Making-of: step 7 of 20",
+      "Making-of: step 8 of 20",
+      "Making-of: step 9 of 20",
+      "Making-of: step 10 of 20",
+      "Making-of: step 11 of 20",
+      "Making-of: step 12 of 20",
+      "Making-of: step 13 of 20",
+      "Making-of: step 14 of 20",
+      "Making-of: step 15 of 20",
+      "Making-of: step 16 of 20",
+      "Making-of: step 17 of 20",
+      "Making-of: step 18 of 20",
+      "Making-of: step 19 of 20",
+      "Making-of: step 20 of 20"
     ]
+  },
+  {
+    "category": "localisation",
+    "title": "Satoumi & Japan's Young Ocean Explorers (Anima Films)",
+    "image": "assets/images/Anima Films Thumb.png",
+    "role": "Japanese–English Translation Editing, Transcription, Subtitle Timing (Freelance)",
+    "desc": "A documentary by Anima Films for Prada and National Geographic exploring \"Satoumi\", Japan's approach to protecting marine ecosystems by strengthening people's relationship with the sea. Benedict Cumberbatch and National Geographic Explorer Elisabetta Zavoli travel to Japan to meet ocean advocate Sakana-kun and his young exploration team.\n\nContracted freelance, I edited the existing Japanese–English translation for the children's dialogue in the museum experience section. I corrected mistakes in the original transcription and subtitles, and advised the team on translation and subtitle timing so the film accurately conveyed what was being said and supported its narrative.\n\nThe campaign reached 1.2M+ views on YouTube and 200M+ views across Prada's TikTok.",
+    "link": "https://animafilms.co.uk/article/satoumi-and-the-ocean-stewards-of-japan",
+    "disciplines": [
+      "Localisation",
+      "Translation",
+      "Subtitling"
+    ],
+    "featured": true
   },
   {
     "category": "article",
     "title": "Siggraph Asia 2024 – Houdini Hive",
     "link": "https://www.sidefx.com/houdini-hive/siggraph-asia-2024/#labs",
-    "image": "assets/images/UE5_EnvironmentArt_River.png",
+    "image": "assets/images/siggraph/ring_blue.jpg",
     "desc": "Showcase of A video and envrionment created by me used to show off real-time water physics in Houdini at Siggraph Asia 2024",
     "programs": [
       "Unreal",
       "Houdini",
       "Substance Painter",
       "Substance Designer"
-    ]
+    ],
+    "video": "assets/mp4/SiggraphVideoComp.mp4"
   },
   {
     "category": "article",

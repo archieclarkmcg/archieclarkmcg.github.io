@@ -4,937 +4,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archie McGrath</title>
+    <title>Archie McGrath · Technical Artist</title>
+    <meta name="description" content="Portfolio of Archie McGrath, Technical Artist at Feral Interactive: games, tools, environment art and localisation.">
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/krillin.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=Marcellus&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/styles.css?v=2.2">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Marcellus&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css?v=3.0">
+    <link rel="stylesheet" href="assets/site.css?v=3.0">
 </head>
 
 <body>
-    <div class="desktop-toggle">
-        <button onclick="toggleDesktopView()">View Desktop Version</button>
-    </div>
-    <!-- Floating Sidebar Navigation -->
-    <nav class="floating-nav">
-        <div class="nav-dot" data-label="Home" onclick="scrollToSection('hero')"></div>
-        <div class="nav-dot" data-label="Projects" onclick="scrollToSection('projects')"></div>
-        <div class="nav-dot" data-label="Environment Art" onclick="scrollToSection('environment-art')"></div>
-        <div class="nav-dot" data-label="Tools" onclick="scrollToSection('tools')"></div>
-        <div class="nav-dot" data-label="Articles" onclick="scrollToSection('articles')"></div>
-        <div class="nav-dot" data-label="Experience" onclick="scrollToSection('cv')"></div>
-        <div class="nav-dot" data-label="Contact" onclick="scrollToSection('contact')"></div>
-    </nav>
+    <header id="site-nav"></header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
+    <!-- Hero -->
+    <section class="hero hero-compact" id="hero">
         <div class="hero-wrapper">
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="ds-title">Archie McGrath</h1>
-                    <h2>Game Developer</h2>
+                    <h2>Technical Artist</h2>
                     <div class="hero-description">
                         Currently a Technical Artist at Feral Interactive.
                     </div>
-                    <a href="#contact" class="cta-button">Get In Touch</a>
+                    <div class="hero-actions">
+                        <a href="#work" class="cta-button">View My Work</a>
+                        <a href="#contact" class="cta-button ghost">Get In Touch</a>
+                    </div>
                 </div>
                 <div class="hero-visual">
                     <div class="hero-avatar"><img src="assets/images/myface.jpg" alt="Archie McGrath"
-                            style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
+                            style="width:100%;height:100%;object-fit:cover;border-radius:2px;"></div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Current Journey Experience Strip (integrated in Hero) -->
-            <div class="experience-strip" id="journey">
-                <div class="experience-content">
-                    <h3 class="experience-title">Current Journey</h3>
-                    
-                    <!-- Current Job Featured Top -->
-                    <div class="current-job-featured">
-                        <div class="timeline-item timeline-item-active current-featured-item">
-                            <span class="active-badge">PRESENT ROLE</span>
-                            <div class="company-logo"><img src="assets/images/ferallogo.jpg" alt="Feral Interactive"
-                                    style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
-                            <div class="timeline-info">
-                                <h4>Technical Artist</h4>
-                                <p>Feral Interactive • OCT 2025 ~</p>
-                            </div>
-                        </div>
-                    </div>
+    <!-- All work mosaic -->
+    <section class="section home-work" id="work">
+        <h2 class="section-title">My Work</h2>
+        <p class="section-subtitle">Games, tools, environments and localisation. Click anything to take a closer look</p>
 
-                    <!-- Previous Roles Heading -->
-                    <div class="previous-roles-header">
-                        <span class="prev-decor">===</span>
-                        <span class="prev-title">Previous Roles</span>
-                        <span class="prev-decor">===</span>
-                    </div>
+        <div class="filter-panel">
+            <div class="project-filter-hub" id="homeFilters"></div>
+        </div>
+        <p class="filter-count" id="homeCount"></p>
 
-                    <!-- Previous Roles List -->
-                    <div class="previous-roles-timeline">
-                        <div class="timeline-item timeline-item-previous">
-                            <div class="company-logo"><img src="assets/images/sportylogo.jpeg" alt="SportyUK"
-                                    style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
-                            <div class="timeline-info">
-                                <h4>Technical Animator</h4>
-                                <p>Sporty Group • JUN 2025 - OCT 2025</p>
-                            </div>
-                        </div>
+        <div class="mosaic" id="homeMosaic"></div>
+    </section>
 
-                        <div class="timeline-item timeline-item-previous">
-                            <div class="company-logo"><img src="assets/images/CGHUBLogo_cropped.png" alt="CG Hub"
-                                    style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
-                            <div class="timeline-info">
-                                <h4>Technical Art Experience</h4>
-                                <p>CG Hub • APR 2025</p>
-                            </div>
-                        </div>
+    <!-- Work history -->
+    <section class="section home-history" id="history">
+        <div class="experience-strip">
+            <div class="experience-content">
+                <h3 class="experience-title">Work History</h3>
 
-                        <div class="timeline-item timeline-item-previous">
-                            <div class="company-logo"><img src="assets/images/metameowlogo.jpeg" alt="Meta Meow"
-                                    style="width:100%;height:100%;object-fit:cover;border-radius:20px;"></div>
-                            <div class="timeline-info">
-                                <h4>Technical Art Intern</h4>
-                                <p>Meta Meow • MAR 2024 - MAR 2025</p>
-                            </div>
+                <div class="current-job-featured">
+                    <div class="timeline-item timeline-item-active current-featured-item">
+                        <span class="active-badge">PRESENT ROLE</span>
+                        <div class="company-logo"><img src="assets/images/ferallogo.jpg" alt="Feral Interactive"
+                                style="width:100%;height:100%;object-fit:cover;"></div>
+                        <div class="timeline-info">
+                            <h4>Technical Artist</h4>
+                            <p>Feral Interactive • OCT 2025 ~</p>
                         </div>
                     </div>
                 </div>
+
+                <div class="previous-roles-header">
+                    <span class="prev-decor">===</span>
+                    <span class="prev-title">Previous Roles</span>
+                    <span class="prev-decor">===</span>
+                </div>
+
+                <div class="previous-roles-timeline">
+                    <div class="timeline-item timeline-item-previous">
+                        <div class="company-logo"><img src="assets/images/sportylogo.jpeg" alt="Sporty Group"
+                                style="width:100%;height:100%;object-fit:cover;"></div>
+                        <div class="timeline-info">
+                            <h4>Technical Animator</h4>
+                            <p>Sporty Group • JUN 2025 - OCT 2025</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item timeline-item-previous">
+                        <div class="company-logo"><img src="assets/images/CGHUBLogo_cropped.png" alt="CG Hub"
+                                style="width:100%;height:100%;object-fit:cover;"></div>
+                        <div class="timeline-info">
+                            <h4>Technical Art Experience</h4>
+                            <p>CG Hub • APR 2025</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item timeline-item-previous">
+                        <div class="company-logo"><img src="assets/images/metameowlogo.jpeg" alt="Meta Meow"
+                                style="width:100%;height:100%;object-fit:cover;"></div>
+                        <div class="timeline-info">
+                            <h4>Technical Art Intern</h4>
+                            <p>Meta Meow • MAR 2024 - MAR 2025</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <p class="center-link"><a class="text-link" href="experience.html">Full experience &amp; CV →</a></p>
     </section>
 
-    <!-- Standalone CRPG Section Navigation Menu Bar -->
-    <nav class="crpg-section-menu">
-        <div class="crpg-menu-header">
-            <span class="header-decor">===</span>
-            <span class="header-title">◆ NAVIGATION MENU ◆</span>
-            <span class="header-decor">===</span>
-        </div>
-        <div class="crpg-menu-container">
-            <a href="#projects" onclick="scrollToSection('projects'); return false;" class="crpg-menu-item">
-                <span class="crpg-menu-symbol">⚔</span>
-                <div class="crpg-menu-text">
-                    <span class="crpg-menu-title">Game Projects</span>
-                </div>
-            </a>
-            <span class="crpg-menu-divider">◆</span>
-            <a href="#environment-art" onclick="scrollToSection('environment-art'); return false;" class="crpg-menu-item">
-                <span class="crpg-menu-symbol">🏔</span>
-                <div class="crpg-menu-text">
-                    <span class="crpg-menu-title">Environment Art</span>
-                </div>
-            </a>
-            <span class="crpg-menu-divider">◆</span>
-            <a href="#tools" onclick="scrollToSection('tools'); return false;" class="crpg-menu-item">
-                <span class="crpg-menu-symbol">⚒</span>
-                <div class="crpg-menu-text">
-                    <span class="crpg-menu-title">Development Tools</span>
-                </div>
-            </a>
-            <span class="crpg-menu-divider">◆</span>
-            <a href="#articles" onclick="scrollToSection('articles'); return false;" class="crpg-menu-item">
-                <span class="crpg-menu-symbol">📜</span>
-                <div class="crpg-menu-text">
-                    <span class="crpg-menu-title">Articles</span>
-                </div>
-            </a>
-            <span class="crpg-menu-divider">◆</span>
-            <a href="#cv" onclick="scrollToSection('cv'); return false;" class="crpg-menu-item">
-                <span class="crpg-menu-symbol">🛡</span>
-                <div class="crpg-menu-text">
-                    <span class="crpg-menu-title">Experience</span>
-                </div>
-            </a>
-            <span class="crpg-menu-divider">◆</span>
-            <a href="#contact" onclick="scrollToSection('contact'); return false;" class="crpg-menu-item">
-                <span class="crpg-menu-symbol">🔮</span>
-                <div class="crpg-menu-text">
-                    <span class="crpg-menu-title">Contact</span>
-                </div>
-            </a>
-        </div>
-    </nav>
-
-    <!-- Projects Section -->
-    <section class="section" id="projects">
-        <h2 class="section-title">Game Projects</h2>
-        <p class="section-subtitle">Click on projects to explore the details</p>
-
-        <!-- Discipline & Program Filter Hub -->
-        <div class="project-filter-hub">
-            <div class="filter-group">
-                <span class="filter-label"><span class="filter-icon">⚔</span> Discipline:</span>
-                <div class="filter-tags" id="disciplineFilterTags">
-                    <button class="filter-tag active" data-type="discipline" data-value="All" onclick="setProjectFilter('discipline', 'All')">All</button>
-                    <button class="filter-tag" data-type="discipline" data-value="Gameplay Design" onclick="setProjectFilter('discipline', 'Gameplay Design')">Gameplay Design</button>
-                    <button class="filter-tag" data-type="discipline" data-value="AI" onclick="setProjectFilter('discipline', 'AI')">AI</button>
-                    <button class="filter-tag" data-type="discipline" data-value="Environment Design" onclick="setProjectFilter('discipline', 'Environment Design')">Environment Design</button>
-                    <button class="filter-tag" data-type="discipline" data-value="Scripting" onclick="setProjectFilter('discipline', 'Scripting')">Scripting</button>
-                    <button class="filter-tag" data-type="discipline" data-value="VFX" onclick="setProjectFilter('discipline', 'VFX')">VFX</button>
-                    <button class="filter-tag" data-type="discipline" data-value="Localisation" onclick="setProjectFilter('discipline', 'Localisation')">Localisation</button>
-                    <button class="filter-tag" data-type="discipline" data-value="Marketing" onclick="setProjectFilter('discipline', 'Marketing')">Marketing</button>
-                    <button class="filter-tag" data-type="discipline" data-value="Character Design" onclick="setProjectFilter('discipline', 'Character Design')">Character Design</button>
-                </div>
+    <!-- Radial section menu -->
+    <section class="section" id="explore">
+        <h2 class="section-title">Explore</h2>
+        <p class="section-subtitle">Dive deeper into each area of my work</p>
+        <nav class="radial" id="radialMenu" aria-label="Sections">
+            <div class="radial-ring"></div>
+            <div class="radial-hub" aria-hidden="true">
+                <p class="radial-hub-title">Choose a Path</p>
+                <p class="radial-hub-desc">Hover a section to learn what's inside.</p>
             </div>
-            <div class="filter-group">
-                <span class="filter-label"><span class="filter-icon">⚙</span> Programs:</span>
-                <div class="filter-tags" id="programFilterTags">
-                    <button class="filter-tag active" data-type="program" data-value="All" onclick="setProjectFilter('program', 'All')">All</button>
-                    <button class="filter-tag" data-type="program" data-value="Unity" onclick="setProjectFilter('program', 'Unity')">Unity</button>
-                    <button class="filter-tag" data-type="program" data-value="Unreal" onclick="setProjectFilter('program', 'Unreal')">Unreal</button>
-                    <button class="filter-tag" data-type="program" data-value="Blueprints" onclick="setProjectFilter('program', 'Blueprints')">Blueprints</button>
-                    <button class="filter-tag" data-type="program" data-value="Blender" onclick="setProjectFilter('program', 'Blender')">Blender</button>
-                    <button class="filter-tag" data-type="program" data-value="Houdini" onclick="setProjectFilter('program', 'Houdini')">Houdini</button>
-                    <button class="filter-tag" data-type="program" data-value="C#" onclick="setProjectFilter('program', 'C#')">C#</button>
-                    <button class="filter-tag" data-type="program" data-value="Photoshop" onclick="setProjectFilter('program', 'Photoshop')">Photoshop</button>
-                    <button class="filter-tag" data-type="program" data-value="Substance Painter" onclick="setProjectFilter('program', 'Substance Painter')">Substance Painter</button>
-                    <button class="filter-tag" data-type="program" data-value="Substance Designer" onclick="setProjectFilter('program', 'Substance Designer')">Substance Designer</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="projects-carousel-wrapper">
-            <button class="mosaic-arrow mosaic-arrow-left" id="mosaicPrev" aria-label="Previous Projects">&#10094;</button>
-            <div class="projects-container" id="projectsContainer">
-                <div class="mosaic-grid" id="mosaicGrid"></div>
-            </div>
-            <button class="mosaic-arrow mosaic-arrow-right" id="mosaicNext" aria-label="Next Projects">&#10095;</button>
-        </div>
+        </nav>
     </section>
 
-    <!-- Environment Art Section -->
-    <section class="section" id="environment-art">
-        <h2 class="section-title">Environment Art</h2>
-        <p class="section-subtitle">Real-time environments, shaders, and cinematic world showcases</p>
+    <footer id="contact"></footer>
 
-        <div class="env-grid" id="envGrid"></div>
-    </section>
-
-    <!-- Development Tools Section -->
-    <section class="section" id="tools">
-        <h2 class="section-title">Development Tools</h2>
-        <p class="section-subtitle">Custom tools and utilities I've created for game development</p>
-
-        <div class="tools-grid" id="toolsGrid"></div>
-    </section>
-
-    <!-- Articles Section -->
-    <section class="section" id="articles">
-        <h2 class="section-title">Articles</h2>
-        <p class="section-subtitle">Articles and Exhibitions of my work and projects I was involved in</p>
-        <div class="articles-grid" id="articlesGrid"></div>
-    </section>
-
-    <!-- CV Section -->
-    <section class="section" id="cv">
-        <h2 class="section-title">Complete Experience</h2>
-        <p class="section-subtitle">Full professional history and qualifications</p>
-        <a href="assets\pdfs\Archie_CV_ENG.pdf" class="cta-button" download
-            style="display:block;max-width:250px;margin:0 auto 2rem auto;text-align:center;">Download My CV (PDF)</a>
-        <div class="cv-grid">
-            <!-- Work Experience Column -->
-            <div class="cv-column">
-                <h3 class="cv-section-title">Work Experience</h3>
-
-                <div class="cv-item" onclick="toggleCVExpand(this)">
-                    <div class="cv-header">
-                        <h4 class="cv-role">Technical Artist</h4>
-                        <span class="cv-period">OCT 2025 ~</span>
-                    </div>
-                    <p class="cv-company">
-                        <img src="assets/images/ferallogo.jpg" alt="Feral Interactive"
-                            style="height:2em;vertical-align:middle;margin-right:0.5em;">
-                        Feral Interactive (London)
-                    </p>
-                    <p class="expand-hint-cv">Click to see details</p>
-                    <ul class="cv-details">
-                        <li>Sole in-house technical artist, working with design and engineering teams on AAA projects
-                        </li>
-                        <li>Asset development and implementation in-engine using Maya, 3DS Max, Blender (models,
-                            animations, rigs, textures and materials)</li>
-                        <li>Scripting pipeline tools across DCCs using Python, MEL</li>
-                        <li>Implementation, testing and optimisation of art and game mechanics in proprietary game
-                            engines across various platforms (VR and Mobile)</li>
-                    </ul>
-                </div>
-
-                <div class="cv-item" onclick="toggleCVExpand(this)">
-                    <div class="cv-header">
-                        <h4 class="cv-role">Technical Animator</h4>
-                        <span class="cv-period">JUN 2025 - OCT 2025</span>
-                    </div>
-                    <p class="cv-company">
-                        <img src="assets/images/sportylogo.jpeg" alt="SportyUK"
-                            style="height:2em;vertical-align:middle;margin-right:0.5em;">
-                        Sporty Group (Remote - Bournemouth)
-                    </p>
-                    <p class="expand-hint-cv">Click to see details</p>
-                    <ul class="cv-details">
-                        <li>Rigging, weight painting and animation of characters using Blender</li>
-                        <li>Implementation and playtesting in Unity Engine for Mobile</li>
-                    </ul>
-                </div>
-
-                <div class="cv-item" onclick="toggleCVExpand(this)">
-                    <div class="cv-header">
-                        <h4 class="cv-role">Technical Art Work Experience</h4>
-                        <span class="cv-period">APR 2025</span>
-                    </div>
-                    <p class="cv-company">
-                        <img src="assets/images/CGHUBLogo_cropped.png" alt="CG Hub"
-                            style="height:2em;vertical-align:middle;margin-right:0.5em;">
-                        CG Hub (Tokyo)
-                    </p>
-                    <p class="expand-hint-cv">Click to see details</p>
-                    <ul class="cv-details">
-                        <li>Car ADAS creation and shader development in Kanzi Engine</li>
-                    </ul>
-                </div>
-
-                <div class="cv-item" onclick="toggleCVExpand(this)">
-                    <div class="cv-header">
-                        <h4 class="cv-role">Technical Art Internship</h4>
-                        <span class="cv-period">MAR 2024 - MAR 2025</span>
-                    </div>
-                    <p class="cv-company">
-                        <img src="assets/images/metameowlogo.jpeg" alt="Meta Meow"
-                            style="height:2em;vertical-align:middle;margin-right:0.5em;">
-                        Meta Meow (Tokyo)
-                    </p>
-                    <p class="expand-hint-cv">Click to see details</p>
-                    <ul class="cv-details">
-                        <li>AAA games outsourcing projects for Square Enix, ORCA, Game Freak</li>
-                        <li>Shipped 3 DCC tools taking them from conception to market with documentation, user support
-                            and updates in Blender and Unreal.</li>
-                        <li>Shader, material and VFX creation using Substance Painter, Designer, Python scripting,
-                            Blender procedural node workflows and basic Houdini</li>
-                    </ul>
-                </div>
-
-                <div class="cv-item" onclick="toggleCVExpand(this)">
-                    <div class="cv-header">
-                        <h4 class="cv-role">Game Designer - Digital Narratives of The Amazon</h4>
-                        <span class="cv-period">JUNE 2023</span>
-                    </div>
-                    <p class="cv-company">Universidad de Las Americas (Quito)</p>
-                    <p class="expand-hint-cv">Click to see details</p>
-                    <ul class="cv-details">
-                        <li>Gameplay, sound design and localisation developing a mobile game</li>
-                        <li>C# Scripting in Unity Engine for Mobile</li>
-                    </ul>
-                </div>
-
-                <div class="cv-item" onclick="toggleCVExpand(this)">
-                    <div class="cv-header">
-                        <h4 class="cv-role">Websites, Social Media, Content Creation</h4>
-                        <span class="cv-period">NOV 2023~</span>
-                    </div>
-                    <p class="cv-company">Freelance (Remote - UK)</p>
-                    <p class="expand-hint-cv">Click to see details</p>
-                    <ul class="cv-details">
-                        <li>7,000+ monthly visitor website SEO, content renovations, copywriting</li>
-                        <li>Assisting Instagram account with 200,000+ followers</li>
-                        <li>Promoting an Amazon, Sunday Times and Water Stones Best Seller</li>
-                    </ul>
-                </div>
-
-                <div class="cv-item" onclick="toggleCVExpand(this)">
-                    <div class="cv-header">
-                        <h4 class="cv-role">Indie Game Designer and Developer</h4>
-                        <span class="cv-period">SEPT 2023 ~</span>
-                    </div>
-                    <p class="cv-company">
-                        <img src="assets/images/dulogo.png" alt="Digital Umami"
-                            style="height:2em;vertical-align:middle;margin-right:0.5em;">
-                        Digital Umami (Remote - UK)
-                    </p>
-                </div>
-            </div>
-
-            <!-- Education & Skills Column -->
-            <div class="cv-column">
-                <h3 class="cv-section-title">Education</h3>
-
-                <div class="cv-item">
-                    <div class="cv-header">
-                        <h4 class="cv-role">Bsc Game Design</h4>
-                        <span class="cv-period">2020 - 2023</span>
-                    </div>
-                    <p class="cv-company">Bournemouth University</p>
-                    <ul class="cv-details" style="max-height: none; padding-left: 1.2rem;">
-                        <li>First Class Honours</li>
-                        <li>TIGA Graduate of the Year</li>
-                    </ul>
-                </div>
-
-                <h3 class="cv-section-title">Languages</h3>
-                <div class="languages-grid">
-                    <div class="language-item">
-                        <span class="language-name">🇬🇧 English</span>
-                        <span class="language-level native">Native</span>
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">🇪🇸 Spanish</span>
-                        <span class="language-level fluent">Fluent</span>
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">🇯🇵 Japanese</span>
-                        <span class="language-level fluent">Business Fluency</span>
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">🇮🇹 Italian</span>
-                        <span class="language-level beginner">Beginner</span>
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">🇵🇹 Portuguese</span>
-                        <span class="language-level beginner">Beginner</span>
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">🇨🇳 Mandarin</span>
-                        <span class="language-level beginner">Beginner</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="contact-info">
-                <h3>Get in touch!</h3>
-                <p>I'm always interested in new opportunities</p>
-                <p style="margin-top: 1rem; color: var(--accent-color);">archieclarkmcg@gmail.com</p>
-            </div>
-            <p class="footer-text">
-                © 2025 Archie McGrath
-            </p>
-        </div>
-    </footer>
-
+    <script src="assets/site.js?v=3.0"></script>
     <script>
-        // ── Filter State for Projects ─────────────────────────────
-        let projects = [];
-        let selectedDiscipline = 'All';
-        let selectedProgram = 'All';
-        let expandedProjectTitle = null;
+        (async () => {
+            renderChrome('home');
+            const data = await loadCMS();
 
-        const mosaicGrid = document.getElementById('mosaicGrid');
-
-        function setProjectFilter(type, value) {
-            if (type === 'discipline') {
-                selectedDiscipline = (selectedDiscipline === value && value !== 'All') ? 'All' : value;
-            } else if (type === 'program') {
-                selectedProgram = (selectedProgram === value && value !== 'All') ? 'All' : value;
-            }
-            expandedProjectTitle = null;
-            updateFilterButtonsUI();
-            renderMosaic();
-            const container = document.getElementById('projectsContainer');
-            if (container) container.scrollLeft = 0;
-        }
-
-        function resetProjectFilters() {
-            selectedDiscipline = 'All';
-            selectedProgram = 'All';
-            expandedProjectTitle = null;
-            updateFilterButtonsUI();
-            renderMosaic();
-            const container = document.getElementById('projectsContainer');
-            if (container) container.scrollLeft = 0;
-        }
-
-        function updateFilterButtonsUI() {
-            document.querySelectorAll('#disciplineFilterTags .filter-tag').forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-value') === selectedDiscipline);
-            });
-            document.querySelectorAll('#programFilterTags .filter-tag').forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-value') === selectedProgram);
-            });
-        }
-
-        function renderTagBadges(disciplines = [], programs = []) {
-            const combined = [
-                ...disciplines.map(d => ({ text: d, type: 'discipline' })),
-                ...programs.map(p => ({ text: p, type: 'program' }))
+            // ── Mosaic: all work except press, deduplicated ──
+            // Spread featured (large) tiles evenly through the mosaic
+            const all = data.filter(i => i.category !== 'article' && mediaSrc(i));
+            const feat = all.filter(i => i.featured), rest = all.filter(i => !i.featured);
+            const work = [...rest];
+            feat.forEach((f, k) => work.splice(Math.round(k * (all.length / feat.length)) , 0, f));
+            const sections = [
+                { id: 'games', label: 'Games', match: i => i.category === 'game' },
+                { id: 'tech-art', label: 'Tech Art & Tools', match: i => catInfo(i).page === 'tech-art' },
+                { id: 'localisation', label: 'Localisation', match: i => i.category === 'localisation' || (i.disciplines || []).includes('Localisation') }
             ];
-            if (!combined.length) return '';
 
-            const maxDisplay = 3;
-            let html = '<div class="project-tags-preview">';
+            const renderTile = (item) => {
+                const tile = document.createElement('button');
+                tile.type = 'button';
+                tile.className = 'tile' + (item.featured ? ' tile-lg' : '');
+                const tags = [...(item.disciplines || []), ...(item.programs || [])].slice(0, 4);
+                tile.innerHTML = `
+                    <img src="${esc(mediaSrc(item))}" alt="" loading="lazy">
+                    ${item.video ? '<span class="play-badge" aria-hidden="true">▶</span>' : ''}
+                    ${item.gallery ? `<span class="play-badge gallery-badge" aria-hidden="true">${item.gallery.length}</span>` : ''}
+                    <span class="tile-label">
+                        <span class="tile-kicker">${esc(catInfo(item).label)}</span>
+                        <span class="tile-title">${esc(item.title)}</span>
+                        ${tags.length ? `<span class="tile-tags">${tags.map(t => `<span>${esc(t)}</span>`).join('')}</span>` : ''}
+                    </span>`;
+                tile.setAttribute('aria-label', `${item.title} (${catInfo(item).label})`);
+                return tile;
+            };
 
-            if (combined.length <= maxDisplay) {
-                combined.forEach(tag => {
-                    const cls = tag.type === 'discipline' ? 'discipline-badge' : 'program-badge';
-                    html += `<span class="badge-tag ${cls}">${tag.text}</span>`;
-                });
-            } else {
-                const visible = combined.slice(0, 2);
-                visible.forEach(tag => {
-                    const cls = tag.type === 'discipline' ? 'discipline-badge' : 'program-badge';
-                    html += `<span class="badge-tag ${cls}">${tag.text}</span>`;
-                });
-                const remaining = combined.length - 2;
-                html += `<span class="badge-tag more-badge">+${remaining} more</span>`;
-            }
-
-            html += '</div>';
-            return html;
-        }
-
-        function renderMosaic() {
-            if (!mosaicGrid) return;
-            mosaicGrid.innerHTML = '';
-
-            const isFiltered = (selectedDiscipline !== 'All' || selectedProgram !== 'All');
-            mosaicGrid.classList.toggle('is-filtered', isFiltered);
-
-            const displayedProjects = projects.filter(p => {
-                const matchDiscipline = (selectedDiscipline === 'All') ||
-                    (p.disciplines && p.disciplines.includes(selectedDiscipline));
-                const matchProgram = (selectedProgram === 'All') ||
-                    (p.programs && p.programs.some(pr => {
-                        const target = selectedProgram.toLowerCase();
-                        const cur = pr.toLowerCase();
-                        if (cur === target) return true;
-                        if (target === 'unreal' && cur.includes('unreal')) return true;
-                        if (target === 'unity' && cur.includes('unity')) return true;
-                        return false;
-                    }));
-                return matchDiscipline && matchProgram;
+            const modalOpts = { onTag: (t, v) => grid.applyTag(t, v), showPageLink: true };
+            const grid = new FilterGrid({
+                items: work,
+                grid: document.getElementById('homeMosaic'),
+                filters: document.getElementById('homeFilters'),
+                count: document.getElementById('homeCount'),
+                categories: sections,
+                renderItem: renderTile,
+                onOpen: item => openItem(item, modalOpts)
             });
+            openFromHash(data, modalOpts);
 
-            const hasExpanded = expandedProjectTitle !== null;
-            mosaicGrid.classList.toggle('has-expanded', hasExpanded);
-
-            // Hide/show carousel arrows
-            const pPrevBtn = document.getElementById('mosaicPrev');
-            const pNextBtn = document.getElementById('mosaicNext');
-            const shouldShowArrows = !hasExpanded && displayedProjects.length > 2;
-            if (pPrevBtn) pPrevBtn.style.display = shouldShowArrows ? '' : 'none';
-            if (pNextBtn) pNextBtn.style.display = shouldShowArrows ? '' : 'none';
-
-            if (displayedProjects.length === 0) {
-                const empty = document.createElement('div');
-                empty.className = 'empty-filter-state';
-                empty.innerHTML = `
-                    <p class="empty-filter-title">No Projects Found</p>
-                    <p class="empty-filter-desc">No game projects match the combination of <strong>${selectedDiscipline}</strong> and <strong>${selectedProgram}</strong>.</p>
-                    <button class="cta-button" onclick="resetProjectFilters()">Reset Filters</button>
-                `;
-                mosaicGrid.appendChild(empty);
-                return;
-            }
-
-            displayedProjects.forEach((p) => {
-                const isExpanded = (expandedProjectTitle === p.title);
-                if (hasExpanded && !isExpanded) return;
-
-                const card = document.createElement('div');
-                card.className = 'project-card';
-                if (p.title && p.title.toLowerCase().includes('jungle hero')) {
-                    card.classList.add('jungle-hero-card');
-                }
-
-                const disciplinesList = p.disciplines || [];
-                const programsList = p.programs || [];
-
-                if (isExpanded) {
-                    card.classList.add('expanded');
-                    card.innerHTML = `
-                        <div class="gif expanded-gif">
-                            <img src="${p.gif || p.image}" alt="${p.title}">
-                        </div>
-                        <div class="project-content expanded-content">
-                            <div>
-                                <h3 class="project-title">${p.title}</h3>
-                                ${p['team-size'] ? `<p class="project-subtitle">Team size: ${p['team-size']}</p>` : ''}
-                                ${p.role ? `<p class="project-role"><strong>My role(s):</strong> ${(p.role || '').replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>` : ''}
-                                <p class="project-description"><strong>Description:</strong> ${(p.desc || '').replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>
-                                <div class="expanded-tags-container">
-                                    ${disciplinesList.length ? `
-                                        <div class="expanded-tag-section">
-                                            <strong>Disciplines:</strong>
-                                            <div class="expanded-tag-list">
-                                                ${disciplinesList.map(d => `<span class="badge-tag discipline-badge clickable-tag" onclick="event.stopPropagation(); setProjectFilter('discipline', '${d}')">${d}</span>`).join('')}
-                                            </div>
-                                        </div>
-                                    ` : ''}
-                                    ${programsList.length ? `
-                                        <div class="expanded-tag-section">
-                                            <strong>Programs:</strong>
-                                            <div class="expanded-tag-list">
-                                                ${programsList.map(pr => `<span class="badge-tag program-badge clickable-tag" onclick="event.stopPropagation(); setProjectFilter('program', '${pr}')">${pr}</span>`).join('')}
-                                            </div>
-                                        </div>
-                                    ` : ''}
-                                </div>
-                                ${p.link ? `<a href="${p.link}" target="_blank" class="cta-button" style="margin-top: 1.2rem;">View on Steam</a>` : ''}
-                            </div>
-                            <button class="return-btn">Return</button>
-                        </div>
-                    `;
-                    card.querySelector('.return-btn').onclick = (e) => {
-                        e.stopPropagation();
-                        expandedProjectTitle = null;
-                        renderMosaic();
-                    };
-                } else {
-                    card.innerHTML = `
-                        <div class="gif">
-                            <img src="${p.gif || p.image}" alt="${p.title}">
-                        </div>
-                        <div class="project-content">
-                            <div>
-                                <h3 class="project-title">${p.title}</h3>
-                                ${renderTagBadges(disciplinesList, programsList)}
-                            </div>
-                            <p class="expand-hint">Click to see details</p>
-                        </div>
-                    `;
-                }
-
-                card.onclick = (e) => {
-                    if (isExpanded) {
-                        if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A' && !e.target.closest('.return-btn') && !e.target.closest('.clickable-tag')) {
-                            expandedProjectTitle = null;
-                            renderMosaic();
+            // Pack tiles explicitly so the mosaic never has holes:
+            // first-fit placement, then stretch a neighbouring small tile into any gap.
+            const mosaic = document.getElementById('homeMosaic');
+            const pack = () => {
+                const tiles = [...mosaic.querySelectorAll('.tile')];
+                tiles.forEach(t => { t.style.gridColumn = ''; t.style.gridRow = ''; });
+                const cols = getComputedStyle(mosaic).gridTemplateColumns.split(' ').length;
+                if (cols < 2 || !tiles.length) return;
+                const grid = []; // grid[row][col] = tile index
+                const free = (r, c) => c < cols && !(grid[r] && grid[r][c] !== undefined);
+                const mark = (r, c, i) => { (grid[r] = grid[r] || [])[c] = i; };
+                const pos = tiles.map((t, i) => {
+                    const big = t.classList.contains('tile-lg');
+                    const w = big ? Math.min(2, cols) : 1, hgt = big ? 2 : 1;
+                    for (let r = 0; ; r++) for (let c = 0; c + w <= cols; c++) {
+                        let ok = true;
+                        for (let dr = 0; dr < hgt && ok; dr++) for (let dc = 0; dc < w; dc++) if (!free(r + dr, c + dc)) { ok = false; break; }
+                        if (ok) {
+                            for (let dr = 0; dr < hgt; dr++) for (let dc = 0; dc < w; dc++) mark(r + dr, c + dc, i);
+                            return { r, c, w, h: hgt };
                         }
-                    } else {
-                        expandedProjectTitle = p.title;
-                        renderMosaic();
-                        setTimeout(() => {
-                            const el = mosaicGrid.querySelector('.project-card.expanded');
-                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }, 50);
                     }
-                };
-                mosaicGrid.appendChild(card);
-            });
-        }
-
-        // ── Environment Art grid state ────────────────────────────
-        let envData = [];
-        let expandedEnvTitle = null;
-
-        function renderEnvironment(items) {
-            if (items) envData = items;
-            const envGrid = document.getElementById('envGrid');
-            if (!envGrid) return;
-            envGrid.innerHTML = '';
-            const hasExpanded = expandedEnvTitle !== null;
-            envGrid.classList.toggle('has-expanded', hasExpanded);
-
-            envData.forEach((env) => {
-                const isExpanded = (expandedEnvTitle === env.title);
-                const imgSrc = env.image || env.gif || '';
-
-                if (hasExpanded && !isExpanded) return;
-
-                const card = document.createElement('div');
-                card.className = 'project-card';
-
-                const disciplinesList = env.disciplines || [];
-                const programsList = env.programs || [];
-
-                if (isExpanded) {
-                    card.classList.add('expanded');
-                    card.innerHTML = `
-                        <div class="gif expanded-gif">
-                            <img src="${imgSrc}" alt="${env.title}">
-                        </div>
-                        <div class="project-content expanded-content">
-                            <div>
-                                <h3 class="project-title">${env.title}</h3>
-                                ${env['team-size'] ? `<p class="project-subtitle">Team size: ${env['team-size']}</p>` : ''}
-                                ${env.role ? `<p class="project-role"><strong>My role(s):</strong> ${(env.role).replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>` : ''}
-                                <p class="project-description"><strong>Description:</strong> ${(env.desc || '').replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>
-                                <div class="expanded-tags-container">
-                                    ${disciplinesList.length ? `
-                                        <div class="expanded-tag-section">
-                                            <strong>Disciplines:</strong>
-                                            <div class="expanded-tag-list">
-                                                ${disciplinesList.map(d => `<span class="badge-tag discipline-badge">${d}</span>`).join('')}
-                                            </div>
-                                        </div>
-                                    ` : ''}
-                                    ${programsList.length ? `
-                                        <div class="expanded-tag-section">
-                                            <strong>Programs:</strong>
-                                            <div class="expanded-tag-list">
-                                                ${programsList.map(pr => `<span class="badge-tag program-badge">${pr}</span>`).join('')}
-                                            </div>
-                                        </div>
-                                    ` : ''}
-                                </div>
-                                ${env.link ? `<a href="${env.link}" target="_blank" class="cta-button" style="margin-top: 1.2rem;">View Showcase</a>` : ''}
-                            </div>
-                            <button class="return-btn">Return</button>
-                        </div>
-                    `;
-                    card.querySelector('.return-btn').onclick = (e) => {
-                        e.stopPropagation();
-                        expandedEnvTitle = null;
-                        renderEnvironment();
-                    };
-                } else {
-                    card.innerHTML = `
-                        <div class="gif">
-                            ${imgSrc ? `<img src="${imgSrc}" alt="${env.title}">` : `<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;background:linear-gradient(45deg, var(--accent-color), #7c3aed);color:white;">🏔</div>`}
-                        </div>
-                        <div class="project-content">
-                            <div>
-                                <h3 class="project-title">${env.title}</h3>
-                                ${renderTagBadges(disciplinesList, programsList)}
-                            </div>
-                            <p class="expand-hint">Click to see details</p>
-                        </div>
-                    `;
-                }
-
-                card.onclick = (e) => {
-                    if (isExpanded) {
-                        if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A' && !e.target.closest('.return-btn')) {
-                            expandedEnvTitle = null;
-                            renderEnvironment();
-                        }
-                    } else {
-                        expandedEnvTitle = env.title;
-                        renderEnvironment();
-                        setTimeout(() => {
-                            const el = envGrid.querySelector('.project-card.expanded');
-                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }, 50);
-                    }
-                };
-                envGrid.appendChild(card);
-            });
-        }
-
-        // ── Tools grid state ───────────────────────────────────────
-        let toolsData = [];
-        let expandedToolIndex = null;
-
-        function renderTools(tools) {
-            if (tools) toolsData = tools;
-            const toolsGrid = document.getElementById('toolsGrid');
-            if (!toolsGrid) return;
-            toolsGrid.innerHTML = '';
-            const hasExpanded = expandedToolIndex !== null;
-            toolsGrid.classList.toggle('has-expanded', hasExpanded);
-
-            toolsData.forEach((tool, idx) => {
-                const isExpanded = (expandedToolIndex === idx);
-                const imgSrc = tool.image || tool.gif || '';
-
-                if (hasExpanded && !isExpanded) return;
-
-                const card = document.createElement('div');
-                card.className = 'project-card';
-
-                const disciplinesList = tool.disciplines || [];
-                const programsList = tool.programs || [];
-
-                if (isExpanded) {
-                    card.classList.add('expanded');
-                    card.innerHTML = `
-                        <div class="gif expanded-gif">
-                            <img src="${imgSrc}" alt="${tool.title}">
-                        </div>
-                        <div class="project-content expanded-content">
-                            <div>
-                                <h3 class="project-title">${tool.title}</h3>
-                                ${tool['team-size'] ? `<p class="project-subtitle">Team size: ${tool['team-size']}</p>` : ''}
-                                ${tool.role ? `<p class="project-role"><strong>My role(s):</strong> ${(tool.role).replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>` : ''}
-                                <p class="project-description"><strong>Description:</strong> ${(tool.desc || '').replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p>
-                                <div class="expanded-tags-container">
-                                    ${disciplinesList.length ? `
-                                        <div class="expanded-tag-section">
-                                            <strong>Disciplines:</strong>
-                                            <div class="expanded-tag-list">
-                                                ${disciplinesList.map(d => `<span class="badge-tag discipline-badge">${d}</span>`).join('')}
-                                            </div>
-                                        </div>
-                                    ` : ''}
-                                    ${programsList.length ? `
-                                        <div class="expanded-tag-section">
-                                            <strong>Programs:</strong>
-                                            <div class="expanded-tag-list">
-                                                ${programsList.map(pr => `<span class="badge-tag program-badge">${pr}</span>`).join('')}
-                                            </div>
-                                        </div>
-                                    ` : ''}
-                                </div>
-                                ${tool.link ? `<a href="${tool.link}" target="_blank" class="cta-button" style="margin-top: 1.2rem;">View Tool</a>` : ''}
-                            </div>
-                            <button class="return-btn">Return</button>
-                        </div>
-                    `;
-                    card.querySelector('.return-btn').onclick = (e) => {
-                        e.stopPropagation();
-                        expandedToolIndex = null;
-                        renderTools();
-                    };
-                } else {
-                    card.innerHTML = `
-                        <div class="gif">
-                            ${imgSrc ? `<img src="${imgSrc}" alt="${tool.title}">` : `<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;background:linear-gradient(45deg, var(--accent-color), #7c3aed);color:white;">🔧</div>`}
-                        </div>
-                        <div class="project-content">
-                            <div>
-                                <h3 class="project-title">${tool.title}</h3>
-                                ${renderTagBadges(disciplinesList, programsList)}
-                            </div>
-                            <p class="expand-hint">Click to see details</p>
-                        </div>
-                    `;
-                }
-
-                card.onclick = (e) => {
-                    if (isExpanded) {
-                        if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A' && !e.target.closest('.return-btn')) {
-                            expandedToolIndex = null;
-                            renderTools();
-                        }
-                    } else {
-                        expandedToolIndex = idx;
-                        renderTools();
-                        setTimeout(() => {
-                            const el = toolsGrid.querySelector('.project-card.expanded');
-                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }, 50);
-                    }
-                };
-                toolsGrid.appendChild(card);
-            });
-        }
-
-        // ── Fetch all CMS data once, then render each section ──────
-        document.addEventListener('DOMContentLoaded', () => {
-            // Nav init
-            const firstDot = document.querySelector('.nav-dot');
-            if (firstDot) firstDot.classList.add('active');
-
-            // Desktop preference
-            const preferDesktop = localStorage.getItem('preferDesktop') === 'true';
-            if (preferDesktop) {
-                document.documentElement.classList.add('force-desktop');
-                const btn = document.querySelector('.desktop-toggle button');
-                if (btn) btn.textContent = 'View Mobile Version';
-            }
-
-            fetch('assets/cms.json?v=' + Date.now())
-                .then(r => r.json())
-                .then(data => {
-                    // Game Projects
-                    projects = data.filter(item => item.category === 'game' && item.gif);
-                    projects.forEach(p => { const img = new Image(); img.src = p.gif; });
-                    renderMosaic();
-
-                    const container = document.getElementById('projectsContainer');
-                    const prevBtn = document.getElementById('mosaicPrev');
-                    const nextBtn = document.getElementById('mosaicNext');
-
-                    if (container && prevBtn && nextBtn) {
-                        prevBtn.addEventListener('click', () => {
-                            container.scrollBy({ left: -container.clientWidth * 0.8, behavior: 'smooth' });
-                        });
-                        nextBtn.addEventListener('click', () => {
-                            container.scrollBy({ left: container.clientWidth * 0.8, behavior: 'smooth' });
-                        });
-                    }
-
-                    // Environment Art
-                    const envItems = data.filter(item => item.category === 'environment_art' || item.category === 'environment art');
-                    renderEnvironment(envItems);
-
-                    // Development Tools
-                    const tools = data.filter(item => item.category === 'tool');
-                    renderTools(tools);
-
-                    // Articles
-                    const articles = data.filter(item => item.category === 'article');
-                    const articlesGrid = document.getElementById('articlesGrid');
-                    if (articlesGrid) {
-                        articles.forEach(article => {
-                            const card = document.createElement('div');
-                            card.className = 'article-card';
-                            const imgSrc = article.image || article.gif || '';
-                            card.innerHTML = `
-                                <div class="article-image"><img src="${imgSrc}" alt="${article.title}" style="width:100%;height:100%;object-fit:cover;"></div>
-                                <div class="article-header"><h3 class="article-title">${article.title}</h3></div>
-                                <div class="article-description"><p>${(article.desc || '').replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}</p></div>
-                                ${article.link ? `<a href="${article.link}" target="_blank" class="cta-button">Read Article</a>` : ''}
-                            `;
-                            articlesGrid.appendChild(card);
-                        });
-                    }
-                })
-                .catch(err => console.error('CMS load error:', err));
-        });
-
-        // ── UI helpers ─────────────────────────────────────────────
-        function toggleDesktopView() {
-            document.documentElement.classList.toggle('force-desktop');
-            const button = document.querySelector('.desktop-toggle button');
-            const isMobile = !document.documentElement.classList.contains('force-desktop');
-            button.textContent = isMobile ? 'View Desktop Version' : 'View Mobile Version';
-            localStorage.setItem('preferDesktop', !isMobile);
-        }
-
-        function scrollToSection(sectionId) {
-            const el = document.getElementById(sectionId);
-            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        function toggleExpand(card) { card.classList.toggle('expanded'); }
-
-        function toggleToolExpand(card) {
-            document.querySelectorAll('.tool-card').forEach(c => {
-                if (c !== card) c.classList.remove('expanded');
-            });
-            card.classList.toggle('expanded');
-        }
-
-        function toggleCVExpand(item) { item.classList.toggle('expanded'); }
-
-        function toggleSkills() {
-            const skillsList = document.getElementById('skillsList');
-            const button = document.querySelector('.skills-toggle');
-            skillsList.classList.toggle('expanded');
-            if (skillsList.classList.contains('expanded')) {
-                button.textContent = 'Hide Technical Skills';
-                skillsList.querySelectorAll('.skill-tag').forEach((tag, i) => {
-                    tag.style.animationDelay = `${i * 0.1}s`;
                 });
-            } else {
-                button.textContent = 'Show Technical Skills';
-            }
-        }
+                const rows = grid.length;
+                for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+                    if (!free(r, c)) continue;
+                    const cand = [[r, c - 1, 'right'], [r, c + 1, 'left'], [r - 1, c, 'down'], [r + 1, c, 'up']];
+                    for (const [rr, cc, dir] of cand) {
+                        if (rr < 0 || cc < 0 || cc >= cols || free(rr, cc)) continue;
+                        const i = grid[rr][cc], p = pos[i];
+                        if (tiles[i].classList.contains('tile-lg')) continue;
+                        if ((dir === 'right' || dir === 'left') && p.h === 1 && p.w < (r === rows - 1 ? cols : 3)) {
+                            p.w++; if (dir === 'left') p.c--; mark(r, c, i); break;
+                        }
+                        if ((dir === 'down' || dir === 'up') && p.w === 1 && p.h === 1) {
+                            p.h++; if (dir === 'up') p.r--; mark(r, c, i); break;
+                        }
+                    }
+                }
+                tiles.forEach((t, i) => {
+                    const p = pos[i];
+                    t.style.gridColumn = `${p.c + 1} / span ${p.w}`;
+                    t.style.gridRow = `${p.r + 1} / span ${p.h}`;
+                });
+            };
+            new MutationObserver(pack).observe(mosaic, { childList: true });
+            let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(pack, 120); });
+            pack();
 
-        // ── Scroll listeners ───────────────────────────────────────
-        window.addEventListener('scroll', () => {
-            const sections = ['hero', 'projects', 'environment-art', 'tools', 'articles', 'cv', 'contact'];
-            const navDots = document.querySelectorAll('.nav-dot');
-            let current = '';
-            sections.forEach(id => {
-                const sec = document.getElementById(id);
-                if (!sec) return;
-                const top = sec.offsetTop - 100;
-                if (window.scrollY >= top && window.scrollY < top + sec.offsetHeight) current = id;
+            // ── Radial menu ──
+            const radial = document.getElementById('radialMenu');
+            const hubTitle = radial.querySelector('.radial-hub-title');
+            const hubDesc = radial.querySelector('.radial-hub-desc');
+            const defaults = [hubTitle.textContent, hubDesc.textContent];
+            const counts = {
+                games: data.filter(sections[0].match).length,
+                'tech-art': data.filter(sections[1].match).length,
+                localisation: data.filter(sections[2].match).length,
+                press: data.filter(i => i.category === 'article').length
+            };
+            const pages = SITE.pages.filter(p => p.id !== 'home');
+            pages.forEach((p, idx) => {
+                const angle = -90 + (360 / pages.length) * idx;
+                const a = document.createElement('a');
+                a.className = 'radial-node';
+                a.href = p.href;
+                a.style.setProperty('--a', angle + 'deg');
+                a.innerHTML = `
+                    <span class="radial-icon" aria-hidden="true">${p.icon}</span>
+                    <span>
+                        <span class="radial-label">${esc(p.label)}</span>
+                        <span class="radial-desc-inline">${esc(p.desc)}</span>
+                    </span>
+                    ${counts[p.id] ? `<span class="radial-count">${counts[p.id]} entries</span>` : ''}`;
+                const show = () => { hubTitle.textContent = p.label; hubDesc.textContent = p.desc; };
+                const hide = () => { hubTitle.textContent = defaults[0]; hubDesc.textContent = defaults[1]; };
+                a.addEventListener('mouseenter', show);
+                a.addEventListener('focus', show);
+                a.addEventListener('mouseleave', hide);
+                a.addEventListener('blur', hide);
+                radial.appendChild(a);
             });
-            navDots.forEach((dot, i) => {
-                dot.classList.toggle('active', sections[i] === current);
-            });
-        });
-
-        window.addEventListener('scroll', () => {
-            if (!window.matchMedia('(max-width: 390px)').matches) {
-                const hero = document.querySelector('.hero');
-                if (hero) hero.style.transform = `translateY(${window.pageYOffset * -0.5}px)`;
-            }
-        });
+        })();
     </script>
 </body>
 
