@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Marcellus&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/styles.css?v=3.0">
-    <link rel="stylesheet" href="assets/site.css?v=3.0">
+    <link rel="stylesheet" href="assets/site.css?v=3.1">
 </head>
 
 <body>
@@ -123,7 +123,8 @@
 
     <footer id="contact"></footer>
 
-    <script src="assets/site.js?v=3.0"></script>
+    <script src="assets/i18n/ja.js?v=1.0"></script>
+    <script src="assets/site.js?v=3.1"></script>
     <script>
         (async () => {
             renderChrome('home');
@@ -151,11 +152,11 @@
                     ${item.video ? '<span class="play-badge" aria-hidden="true">▶</span>' : ''}
                     ${item.gallery ? `<span class="play-badge gallery-badge" aria-hidden="true">${item.gallery.length}</span>` : ''}
                     <span class="tile-label">
-                        <span class="tile-kicker">${esc(catInfo(item).label)}</span>
+                        <span class="tile-kicker">${esc(t(catInfo(item).label))}</span>
                         <span class="tile-title">${esc(item.title)}</span>
-                        ${tags.length ? `<span class="tile-tags">${tags.map(t => `<span>${esc(t)}</span>`).join('')}</span>` : ''}
+                        ${tags.length ? `<span class="tile-tags">${tags.map(x => `<span>${esc(t(x))}</span>`).join('')}</span>` : ''}
                     </span>`;
-                tile.setAttribute('aria-label', `${item.title} (${catInfo(item).label})`);
+                tile.setAttribute('aria-label', `${item.title} (${t(catInfo(item).label)})`);
                 return tile;
             };
 
@@ -241,11 +242,11 @@
                 a.innerHTML = `
                     <span class="radial-icon" aria-hidden="true">${p.icon}</span>
                     <span>
-                        <span class="radial-label">${esc(p.label)}</span>
-                        <span class="radial-desc-inline">${esc(p.desc)}</span>
+                        <span class="radial-label">${esc(t(p.label))}</span>
+                        <span class="radial-desc-inline">${esc(t(p.desc))}</span>
                     </span>
-                    ${counts[p.id] ? `<span class="radial-count">${counts[p.id]} entries</span>` : ''}`;
-                const show = () => { hubTitle.textContent = p.label; hubDesc.textContent = p.desc; };
+                    ${counts[p.id] ? `<span class="radial-count">${t('{n} entries', { n: counts[p.id] })}</span>` : ''}`;
+                const show = () => { hubTitle.textContent = t(p.label); hubDesc.textContent = t(p.desc); };
                 const hide = () => { hubTitle.textContent = defaults[0]; hubDesc.textContent = defaults[1]; };
                 a.addEventListener('mouseenter', show);
                 a.addEventListener('focus', show);

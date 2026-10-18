@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Marcellus&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/styles.css?v=3.0">
-    <link rel="stylesheet" href="assets/site.css?v=3.0">
+    <link rel="stylesheet" href="assets/site.css?v=3.1">
 </head>
 
 <body>
@@ -29,7 +29,8 @@
 
     <footer id="contact"></footer>
 
-    <script src="assets/site.js?v=3.0"></script>
+    <script src="assets/i18n/ja.js?v=1.0"></script>
+    <script src="assets/site.js?v=3.1"></script>
     <script>
         (async () => {
             renderChrome('press');
@@ -43,7 +44,7 @@
                     <div class="article-image${a.video ? ' has-video' : ''}">${a.video ? videoPlayer(a) : `<img src="${esc(mediaSrc(a))}" alt="${esc(a.title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;">`}</div>
                     <div class="article-header"><h3 class="article-title">${esc(a.title)}</h3></div>
                     <div class="article-description"><p>${multiline(a.desc)}</p></div>
-                    ${a.link ? `<a href="${esc(a.link)}" target="_blank" rel="noopener" class="cta-button">Read Article</a>` : ''}`;
+                    ${a.link ? `<a href="${esc(a.link)}" target="_blank" rel="noopener" class="cta-button">${t('Read Article')}</a>` : ''}`;
                 grid.appendChild(card);
             });
         })();

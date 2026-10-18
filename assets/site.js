@@ -45,6 +45,77 @@ const CATEGORY = {
 const pageById = id => SITE.pages.find(p => p.id === id);
 const catInfo = item => CATEGORY[item.category] || { page: 'home', label: '' };
 
+// ── Language ─────────────────────────────────────────────────
+// English is written directly in the HTML / cms.json. Other languages live in
+// assets/i18n/<lang>.js and are looked up by the English text.
+const LANG = (() => {
+    let l = 'en';
+    try {
+        const q = new URLSearchParams(location.search).get('lang');
+        if (q) localStorage.setItem('lang', q);
+        l = q || localStorage.getItem('lang') || 'en';
+    } catch (e) { /* storage blocked: stay in English */ }
+    return (l === 'ja' && window.I18N && window.I18N.ja) ? 'ja' : 'en';
+})();
+const DICT = LANG === 'ja' ? window.I18N.ja : null;
+const _norm = s => String(s).replace(/\s+/g, ' ').trim();
+const _textMap = {};
+if (DICT) Object.entries(DICT.text).forEach(([k, v]) => { _textMap[_norm(k)] = v; });
+
+// t('English text', {vars}) → translated text (or the English if not translated)
+function t(s, vars) {
+    let out = s;
+    if (DICT) {
+        const hit = _textMap[_norm(s)];
+        if (hit !== undefined) out = hit;
+    }
+    if (vars) out = String(out).replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m));
+    return out;
+}
+
+// Swap static English text in the page for its translation
+function translateDOM(root = document.body) {
+    if (!DICT) return;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode: n => (n.parentElement && /^(SCRIPT|STYLE)$/.test(n.parentElement.tagName)) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+    });
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(n => {
+        const key = _norm(n.nodeValue);
+        if (!key || !(key in _textMap)) return;
+        const lead = n.nodeValue.match(/^\s*/)[0], trail = n.nodeValue.match(/\s*$/)[0];
+        n.nodeValue = lead + _textMap[key] + trail;
+    });
+    root.querySelectorAll('[alt],[aria-label],[title]').forEach(el => {
+        ['alt', 'aria-label', 'title'].forEach(a => {
+            const v = el.getAttribute(a);
+            if (v && _norm(v) in _textMap) el.setAttribute(a, _textMap[_norm(v)]);
+        });
+    });
+    if (root === document.body) {
+        document.title = t(document.title);
+        const meta = document.querySelector('meta[name="description"]');
+        if (meta) meta.setAttribute('content', t(meta.getAttribute('content')));
+    }
+}
+
+function setLang(l) {
+    try { localStorage.setItem('lang', l); } catch (e) { /* ignore */ }
+    const url = new URL(location.href);
+    url.searchParams.delete('lang');
+    location.href = url.toString();
+}
+
+if (LANG === 'ja') {
+    document.documentElement.lang = 'ja';
+    document.documentElement.classList.add('lang-ja');
+    const font = document.createElement('link');
+    font.rel = 'stylesheet';
+    font.href = 'https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap';
+    document.head.appendChild(font);
+}
+
 // ── Helpers ──────────────────────────────────────────────────
 function esc(s) {
     return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -62,7 +133,7 @@ function mediaSrc(item) {
 function videoPlayer(item, poster) {
     return `<video class="item-video" controls playsinline preload="none" poster="${esc(poster || mediaSrc(item))}">
         <source src="${esc(item.video)}" type="video/mp4">
-        Your browser can't play this video.
+        ${t("Your browser can't play this video.")}
     </video>`;
 }
 // Slideshow for items with a "gallery" list. Entries are either an image path,
@@ -84,8 +155,8 @@ function galleryMarkup(item) {
             ${g.map((e, i) => e.isVideo
                 ? `<video class="gallery-slide${i === 0 ? ' active' : ''}" src="${esc(e.src)}" poster="${esc(e.thumb)}" muted loop playsinline controls preload="${i === 0 ? 'auto' : 'none'}"></video>`
                 : `<img class="gallery-slide${i === 0 ? ' active' : ''}" src="${esc(e.src)}" alt="${esc(item.title)}: ${esc(e.caption || 'image ' + (i + 1))}" ${i > 1 ? 'loading="lazy"' : ''}>`).join('')}
-            <button class="gallery-nav gallery-prev" aria-label="Previous">❮</button>
-            <button class="gallery-nav gallery-next" aria-label="Next">❯</button>
+            <button class="gallery-nav gallery-prev" aria-label="${t('Previous')}">❮</button>
+            <button class="gallery-nav gallery-next" aria-label="${t('Next')}">❯</button>
         </div>
         <div class="gallery-bar">
             <span class="gallery-caption"></span>
@@ -130,12 +201,12 @@ function initGallery(root, item) {
 }
 function linkLabel(item) {
     const l = item.link || '';
-    if (l.includes('steampowered')) return 'View on Steam';
-    if (l.includes('youtube') || l.includes('vimeo')) return 'Watch Video';
-    if (item.category === 'tool') return 'View Tool';
-    if (item.category === 'localisation') return 'View Film';
-    if (item.category === 'article') return 'Read Article';
-    return 'View Showcase';
+    if (l.includes('steampowered')) return t('View on Steam');
+    if (l.includes('youtube') || l.includes('vimeo')) return t('Watch Video');
+    if (item.category === 'tool') return t('View Tool');
+    if (item.category === 'localisation') return t('View Film');
+    if (item.category === 'article') return t('Read Article');
+    return t('View Showcase');
 }
 // Program matching keeps the old "Unreal" / "Unity" loose matching
 function hasProgram(item, target) {
@@ -152,9 +223,22 @@ function loadCMS() {
     if (!_cms) {
         _cms = fetch('assets/cms.json?v=' + Date.now())
             .then(r => r.json())
-            .then(data => data.map(item => ({ ...item, slug: slugify(item.title) })));
+            .then(data => data.map(item => localiseItem({ ...item, slug: slugify(item.title), titleEn: item.title })));
     }
     return _cms;
+}
+
+// Apply translated title / role / desc / captions to a cms item.
+// Tag values stay English (filters match on them); they're translated for display only.
+function localiseItem(item) {
+    const tr = DICT && DICT.items && DICT.items[item.title];
+    if (!tr) return item;
+    ['title', 'role', 'desc'].forEach(k => { if (tr[k]) item[k] = tr[k]; });
+    if (tr.captions && item.gallery) {
+        if (typeof item.gallery[0] === 'string') item.galleryCaptions = tr.captions;
+        else item.gallery = item.gallery.map((g, i) => ({ ...g, caption: tr.captions[i] || g.caption }));
+    }
+    return item;
 }
 
 // ── Nav & footer ─────────────────────────────────────────────
@@ -165,16 +249,20 @@ function renderChrome(activeId) {
         header.innerHTML = `
             <div class="site-nav-inner">
                 <a class="site-brand" href="index.html"><span class="brand-diamond">◆</span> Archie McGrath</a>
-                <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+                <button class="lang-toggle" lang="${LANG === 'ja' ? 'en' : 'ja'}" aria-label="${LANG === 'ja' ? 'Switch to English' : '日本語に切り替え'}">
+                    <span class="lang-icon" aria-hidden="true">文A</span> ${LANG === 'ja' ? 'English' : '日本語'}
+                </button>
+                <button class="nav-toggle" aria-label="${t('Open menu')}" aria-expanded="false">
                     <span></span><span></span><span></span>
                 </button>
                 <nav class="site-links" aria-label="Main">
                     ${SITE.pages.map(p => `
-                        <a href="${p.href}" class="${p.id === activeId ? 'active' : ''}" ${p.id === activeId ? 'aria-current="page"' : ''}>${esc(p.label)}</a>
+                        <a href="${p.href}" class="${p.id === activeId ? 'active' : ''}" ${p.id === activeId ? 'aria-current="page"' : ''}>${esc(t(p.label))}</a>
                     `).join('')}
-                    <a href="#contact" class="site-link-contact">Contact</a>
+                    <a href="#contact" class="site-link-contact">${t('Contact')}</a>
                 </nav>
             </div>`;
+        header.querySelector('.lang-toggle').addEventListener('click', () => setLang(LANG === 'ja' ? 'en' : 'ja'));
         const toggle = header.querySelector('.nav-toggle');
         toggle.addEventListener('click', () => {
             const open = header.classList.toggle('open');
@@ -192,16 +280,40 @@ function renderChrome(activeId) {
         footer.innerHTML = `
             <div class="footer-content">
                 <div class="contact-info">
-                    <h3>Get in touch!</h3>
-                    <p>I'm always interested in new opportunities</p>
+                    <h3>${t('Get in touch!')}</h3>
+                    <p>${t("I'm always interested in new opportunities")}</p>
                     <p style="margin-top: 1rem;"><a class="footer-email" href="mailto:${SITE.email}">${SITE.email}</a></p>
                 </div>
                 <nav class="footer-links" aria-label="Footer">
-                    ${SITE.pages.map(p => `<a href="${p.href}">${esc(p.label)}</a>`).join('<span>◆</span>')}
+                    ${SITE.pages.map(p => `<a href="${p.href}">${esc(t(p.label))}</a>`).join('<span>◆</span>')}
                 </nav>
                 <p class="footer-text">© ${new Date().getFullYear()} Archie McGrath</p>
             </div>`;
     }
+
+    // AI-translation notice
+    if (DICT && header) {
+        let dismissed = false;
+        try { dismissed = sessionStorage.getItem('aiNoticeClosed') === '1'; } catch (e) { /* ignore */ }
+        if (!dismissed) {
+            const bar = document.createElement('div');
+            bar.className = 'ai-banner';
+            bar.setAttribute('role', 'note');
+            bar.innerHTML = `
+                <span class="ai-banner-icon" aria-hidden="true">◆</span>
+                <p class="ai-banner-text">${esc(DICT.banner)}</p>
+                <button class="ai-banner-en" lang="en">English version</button>
+                <button class="ai-banner-close" aria-label="${t('Close')}">✕</button>`;
+            bar.querySelector('.ai-banner-en').addEventListener('click', () => setLang('en'));
+            bar.querySelector('.ai-banner-close').addEventListener('click', () => {
+                bar.remove();
+                try { sessionStorage.setItem('aiNoticeClosed', '1'); } catch (e) { /* ignore */ }
+            });
+            header.insertAdjacentElement('afterend', bar);
+        }
+    }
+
+    translateDOM();
 }
 
 // ── Detail modal ─────────────────────────────────────────────
@@ -232,28 +344,28 @@ function openItem(item, { onTag = null, showPageLink = false } = {}) {
     const d = item.disciplines || [];
     const p = item.programs || [];
     const page = pageById(catInfo(item).page);
-    const tag = (t, type) =>
-        `<button class="badge-tag ${type}-badge ${onTag ? 'clickable-tag' : ''}" data-type="${type}" data-value="${esc(t)}" ${onTag ? '' : 'disabled'}>${esc(t)}</button>`;
+    const tag = (tg, type) =>
+        `<button class="badge-tag ${type}-badge ${onTag ? 'clickable-tag' : ''}" data-type="${type}" data-value="${esc(tg)}" ${onTag ? '' : 'disabled'}>${esc(t(tg))}</button>`;
 
     panel.innerHTML = `
-        <button class="item-modal-close" aria-label="Close">✕</button>
+        <button class="item-modal-close" aria-label="${t('Close')}">✕</button>
         <div class="gif expanded-gif">
             ${item.gallery ? galleryMarkup(item) : item.video ? videoPlayer(item) : mediaSrc(item) ? `<img src="${esc(mediaSrc(item))}" alt="${esc(item.title)}">` : ''}
         </div>
         <div class="project-content expanded-content">
             <div>
-                <p class="item-kicker">${esc(catInfo(item).label)}</p>
+                <p class="item-kicker">${esc(t(catInfo(item).label))}</p>
                 <h3 class="project-title" id="item-modal-title">${esc(item.title)}</h3>
-                ${item['team-size'] ? `<p class="project-subtitle">Team size: ${esc(item['team-size'])}</p>` : ''}
-                ${item.role ? `<p class="project-role"><strong>My role(s):</strong> ${multiline(item.role)}</p>` : ''}
+                ${item['team-size'] ? `<p class="project-subtitle">${esc(t('Team size: {n}', { n: item['team-size'] }))}</p>` : ''}
+                ${item.role ? `<p class="project-role"><strong>${t('My role(s):')}</strong> ${multiline(item.role)}</p>` : ''}
                 <p class="project-description">${multiline(item.desc)}</p>
                 <div class="expanded-tags-container">
-                    ${d.length ? `<div class="expanded-tag-section"><strong>Disciplines:</strong><div class="expanded-tag-list">${d.map(t => tag(t, 'discipline')).join('')}</div></div>` : ''}
-                    ${p.length ? `<div class="expanded-tag-section"><strong>Programs:</strong><div class="expanded-tag-list">${p.map(t => tag(t, 'program')).join('')}</div></div>` : ''}
+                    ${d.length ? `<div class="expanded-tag-section"><strong>${t('Disciplines:')}</strong><div class="expanded-tag-list">${d.map(x => tag(x, 'discipline')).join('')}</div></div>` : ''}
+                    ${p.length ? `<div class="expanded-tag-section"><strong>${t('Programs:')}</strong><div class="expanded-tag-list">${p.map(x => tag(x, 'program')).join('')}</div></div>` : ''}
                 </div>
                 <div class="item-actions">
                     ${item.link ? `<a href="${esc(item.link)}" target="_blank" rel="noopener" class="cta-button">${linkLabel(item)}</a>` : ''}
-                    ${showPageLink && page ? `<a href="${page.href}" class="item-page-link">More in ${esc(page.label)} →</a>` : ''}
+                    ${showPageLink && page ? `<a href="${page.href}" class="item-page-link">${esc(t('More in {label} →', { label: t(page.label) }))}</a>` : ''}
                 </div>
             </div>
         </div>`;
@@ -317,7 +429,7 @@ class FilterGrid {
 
     tagCounts(key) {
         const counts = {};
-        this.items.forEach(i => (i[key] || []).forEach(t => { counts[t] = (counts[t] || 0) + 1; }));
+        this.items.forEach(i => (i[key] || []).forEach(x => { counts[x] = (counts[x] || 0) + 1; }));
         return Object.entries(counts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(e => e[0]);
     }
 
@@ -325,15 +437,15 @@ class FilterGrid {
         if (!this.filters) return;
         const rows = [];
         if (this.categories) {
-            rows.push(this.row('category', 'Section', '◆', this.categories.map(c => ({ value: c.id, label: c.label }))));
+            rows.push(this.row('category', t('Section'), '◆', this.categories.map(c => ({ value: c.id, label: t(c.label) }))));
         }
         if (this.groups.includes('discipline')) {
             const tags = this.tagCounts('disciplines');
-            if (tags.length > 1) rows.push(this.row('discipline', 'Skill', '⚔', tags.map(t => ({ value: t, label: t }))));
+            if (tags.length > 1) rows.push(this.row('discipline', t('Skill'), '⚔', tags.map(x => ({ value: x, label: t(x) }))));
         }
         if (this.groups.includes('program')) {
             const tags = this.tagCounts('programs');
-            if (tags.length > 1) rows.push(this.row('program', 'Program', '⚙', tags.map(t => ({ value: t, label: t }))));
+            if (tags.length > 1) rows.push(this.row('program', t('Program'), '⚙', tags.map(x => ({ value: x, label: x }))));
         }
         this.filters.innerHTML = rows.join('');
         this.filters.hidden = rows.length === 0;
@@ -346,7 +458,7 @@ class FilterGrid {
             <div class="filter-group">
                 <span class="filter-label"><span class="filter-icon">${icon}</span> ${label}:</span>
                 <div class="filter-tags">
-                    <button class="filter-tag active" data-type="${type}" data-value="All">All</button>
+                    <button class="filter-tag active" data-type="${type}" data-value="All">${t('All')}</button>
                     ${options.map(o => `<button class="filter-tag" data-type="${type}" data-value="${esc(o.value)}">${esc(o.label)}</button>`).join('')}
                 </div>
             </div>`;
@@ -387,15 +499,17 @@ class FilterGrid {
         this.grid.innerHTML = '';
         this.grid.classList.toggle('is-filtered', filtered);
         if (this.count) {
-            this.count.textContent = filtered ? `Showing ${shown.length} of ${this.items.length}` : `${this.items.length} projects`;
+            this.count.textContent = filtered
+                ? t('Showing {a} of {b}', { a: shown.length, b: this.items.length })
+                : t('{n} projects', { n: this.items.length });
         }
         if (!shown.length) {
             const empty = document.createElement('div');
             empty.className = 'empty-filter-state';
             empty.innerHTML = `
-                <p class="empty-filter-title">Nothing Found</p>
-                <p class="empty-filter-desc">No work matches that combination of filters.</p>
-                <button class="cta-button">Reset Filters</button>`;
+                <p class="empty-filter-title">${t('Nothing Found')}</p>
+                <p class="empty-filter-desc">${t('No work matches that combination of filters.')}</p>
+                <button class="cta-button">${t('Reset Filters')}</button>`;
             empty.querySelector('button').addEventListener('click', () => this.reset());
             this.grid.appendChild(empty);
             return;
@@ -431,11 +545,11 @@ function renderCard(item) {
             <div>
                 <h3 class="project-title">${esc(item.title)}</h3>
                 <div class="project-tags-preview">
-                    ${shownTags.map(x => `<span class="badge-tag ${x.c}">${esc(x.t)}</span>`).join('')}
-                    ${tags.length > 3 ? `<span class="badge-tag more-badge">+${tags.length - 2} more</span>` : ''}
+                    ${shownTags.map(x => `<span class="badge-tag ${x.c}">${esc(t(x.t))}</span>`).join('')}
+                    ${tags.length > 3 ? `<span class="badge-tag more-badge">${t('+{n} more', { n: tags.length - 2 })}</span>` : ''}
                 </div>
             </div>
-            <p class="expand-hint">Click to see details</p>
+            <p class="expand-hint">${t('Click to see details')}</p>
         </div>`;
     return card;
 }

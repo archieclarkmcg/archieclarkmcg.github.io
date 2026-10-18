@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Marcellus&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/styles.css?v=3.0">
-    <link rel="stylesheet" href="assets/site.css?v=3.0">
+    <link rel="stylesheet" href="assets/site.css?v=3.1">
 </head>
 
 <body>
@@ -27,6 +27,8 @@
         <div class="cv-downloads">
             <a href="assets/pdfs/Archie%20McGrath%20Technical%20Artist%20Resume.pdf" class="cta-button"
                 download="Archie McGrath Technical Artist Resume.pdf">Download My CV (PDF)</a>
+            <a href="assets/pdfs/Archie_McGrath_CV_JP.pdf" class="cta-button" lang="ja"
+                download="Archie_McGrath_CV_JP.pdf">履歴書・職務経歴書 (PDF)</a>
         </div>
         <div class="cv-grid">
             <!-- Work Experience Column -->
@@ -197,7 +199,8 @@
 
     <footer id="contact"></footer>
 
-    <script src="assets/site.js?v=3.0"></script>
+    <script src="assets/i18n/ja.js?v=1.0"></script>
+    <script src="assets/site.js?v=3.1"></script>
     <script>
         renderChrome('experience');
         function toggleCVExpand(item) { item.classList.toggle('expanded'); }

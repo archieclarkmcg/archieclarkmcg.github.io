@@ -1023,3 +1023,142 @@ video.gallery-slide { background: #000; }
     margin: 0 auto 2.5rem;
 }
 .cv-downloads .cta-button { text-align: center; }
+
+/* ── Language toggle ──────────────────────────────────────── */
+.lang-toggle {
+    order: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.42rem 0.8rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-family: var(--font-title), 'Noto Serif JP', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.lang-toggle:hover,
+.lang-toggle:focus-visible {
+    border-color: var(--border-gold-glow);
+    color: var(--accent-glow);
+    outline: none;
+}
+
+.lang-icon {
+    font-size: 0.7rem;
+    color: var(--accent-color);
+    letter-spacing: 0;
+}
+
+.site-links { order: 2; }
+.site-brand { order: 1; margin-right: auto; }
+.nav-toggle { order: 4; }
+
+@media (max-width: 1080px) {
+    .site-nav-inner { gap: 0.6rem; }
+    .lang-toggle { padding: 0.42rem 0.6rem; }
+}
+
+@media (max-width: 420px) {
+    .site-brand { font-size: 0.82rem; letter-spacing: 0.14em; }
+}
+
+/* ── AI translation notice ────────────────────────────────── */
+.ai-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    max-width: 1300px;
+    margin: 1rem auto 0;
+    padding: 0.9rem 1rem 0.9rem 1.2rem;
+    background: linear-gradient(90deg, rgba(42, 61, 110, 0.35), rgba(10, 14, 26, 0.9));
+    border: 1px solid var(--border-gold);
+    border-left: 3px solid var(--accent-glow);
+    color: var(--text-primary);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.ai-banner-icon {
+    color: var(--accent-glow);
+    font-size: 0.7rem;
+    padding-top: 0.35rem;
+}
+
+.ai-banner-text { flex: 1; }
+
+.ai-banner-en,
+.ai-banner-close {
+    flex-shrink: 0;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.78rem;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.ai-banner-en {
+    padding: 0.3rem 0.7rem;
+    font-family: var(--font-title);
+    letter-spacing: 0.08em;
+}
+
+.ai-banner-close {
+    width: 30px;
+    height: 30px;
+}
+
+.ai-banner-en:hover,
+.ai-banner-close:hover {
+    color: var(--accent-glow);
+    border-color: var(--border-gold-glow);
+}
+
+@media (max-width: 1340px) {
+    .ai-banner { margin: 1rem 1rem 0; }
+}
+
+@media (max-width: 700px) {
+    .ai-banner { flex-wrap: wrap; font-size: 0.85rem; }
+    .ai-banner-text { flex-basis: calc(100% - 3rem); }
+    .ai-banner-en { margin-left: 1.5rem; }
+}
+
+/* ── Japanese typography ──────────────────────────────────── */
+/* Latin keeps Cinzel/Spectral; Japanese glyphs fall through to Noto Serif JP */
+:root.lang-ja {
+    --font-title: 'Cinzel', 'Noto Serif JP', serif;
+    --font-heading: 'Marcellus', 'Noto Serif JP', serif;
+    --font-body: 'Spectral', 'Noto Serif JP', serif;
+}
+
+:root.lang-ja body { line-height: 1.85; }
+
+/* Wide tracking suits uppercase Latin, not kana/kanji */
+:root.lang-ja .section-title { letter-spacing: 0.12em; }
+:root.lang-ja .hero h2 { letter-spacing: 0.12em; }
+:root.lang-ja .site-links a,
+:root.lang-ja .footer-links a,
+:root.lang-ja .text-link,
+:root.lang-ja .item-page-link,
+:root.lang-ja .tile-kicker,
+:root.lang-ja .item-kicker,
+:root.lang-ja .sub-section-title,
+:root.lang-ja .experience-title,
+:root.lang-ja .radial-label,
+:root.lang-ja .cta-button { letter-spacing: 0.06em; }
+:root.lang-ja .section-subtitle,
+:root.lang-ja .radial-hub-desc,
+:root.lang-ja .expand-hint,
+:root.lang-ja .gallery-bar { font-style: normal; }
+:root.lang-ja .site-links a { padding: 0.5rem 0.65rem; }
+:root.lang-ja .project-title,
+:root.lang-ja .cv-role,
+:root.lang-ja .contact-info h3 { letter-spacing: 0.04em; }
+:root.lang-ja .expand-hint-cv { font-style: normal; }
